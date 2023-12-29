@@ -46,7 +46,6 @@ var _min_jump_height: float = DEFAULT_MIN_JUMP_HEIGHT
 				jump_velocity, min_jump_height, default_gravity)
 
 
-
 var _double_jump_height: float = DEFAULT_DOUBLE_JUMP_HEIGHT
 ## The height of your jump in the air.
 @export var double_jump_height: float = DEFAULT_DOUBLE_JUMP_HEIGHT:
@@ -106,6 +105,11 @@ var _was_on_ground: bool
 
 var acc = Vector2()
 
+@export var AnimatedSprite2D_node: AnimatedSprite2D
+#Finite State Machine
+enum flip_h_type {LEFT = 1, RIGHT = 0}
+var flip_h_state: flip_h_type = flip_h_type.RIGHT
+
 # coyote_time and jump_buffer must be above zero to work. Otherwise, godot will throw an error.
 @onready var is_coyote_time_enabled = coyote_time > 0
 @onready var is_jump_buffer_enabled = jump_buffer > 0
@@ -135,11 +139,14 @@ func _ready():
 
 func _input(_event):
 	acc.x = 0
-	if Input.is_action_pressed(input_left):
-		acc.x = -max_acceleration
-	
-	if Input.is_action_pressed(input_right):
-		acc.x = max_acceleration
+	if not (Input.is_action_pressed(input_left) and Input.is_action_pressed(input_right)):
+		if Input.is_action_pressed(input_left):
+			acc.x = -max_acceleration
+			change_state("flip_h_state", flip_h_type.LEFT)
+		
+		if Input.is_action_pressed(input_right):
+			acc.x = max_acceleration
+			change_state("flip_h_state", flip_h_type.RIGHT)
 	
 	if Input.is_action_just_pressed(input_jump):
 		holding_jump = true
@@ -320,3 +327,7 @@ func calculate_friction(time_to_max):
 func calculate_speed(p_max_speed, p_friction):
 	return (p_max_speed / p_friction) - p_max_speed
 
+func change_state(state, value):
+	if state == "flip_h_state":
+		flip_h_state = value
+		AnimatedSprite2D_node.flip_h = value

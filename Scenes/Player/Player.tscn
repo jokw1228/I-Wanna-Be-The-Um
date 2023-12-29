@@ -63,13 +63,14 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("AnimatedSprite2D_node")]
 script = ExtResource("1_r2ilq")
 max_jump_height = 120.0
 double_jump_height = 90.0
 jump_duration = 0.4
 max_jump_amount = 2
 max_acceleration = 5000
+AnimatedSprite2D_node = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_vmrs7")
