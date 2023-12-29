@@ -1,20 +1,79 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbm72675nvcda"]
+[gd_scene load_steps=11 format=3 uid="uid://bbm72675nvcda"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_r2ilq"]
-[ext_resource type="Texture2D" uid="uid://di5a1pv5iuup3" path="res://icon.png" id="2_np6gm"]
+[ext_resource type="Texture2D" uid="uid://cadqfve1nujug" path="res://Resources/Sprites/Player/sprite_player_fall.png" id="3_n4luc"]
+[ext_resource type="Texture2D" uid="uid://5q5nksowyvm1" path="res://Resources/Sprites/Player/sprite_player_idle.png" id="4_qfim3"]
+[ext_resource type="Texture2D" uid="uid://boito1cbqt7s8" path="res://Resources/Sprites/Player/sprite_player.jump.png" id="5_h54jy"]
+[ext_resource type="Texture2D" uid="uid://djo6mck7c88pr" path="res://Resources/Sprites/Player/sprite_player_walk.png" id="6_2djx6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vmrs7"]
-radius = 16.0
-height = 48.0
+radius = 8.0
+height = 32.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qakan"]
+atlas = ExtResource("6_2djx6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_up35n"]
+atlas = ExtResource("6_2djx6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wguj"]
+atlas = ExtResource("6_2djx6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fal7p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_n4luc")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_qfim3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_h54jy")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qakan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_up35n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wguj")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 12.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_r2ilq")
+max_jump_height = 120.0
+double_jump_height = 90.0
+jump_duration = 0.4
 max_jump_amount = 2
-max_acceleration = 8000
+max_acceleration = 5000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_vmrs7")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.796875)
-texture = ExtResource("2_np6gm")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fal7p")
+animation = &"idle"
