@@ -106,9 +106,13 @@ var _was_on_ground: bool
 var acc = Vector2()
 
 @export var AnimatedSprite2D_node: AnimatedSprite2D
+
 #Finite State Machine
 enum flip_h_type {LEFT = 1, RIGHT = 0}
 var flip_h_state: flip_h_type = flip_h_type.RIGHT
+
+enum is_moving_side_to_side_type {STOP, WALK}
+var is_moving_side_to_side_state: is_moving_side_to_side_type = is_moving_side_to_side_type.STOP
 
 # coyote_time and jump_buffer must be above zero to work. Otherwise, godot will throw an error.
 @onready var is_coyote_time_enabled = coyote_time > 0
@@ -135,7 +139,8 @@ func _ready():
 		add_child(jump_buffer_timer)
 		jump_buffer_timer.wait_time = jump_buffer
 		jump_buffer_timer.one_shot = true
-
+	
+	AnimatedSprite2D_node.play()
 
 func _input(_event):
 	acc.x = 0
@@ -147,6 +152,11 @@ func _input(_event):
 		if Input.is_action_pressed(input_right):
 			acc.x = max_acceleration
 			change_state("flip_h_state", flip_h_type.RIGHT)
+	
+	if (Input.is_action_pressed(input_left) or Input.is_action_pressed(input_right)):
+		change_state("is_moving_side_to_side_state", is_moving_side_to_side_type.WALK)
+	else:
+		change_state("is_moving_side_to_side_state", is_moving_side_to_side_type.STOP)
 	
 	if Input.is_action_just_pressed(input_jump):
 		holding_jump = true
@@ -185,6 +195,8 @@ func _physics_process(delta):
 	velocity.x *= 1 / (1 + (delta * friction))
 	velocity += acc * delta
 	
+	#sprite_player_jump and sprite_player_walk mechanism doesn't 
+	#These mechanisms are not related to coyote time, simply refer to is_feet_on_ground() and velocity.y.
 	
 	_was_on_ground = is_feet_on_ground()
 	move_and_slide()
@@ -331,3 +343,9 @@ func change_state(state, value):
 	if state == "flip_h_state":
 		flip_h_state = value
 		AnimatedSprite2D_node.flip_h = value
+	elif state == "is_moving_side_to_side_state":
+		is_moving_side_to_side_state = value
+		if value == is_moving_side_to_side_type.WALK:
+			AnimatedSprite2D_node.animation = "walk"
+		elif value == is_moving_side_to_side_type.STOP:
+			AnimatedSprite2D_node.animation = "idle"
