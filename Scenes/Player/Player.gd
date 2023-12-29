@@ -114,6 +114,9 @@ var flip_h_state: flip_h_type = flip_h_type.RIGHT
 enum is_moving_side_to_side_type {STOP, WALK}
 var is_moving_side_to_side_state: is_moving_side_to_side_type = is_moving_side_to_side_type.STOP
 
+enum is_floating_in_the_air_type {GROUND, AIR_RISING, AIR_FALLING}
+var is_floating_in_the_air_state: is_floating_in_the_air_type = is_floating_in_the_air_type.AIR_FALLING
+
 # coyote_time and jump_buffer must be above zero to work. Otherwise, godot will throw an error.
 @onready var is_coyote_time_enabled = coyote_time > 0
 @onready var is_jump_buffer_enabled = jump_buffer > 0
@@ -195,8 +198,15 @@ func _physics_process(delta):
 	velocity.x *= 1 / (1 + (delta * friction))
 	velocity += acc * delta
 	
-	#sprite_player_jump and sprite_player_walk mechanism doesn't 
+	#FSM for sprite_player_jump and sprite_player_walk
 	#These mechanisms are not related to coyote time, simply refer to is_feet_on_ground() and velocity.y.
+	if is_feet_on_ground():
+		if velocity.y > 0:
+			change_state("is_floating_in_the_air_state", is_floating_in_the_air_type.AIR_RISING)
+		else:
+			change_state("is_floating_in_the_air_statee", is_floating_in_the_air_type.AIR_FALLING)
+	else:
+		change_state("is_floating_in_the_air_state", is_floating_in_the_air_type.GROUND)
 	
 	_was_on_ground = is_feet_on_ground()
 	move_and_slide()
@@ -349,3 +359,9 @@ func change_state(state, value):
 			AnimatedSprite2D_node.animation = "walk"
 		elif value == is_moving_side_to_side_type.STOP:
 			AnimatedSprite2D_node.animation = "idle"
+	elif state == "is_floating_in_the_air_state":
+		is_floating_in_the_air_state = value
+		if value == is_floating_in_the_air_type.AIR_RISING:
+			AnimatedSprite2D_node.animation = "jump"
+		elif value == is_floating_in_the_air_type.AIR_FALLING:
+			AnimatedSprite2D_node.animation = "fall"
