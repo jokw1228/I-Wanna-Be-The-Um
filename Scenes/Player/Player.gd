@@ -111,7 +111,7 @@ var acc = Vector2()
 enum flip_h_type {LEFT = 1, RIGHT = 0}
 var flip_h_state: flip_h_type = flip_h_type.RIGHT
 
-enum is_moving_side_to_side_type {STOP, WALK}
+enum is_moving_side_to_side_type {STOP, MOVING}
 var is_moving_side_to_side_state: is_moving_side_to_side_type = is_moving_side_to_side_type.STOP
 
 enum is_floating_in_the_air_type {GROUND, AIR_RISING, AIR_FALLING}
@@ -157,7 +157,7 @@ func _input(_event):
 			change_state("flip_h_state", flip_h_type.RIGHT)
 	
 	if (Input.is_action_pressed(input_left) or Input.is_action_pressed(input_right)):
-		change_state("is_moving_side_to_side_state", is_moving_side_to_side_type.WALK)
+		change_state("is_moving_side_to_side_state", is_moving_side_to_side_type.MOVING)
 	else:
 		change_state("is_moving_side_to_side_state", is_moving_side_to_side_type.STOP)
 	
@@ -200,11 +200,11 @@ func _physics_process(delta):
 	
 	#FSM for sprite_player_jump and sprite_player_walk
 	#These mechanisms are not related to coyote time, simply refer to is_feet_on_ground() and velocity.y.
-	if is_feet_on_ground():
-		if velocity.y > 0:
+	if not is_feet_on_ground():
+		if velocity.y < 0:
 			change_state("is_floating_in_the_air_state", is_floating_in_the_air_type.AIR_RISING)
 		else:
-			change_state("is_floating_in_the_air_statee", is_floating_in_the_air_type.AIR_FALLING)
+			change_state("is_floating_in_the_air_state", is_floating_in_the_air_type.AIR_FALLING)
 	else:
 		change_state("is_floating_in_the_air_state", is_floating_in_the_air_type.GROUND)
 	
@@ -351,17 +351,25 @@ func calculate_speed(p_max_speed, p_friction):
 
 func change_state(state, value):
 	if state == "flip_h_state":
-		flip_h_state = value
-		AnimatedSprite2D_node.flip_h = value
+		if flip_h_state != value:
+			flip_h_state = value
+			AnimatedSprite2D_node.flip_h = value #좌우 반전은 따로 시그널 및 메소드 구현 안함
 	elif state == "is_moving_side_to_side_state":
-		is_moving_side_to_side_state = value
-		if value == is_moving_side_to_side_type.WALK:
-			AnimatedSprite2D_node.animation = "walk"
-		elif value == is_moving_side_to_side_type.STOP:
-			AnimatedSprite2D_node.animation = "idle"
+		if is_moving_side_to_side_state != value:
+			is_moving_side_to_side_state = value
+			update_animation()
 	elif state == "is_floating_in_the_air_state":
-		is_floating_in_the_air_state = value
-		if value == is_floating_in_the_air_type.AIR_RISING:
-			AnimatedSprite2D_node.animation = "jump"
-		elif value == is_floating_in_the_air_type.AIR_FALLING:
-			AnimatedSprite2D_node.animation = "fall"
+		if is_floating_in_the_air_state != value:
+			is_floating_in_the_air_state = value
+			update_animation()
+
+func update_animation():
+	if is_floating_in_the_air_state == is_floating_in_the_air_type.AIR_RISING:
+		AnimatedSprite2D_node.animation = "jump"
+	elif is_floating_in_the_air_state == is_floating_in_the_air_type.AIR_FALLING:
+		AnimatedSprite2D_node.animation = "fall"
+	elif is_floating_in_the_air_state == is_floating_in_the_air_type.GROUND:
+		if is_moving_side_to_side_state == is_moving_side_to_side_type.MOVING:
+			AnimatedSprite2D_node.animation = "walk"
+		elif is_moving_side_to_side_state == is_moving_side_to_side_type.STOP:
+			AnimatedSprite2D_node.animation = "idle"
