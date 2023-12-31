@@ -103,12 +103,13 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("AnimatedSprite2D_node", "UmAnimatedSprite2D_node")]
 script = ExtResource("1_r2ilq")
-max_jump_height = 50.0
-min_jump_height = 25.0
-double_jump_height = 35.0
+max_jump_height = 40.0
+min_jump_height = 20.0
+double_jump_height = 30.0
 jump_duration = 0.4
 max_jump_amount = 2
 max_acceleration = 2000
+friction = 30
 AnimatedSprite2D_node = NodePath("PlayerAnimatedSprite2D")
 UmAnimatedSprite2D_node = NodePath("UmAnimatedSprite2D")
 
