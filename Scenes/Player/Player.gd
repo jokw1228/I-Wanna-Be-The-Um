@@ -105,7 +105,9 @@ var _was_on_ground: bool
 
 var acc = Vector2()
 
+#node path esport
 @export var AnimatedSprite2D_node: AnimatedSprite2D
+@export var UmAnimatedSprite2D_node: AnimatedSprite2D
 
 #Finite State Machine
 enum flip_h_type {LEFT = 1, RIGHT = 0}
@@ -354,6 +356,7 @@ func change_state(state, value):
 		if flip_h_state != value:
 			flip_h_state = value
 			AnimatedSprite2D_node.flip_h = value #좌우 반전은 따로 시그널 및 메소드 구현 안함
+			UmAnimatedSprite2D_node.flip_h = value
 	elif state == "is_moving_side_to_side_state":
 		if is_moving_side_to_side_state != value:
 			is_moving_side_to_side_state = value
@@ -366,10 +369,14 @@ func change_state(state, value):
 func update_animation():
 	if is_floating_in_the_air_state == is_floating_in_the_air_type.AIR_RISING:
 		AnimatedSprite2D_node.animation = "jump"
+		UmAnimatedSprite2D_node.animation = "jump"
 	elif is_floating_in_the_air_state == is_floating_in_the_air_type.AIR_FALLING:
 		AnimatedSprite2D_node.animation = "fall"
+		UmAnimatedSprite2D_node.animation = "fall"
 	elif is_floating_in_the_air_state == is_floating_in_the_air_type.GROUND:
 		if is_moving_side_to_side_state == is_moving_side_to_side_type.MOVING:
 			AnimatedSprite2D_node.animation = "walk"
+			UmAnimatedSprite2D_node.animation = "walk"
 		elif is_moving_side_to_side_state == is_moving_side_to_side_type.STOP:
 			AnimatedSprite2D_node.animation = "idle"
+			UmAnimatedSprite2D_node.animation = "idle"
