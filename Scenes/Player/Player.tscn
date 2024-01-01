@@ -1,6 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://bbm72675nvcda"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_r2ilq"]
+[ext_resource type="PackedScene" uid="uid://cl0xvpmws40pk" path="res://Scenes/Player/LandingEffect.tscn" id="2_hw6o0"]
 [ext_resource type="Texture2D" uid="uid://cadqfve1nujug" path="res://Resources/Sprites/Player/sprite_player_fall.png" id="3_n4luc"]
 [ext_resource type="Texture2D" uid="uid://btmy7kh43b6s2" path="res://Resources/Sprites/Player/sprite_player_jump.png" id="4_0hewo"]
 [ext_resource type="Texture2D" uid="uid://5q5nksowyvm1" path="res://Resources/Sprites/Player/sprite_player_idle.png" id="4_qfim3"]
@@ -101,11 +102,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Curve" id="Curve_4p1co"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("AnimatedSprite2D_node", "UmAnimatedSprite2D_node", "LandingParticles2D_node")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("AnimatedSprite2D_node", "UmAnimatedSprite2D_node")]
 script = ExtResource("1_r2ilq")
 max_jump_height = 40.0
 min_jump_height = 20.0
@@ -116,7 +113,7 @@ max_acceleration = 2000
 friction = 30
 AnimatedSprite2D_node = NodePath("PlayerAnimatedSprite2D")
 UmAnimatedSprite2D_node = NodePath("UmAnimatedSprite2D")
-LandingParticles2D_node = NodePath("CPUParticles2D")
+LandingEffect_scene = ExtResource("2_hw6o0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_vmrs7")
@@ -129,19 +126,3 @@ animation = &"idle"
 sprite_frames = SubResource("SpriteFrames_ug6b3")
 animation = &"walk"
 offset = Vector2(0, -1)
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(0, 8)
-emitting = false
-amount = 16
-lifetime = 0.45
-one_shot = true
-explosiveness = 1.0
-emission_shape = 3
-emission_rect_extents = Vector2(3, 2)
-spread = 180.0
-gravity = Vector2(0, 10)
-initial_velocity_max = 10.0
-scale_amount_min = 0.1
-scale_amount_max = 2.0
-scale_amount_curve = SubResource("Curve_4p1co")

@@ -105,10 +105,12 @@ var _was_on_ground: bool
 
 var acc = Vector2()
 
-#node path esport
+#node path export
 @export var AnimatedSprite2D_node: AnimatedSprite2D
 @export var UmAnimatedSprite2D_node: AnimatedSprite2D
-@export var LandingParticles2D_node: Node
+
+#PackedScenes export
+@export var LandingEffect_scene: PackedScene
 
 #Finite State Machine
 enum flip_h_type {LEFT = 1, RIGHT = 0}
@@ -367,7 +369,10 @@ func change_state(state, value):
 			is_floating_in_the_air_state = value
 			update_animation()
 			if value == is_floating_in_the_air_type.GROUND:
-				LandingParticles2D_node.emitting = true
+				var LandingParticle_instance = LandingEffect_scene.instantiate()
+				LandingParticle_instance.position = position
+				LandingParticle_instance.emitting = true
+				get_tree().current_scene.add_child(LandingParticle_instance)
 
 func update_animation():
 	if is_floating_in_the_air_state == is_floating_in_the_air_type.AIR_RISING:
