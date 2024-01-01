@@ -6,8 +6,9 @@
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="GroundJumpEffectGenerator" type="Node2D"]
+[node name="GroundJumpEffectGenerator" type="Node2D" node_paths=PackedStringArray("GroundJumpEffect_node")]
 script = ExtResource("1_whcvo")
+GroundJumpEffect_node = NodePath("GroundJumpEffect")
 
 [node name="GroundJumpEffect" type="CPUParticles2D" parent="."]
 position = Vector2(0, 8)
@@ -24,5 +25,3 @@ initial_velocity_max = 10.0
 scale_amount_min = 0.1
 scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_6n6xh")
-
-[connection signal="finished" from="GroundJumpEffect" to="GroundJumpEffect" method="queue_free"]

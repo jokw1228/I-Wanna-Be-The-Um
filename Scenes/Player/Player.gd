@@ -109,10 +109,6 @@ var acc = Vector2()
 @export var AnimatedSprite2D_node: AnimatedSprite2D
 @export var UmAnimatedSprite2D_node: AnimatedSprite2D
 
-#PackedScenes export
-@export var LandingEffectHandler_scene: PackedScene
-@export var GroundJumpEffectHandler_scene: PackedScene
-
 #Finite State Machine
 enum flip_h_type {LEFT = 1, RIGHT = 0}
 var flip_h_state: flip_h_type = flip_h_type.RIGHT

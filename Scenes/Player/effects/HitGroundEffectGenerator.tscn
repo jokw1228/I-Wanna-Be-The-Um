@@ -1,16 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8myecjig8jf7"]
 
-[ext_resource type="Script" path="res://Scenes/Player/effects/LandingEffectGenerator.gd" id="1_yv6qh"]
+[ext_resource type="Script" path="res://Scenes/Player/effects/HitGroundEffectGenerator.gd" id="1_tnji6"]
 
 [sub_resource type="Curve" id="Curve_pyfj2"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="LandingEffectGenerator" type="Node2D" node_paths=PackedStringArray("LandingEffect_node")]
-script = ExtResource("1_yv6qh")
-LandingEffect_node = NodePath("LandingEffect")
+[node name="HitGroundEffectGenerator" type="Node2D" node_paths=PackedStringArray("HitGroundEffect_node")]
+script = ExtResource("1_tnji6")
+HitGroundEffect_node = NodePath("HitGroundEffect")
 
-[node name="LandingEffect" type="CPUParticles2D" parent="."]
+[node name="HitGroundEffect" type="CPUParticles2D" parent="."]
 position = Vector2(0, 8)
 emitting = false
 amount = 16
