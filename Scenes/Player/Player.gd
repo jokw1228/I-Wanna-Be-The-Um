@@ -108,6 +108,7 @@ var acc = Vector2()
 #node path esport
 @export var AnimatedSprite2D_node: AnimatedSprite2D
 @export var UmAnimatedSprite2D_node: AnimatedSprite2D
+@export var LandingParticles2D_node: Node
 
 #Finite State Machine
 enum flip_h_type {LEFT = 1, RIGHT = 0}
@@ -365,6 +366,8 @@ func change_state(state, value):
 		if is_floating_in_the_air_state != value:
 			is_floating_in_the_air_state = value
 			update_animation()
+			if value == is_floating_in_the_air_type.GROUND:
+				LandingParticles2D_node.emitting = true
 
 func update_animation():
 	if is_floating_in_the_air_state == is_floating_in_the_air_type.AIR_RISING:
