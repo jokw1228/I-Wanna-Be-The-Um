@@ -13,9 +13,6 @@ size = Vector2(193.125, 64)
 
 [node name="Main" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(520, 544)
-
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(520, 360)
 

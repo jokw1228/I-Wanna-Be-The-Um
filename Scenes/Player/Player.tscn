@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://bbm72675nvcda"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_r2ilq"]
-[ext_resource type="PackedScene" uid="uid://cl0xvpmws40pk" path="res://Scenes/Player/LandingEffect.tscn" id="2_hw6o0"]
+[ext_resource type="PackedScene" uid="uid://c8myecjig8jf7" path="res://Scenes/Player/effects/LandingEffectHandler.tscn" id="2_qkglk"]
 [ext_resource type="Texture2D" uid="uid://cadqfve1nujug" path="res://Resources/Sprites/Player/sprite_player_fall.png" id="3_n4luc"]
 [ext_resource type="Texture2D" uid="uid://btmy7kh43b6s2" path="res://Resources/Sprites/Player/sprite_player_jump.png" id="4_0hewo"]
 [ext_resource type="Texture2D" uid="uid://5q5nksowyvm1" path="res://Resources/Sprites/Player/sprite_player_idle.png" id="4_qfim3"]
@@ -113,7 +113,7 @@ max_acceleration = 2000
 friction = 30
 AnimatedSprite2D_node = NodePath("PlayerAnimatedSprite2D")
 UmAnimatedSprite2D_node = NodePath("UmAnimatedSprite2D")
-LandingEffect_scene = ExtResource("2_hw6o0")
+LandingEffectHandler_scene = ExtResource("2_qkglk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_vmrs7")

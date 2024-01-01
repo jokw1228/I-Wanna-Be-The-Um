@@ -110,7 +110,7 @@ var acc = Vector2()
 @export var UmAnimatedSprite2D_node: AnimatedSprite2D
 
 #PackedScenes export
-@export var LandingEffect_scene: PackedScene
+@export var LandingEffectHandler_scene: PackedScene
 
 #Finite State Machine
 enum flip_h_type {LEFT = 1, RIGHT = 0}
@@ -369,9 +369,8 @@ func change_state(state, value):
 			is_floating_in_the_air_state = value
 			update_animation()
 			if value == is_floating_in_the_air_type.GROUND:
-				var LandingParticle_instance = LandingEffect_scene.instantiate()
+				var LandingParticle_instance = LandingEffectHandler_scene.instantiate()
 				LandingParticle_instance.position = position
-				LandingParticle_instance.emitting = true
 				get_tree().current_scene.add_child(LandingParticle_instance)
 
 func update_animation():

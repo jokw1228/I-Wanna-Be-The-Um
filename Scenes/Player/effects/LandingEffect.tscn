@@ -5,7 +5,6 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="LandingEffect" type="CPUParticles2D"]
-position = Vector2(1, 13)
 emitting = false
 amount = 16
 lifetime = 0.45
@@ -19,5 +18,3 @@ initial_velocity_max = 10.0
 scale_amount_min = 0.1
 scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_4p1co")
-
-[connection signal="finished" from="." to="." method="queue_free"]
