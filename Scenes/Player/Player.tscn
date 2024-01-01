@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bbm72675nvcda"]
+[gd_scene load_steps=18 format=3 uid="uid://bbm72675nvcda"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_r2ilq"]
-[ext_resource type="PackedScene" uid="uid://c8myecjig8jf7" path="res://Scenes/Player/effects/LandingEffectHandler.tscn" id="2_qkglk"]
+[ext_resource type="PackedScene" uid="uid://c8myecjig8jf7" path="res://Scenes/Player/effects/LandingEffectGenerator.tscn" id="2_l4gi0"]
+[ext_resource type="PackedScene" uid="uid://bsls0u1jw7mwb" path="res://Scenes/Player/effects/GroundJumpEffectGenerator.tscn" id="3_bdh1b"]
 [ext_resource type="Texture2D" uid="uid://cadqfve1nujug" path="res://Resources/Sprites/Player/sprite_player_fall.png" id="3_n4luc"]
 [ext_resource type="Texture2D" uid="uid://btmy7kh43b6s2" path="res://Resources/Sprites/Player/sprite_player_jump.png" id="4_0hewo"]
 [ext_resource type="Texture2D" uid="uid://5q5nksowyvm1" path="res://Resources/Sprites/Player/sprite_player_idle.png" id="4_qfim3"]
@@ -9,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c25dg3p0623gl" path="res://Resources/Sprites/Player/sprite_player_um_fall.png" id="6_cwewl"]
 [ext_resource type="Texture2D" uid="uid://bh6mr1dtivqqq" path="res://Resources/Sprites/Player/sprite_player_um_idle.png" id="7_ltmdp"]
 [ext_resource type="Texture2D" uid="uid://befsjqb22m7xp" path="res://Resources/Sprites/Player/sprite_player_um_jump.png" id="8_dxt1r"]
+[ext_resource type="Script" path="res://Scenes/Player/PlayerEffectHandler.gd" id="11_yi2oj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vmrs7"]
 radius = 4.0
@@ -113,7 +115,8 @@ max_acceleration = 2000
 friction = 30
 AnimatedSprite2D_node = NodePath("PlayerAnimatedSprite2D")
 UmAnimatedSprite2D_node = NodePath("UmAnimatedSprite2D")
-LandingEffectHandler_scene = ExtResource("2_qkglk")
+LandingEffectHandler_scene = ExtResource("2_l4gi0")
+GroundJumpEffectHandler_scene = ExtResource("3_bdh1b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_vmrs7")
@@ -126,3 +129,10 @@ animation = &"idle"
 sprite_frames = SubResource("SpriteFrames_ug6b3")
 animation = &"walk"
 offset = Vector2(0, -1)
+
+[node name="PlayerEffectHandler" type="Node2D" parent="."]
+script = ExtResource("11_yi2oj")
+LandingEffectGenerator_scene = ExtResource("2_l4gi0")
+GroundJumpEffectGenerator_scene = ExtResource("3_bdh1b")
+
+[connection signal="hit_ground" from="." to="PlayerEffectHandler" method="_on_player_hit_ground"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsls0u1jw7mwb"]
+
+[ext_resource type="Script" path="res://Scenes/Player/effects/GroundJumpEffectGenerator.gd" id="1_whcvo"]
+
+[sub_resource type="Curve" id="Curve_6n6xh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="GroundJumpEffectGenerator" type="Node2D"]
+script = ExtResource("1_whcvo")
+
+[node name="GroundJumpEffect" type="CPUParticles2D" parent="."]
+position = Vector2(0, 8)
+emitting = false
+amount = 12
+lifetime = 0.45
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(3, 2)
+spread = 180.0
+gravity = Vector2(0, 10)
+initial_velocity_max = 10.0
+scale_amount_min = 0.1
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_6n6xh")
+
+[connection signal="finished" from="GroundJumpEffect" to="GroundJumpEffect" method="queue_free"]

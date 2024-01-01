@@ -111,6 +111,7 @@ var acc = Vector2()
 
 #PackedScenes export
 @export var LandingEffectHandler_scene: PackedScene
+@export var GroundJumpEffectHandler_scene: PackedScene
 
 #Finite State Machine
 enum flip_h_type {LEFT = 1, RIGHT = 0}
@@ -368,10 +369,6 @@ func change_state(state, value):
 		if is_floating_in_the_air_state != value:
 			is_floating_in_the_air_state = value
 			update_animation()
-			if value == is_floating_in_the_air_type.GROUND:
-				var LandingParticle_instance = LandingEffectHandler_scene.instantiate()
-				LandingParticle_instance.position = position
-				get_tree().current_scene.add_child(LandingParticle_instance)
 
 func update_animation():
 	if is_floating_in_the_air_state == is_floating_in_the_air_type.AIR_RISING:
