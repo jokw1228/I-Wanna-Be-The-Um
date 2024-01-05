@@ -380,3 +380,6 @@ func update_animation():
 		elif is_moving_side_to_side_state == is_moving_side_to_side_type.STOP:
 			AnimatedSprite2D_node.animation = "idle"
 			UmAnimatedSprite2D_node.animation = "idle"
+
+func kill_player():
+	queue_free()

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c85d3mw7tw21o"]
+
+[ext_resource type="Script" path="res://Scenes/Spikes/Spike.gd" id="1_bqk33"]
+[ext_resource type="Texture2D" uid="uid://c476ycdqqcnd0" path="res://Resources/Sprites/Spikes/sprite_spike_left_8.png" id="2_3g6r1"]
+
+[node name="SpikeLeft8" type="Area2D" node_paths=PackedStringArray("Sprite2D_node")]
+script = ExtResource("1_bqk33")
+Sprite2D_node = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3g6r1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-16, 0)
+polygon = PackedVector2Array(20, -4, 12, 0, 20, 4)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,6 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqfhnpb7xftpo"]
+[gd_scene load_steps=12 format=3 uid="uid://cqfhnpb7xftpo"]
 
 [ext_resource type="PackedScene" uid="uid://bbm72675nvcda" path="res://Scenes/Player/Player.tscn" id="1_0rt60"]
+[ext_resource type="PackedScene" uid="uid://d3kvujmdn05tj" path="res://Scenes/Spikes/SpikeUp16.tscn" id="2_ef2mr"]
+[ext_resource type="PackedScene" uid="uid://bhamvca4ii6ak" path="res://Scenes/Spikes/SpikeLeft16.tscn" id="3_n1xt5"]
+[ext_resource type="PackedScene" uid="uid://cthvy4nnj76xi" path="res://Scenes/Spikes/SpikeRight16.tscn" id="4_1bo8e"]
+[ext_resource type="PackedScene" uid="uid://dhwk184241m3i" path="res://Scenes/Spikes/SpikeDown8.tscn" id="5_0o7xu"]
+[ext_resource type="PackedScene" uid="uid://c85d3mw7tw21o" path="res://Scenes/Spikes/SpikeLeft8.tscn" id="6_slsff"]
+[ext_resource type="PackedScene" uid="uid://bfc8ff6j13ard" path="res://Scenes/Spikes/SpikeRight8.tscn" id="7_58euu"]
+[ext_resource type="PackedScene" uid="uid://b03qp1gnvrqsl" path="res://Scenes/Spikes/SpikeUp8.tscn" id="8_ktu6m"]
 
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(128, 40)
@@ -51,3 +58,29 @@ shape = SubResource("RectangleShape2D_1e53n")
 
 [node name="Player" parent="." instance=ExtResource("1_0rt60")]
 position = Vector2(64, 64)
+
+[node name="Spikes" type="Node2D" parent="."]
+
+[node name="SpikeLeft16" parent="Spikes" instance=ExtResource("3_n1xt5")]
+position = Vector2(104, 120)
+
+[node name="SpikeUp16" parent="Spikes" instance=ExtResource("2_ef2mr")]
+position = Vector2(88, 120)
+
+[node name="SpikeRight16" parent="." instance=ExtResource("4_1bo8e")]
+position = Vector2(136, 120)
+
+[node name="SpikeUp16" parent="." instance=ExtResource("2_ef2mr")]
+position = Vector2(120, 120)
+
+[node name="SpikeDown8" parent="." instance=ExtResource("5_0o7xu")]
+position = Vector2(0, 128)
+
+[node name="SpikeLeft8" parent="." instance=ExtResource("6_slsff")]
+position = Vector2(8, 104)
+
+[node name="SpikeRight8" parent="." instance=ExtResource("7_58euu")]
+position = Vector2(48, 112)
+
+[node name="SpikeUp8" parent="." instance=ExtResource("8_ktu6m")]
+position = Vector2(168, 112)

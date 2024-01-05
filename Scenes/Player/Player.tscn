@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bbm72675nvcda"]
+[gd_scene load_steps=20 format=3 uid="uid://bbm72675nvcda"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_r2ilq"]
 [ext_resource type="PackedScene" uid="uid://c8myecjig8jf7" path="res://Scenes/Player/effects/HitGroundEffectGenerator.tscn" id="2_f8b16"]
@@ -105,7 +105,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("AnimatedSprite2D_node", "UmAnimatedSprite2D_node")]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4mgtw"]
+radius = 4.0
+height = 16.0
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("AnimatedSprite2D_node", "UmAnimatedSprite2D_node") groups=["Player"]]
 script = ExtResource("1_r2ilq")
 max_jump_height = 40.0
 min_jump_height = 20.0
@@ -134,6 +138,11 @@ script = ExtResource("11_yi2oj")
 HitGroundEffectGenerator_scene = ExtResource("2_f8b16")
 GroundJumpEffectGenerator_scene = ExtResource("3_bdh1b")
 DoubleJumpEffectGenerator_scene = ExtResource("12_qonmi")
+
+[node name="PlayerArea2D" type="Area2D" parent="." groups=["PlayerArea2D"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D"]
+shape = SubResource("CapsuleShape2D_4mgtw")
 
 [connection signal="hit_ground" from="." to="PlayerEffectHandler" method="_on_player_hit_ground"]
 [connection signal="jumped" from="." to="PlayerEffectHandler" method="_on_player_jumped"]
