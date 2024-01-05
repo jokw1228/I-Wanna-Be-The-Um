@@ -4,6 +4,7 @@ class_name Player
 
 signal jumped(is_ground_jump: bool)
 signal hit_ground()
+signal killed()
 
 
 # Set these to the name of your action (in the Input Map)
@@ -382,4 +383,5 @@ func update_animation():
 			UmAnimatedSprite2D_node.animation = "idle"
 
 func kill_player():
+	killed.emit()
 	queue_free()

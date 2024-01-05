@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://uv7a1f7lp06a"]
+
+[ext_resource type="Script" path="res://Scenes/Player/DeadBody/PlayerDeadBody.gd" id="1_py0lb"]
+[ext_resource type="Texture2D" uid="uid://yprr4rfw5q0v" path="res://Resources/Sprites/Player/sprite_player_dead.png" id="2_lfs80"]
+
+[node name="PlayerDeadBody" type="Node2D"]
+script = ExtResource("1_py0lb")
+
+[node name="PlayerDeadBodySprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_lfs80")

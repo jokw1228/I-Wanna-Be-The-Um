@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bbm72675nvcda"]
+[gd_scene load_steps=22 format=3 uid="uid://bbm72675nvcda"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_r2ilq"]
 [ext_resource type="PackedScene" uid="uid://c8myecjig8jf7" path="res://Scenes/Player/effects/HitGroundEffectGenerator.tscn" id="2_f8b16"]
@@ -12,8 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://befsjqb22m7xp" path="res://Resources/Sprites/Player/sprite_player_um_jump.png" id="8_dxt1r"]
 [ext_resource type="Script" path="res://Scenes/Player/PlayerEffectHandler.gd" id="11_yi2oj"]
 [ext_resource type="PackedScene" uid="uid://daxr5i4rmoa4m" path="res://Scenes/Player/effects/DoubleJumpEffectGenerator.tscn" id="12_qonmi"]
+[ext_resource type="Script" path="res://Scenes/Player/PlayerKilledHandler.gd" id="13_e0mcf"]
+[ext_resource type="PackedScene" uid="uid://uv7a1f7lp06a" path="res://Scenes/Player/DeadBody/PlayerDeadBody.tscn" id="14_max22"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vmrs7"]
+radius = 4.0
+height = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4mgtw"]
 radius = 4.0
 height = 16.0
 
@@ -105,10 +111,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4mgtw"]
-radius = 4.0
-height = 16.0
-
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("AnimatedSprite2D_node", "UmAnimatedSprite2D_node") groups=["Player"]]
 script = ExtResource("1_r2ilq")
 max_jump_height = 40.0
@@ -118,17 +120,24 @@ jump_duration = 0.4
 max_jump_amount = 2
 max_acceleration = 2000
 friction = 30
-AnimatedSprite2D_node = NodePath("PlayerAnimatedSprite2D")
-UmAnimatedSprite2D_node = NodePath("UmAnimatedSprite2D")
+AnimatedSprite2D_node = NodePath("PlayerSpriteHandler/PlayerAnimatedSprite2D")
+UmAnimatedSprite2D_node = NodePath("PlayerSpriteHandler/UmAnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_vmrs7")
 
-[node name="PlayerAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="PlayerArea2D" type="Area2D" parent="." groups=["PlayerArea2D"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D"]
+shape = SubResource("CapsuleShape2D_4mgtw")
+
+[node name="PlayerSpriteHandler" type="Node2D" parent="."]
+
+[node name="PlayerAnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerSpriteHandler"]
 sprite_frames = SubResource("SpriteFrames_fal7p")
 animation = &"idle"
 
-[node name="UmAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="UmAnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerSpriteHandler"]
 sprite_frames = SubResource("SpriteFrames_ug6b3")
 animation = &"walk"
 offset = Vector2(0, -1)
@@ -139,10 +148,10 @@ HitGroundEffectGenerator_scene = ExtResource("2_f8b16")
 GroundJumpEffectGenerator_scene = ExtResource("3_bdh1b")
 DoubleJumpEffectGenerator_scene = ExtResource("12_qonmi")
 
-[node name="PlayerArea2D" type="Area2D" parent="." groups=["PlayerArea2D"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D"]
-shape = SubResource("CapsuleShape2D_4mgtw")
+[node name="PlayerKilledHandler" type="Node2D" parent="."]
+script = ExtResource("13_e0mcf")
+PlayerDeadBody_scene = ExtResource("14_max22")
 
 [connection signal="hit_ground" from="." to="PlayerEffectHandler" method="_on_player_hit_ground"]
 [connection signal="jumped" from="." to="PlayerEffectHandler" method="_on_player_jumped"]
+[connection signal="killed" from="." to="PlayerKilledHandler" method="_on_player_killed"]
