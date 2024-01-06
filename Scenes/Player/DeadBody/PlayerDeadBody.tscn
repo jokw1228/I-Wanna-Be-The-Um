@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://uv7a1f7lp06a"]
+[gd_scene load_steps=4 format=3 uid="uid://uv7a1f7lp06a"]
 
 [ext_resource type="Script" path="res://Scenes/Player/DeadBody/PlayerDeadBody.gd" id="1_py0lb"]
 [ext_resource type="Texture2D" uid="uid://yprr4rfw5q0v" path="res://Resources/Sprites/Player/sprite_player_dead.png" id="2_lfs80"]
+[ext_resource type="AudioStream" uid="uid://dsqh5nnv80234" path="res://Resources/Sounds/SFX/sfx_um.wav" id="3_xpslq"]
 
 [node name="PlayerDeadBody" type="Node2D"]
 script = ExtResource("1_py0lb")
 
 [node name="PlayerDeadBodySprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_lfs80")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_xpslq")
+autoplay = true
