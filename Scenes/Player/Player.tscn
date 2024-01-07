@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://uv7a1f7lp06a" path="res://Scenes/Player/DeadBody/PlayerDeadBody.tscn" id="14_max22"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vmrs7"]
-radius = 3.0
+radius = 3.5
 height = 15.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4mgtw"]
