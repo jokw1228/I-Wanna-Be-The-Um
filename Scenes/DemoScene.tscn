@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqfhnpb7xftpo"]
+[gd_scene load_steps=6 format=3 uid="uid://cqfhnpb7xftpo"]
 
 [ext_resource type="PackedScene" uid="uid://bbm72675nvcda" path="res://Scenes/Player/Player.tscn" id="1_0rt60"]
 [ext_resource type="PackedScene" uid="uid://brwwqd6l1oxk" path="res://Scenes/TileMaps/TileMapGround1.tscn" id="2_hkl7i"]
 [ext_resource type="PackedScene" uid="uid://1kdhl0avp55s" path="res://Scenes/TileMaps/TileMapGround2.tscn" id="3_nl24k"]
 [ext_resource type="PackedScene" uid="uid://2kjb1txrafg0" path="res://Scenes/TileMaps/TileMapGround3.tscn" id="4_x2dhk"]
+[ext_resource type="PackedScene" uid="uid://d25vehfudqlvb" path="res://Scenes/Items/SavePoint/SavePoint.tscn" id="5_t1h5f"]
 
 [node name="Main" type="Node2D"]
 
@@ -18,3 +19,6 @@ layer_0/tile_data = PackedInt32Array(1048599, 589824, 4, 1048600, 196608, 1, 111
 
 [node name="TileMapGround3" parent="." instance=ExtResource("4_x2dhk")]
 layer_0/tile_data = PackedInt32Array(786446, 1, 0, 851982, 131073, 0, 917518, 131073, 0, 983054, 1, 0, 1048590, 65537, 0, 1114126, 131073, 0, 1114125, 1, 0, 1114124, 65537, 0, 1114123, 65537, 0, 1114122, 1, 0, 1114121, 131073, 0, 1114120, 65537, 0, 1114119, 1, 0, 1114118, 1, 0, 1179660, 65537, 0, 1179661, 1, 0, 1179659, 131073, 0, 1179658, 131073, 0, 1179657, 1, 0, 1179662, 1, 0)
+
+[node name="SavePoint" parent="." instance=ExtResource("5_t1h5f")]
+position = Vector2(96, 72)

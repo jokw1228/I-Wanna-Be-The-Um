@@ -20,7 +20,7 @@ radius = 3.5
 height = 15.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4mgtw"]
-radius = 4.0
+radius = 3.5
 height = 15.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w3ys6"]

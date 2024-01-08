@@ -1,0 +1,73 @@
+[gd_scene load_steps=12 format=3 uid="uid://d25vehfudqlvb"]
+
+[ext_resource type="Texture2D" uid="uid://crmi66ykumes" path="res://Resources/Sprites/Items/SavePoint/sprite_savepoint.png" id="1_01jq5"]
+[ext_resource type="Script" path="res://Scenes/Items/SavePoint/SavePoint.gd" id="1_m4sy0"]
+[ext_resource type="Texture2D" uid="uid://canlibvw6hqju" path="res://Resources/Sprites/Items/SavePoint/sprite_savepoint_circle.png" id="2_3whcr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ivwdy"]
+radius = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxvv4"]
+atlas = ExtResource("2_3whcr")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71juo"]
+atlas = ExtResource("2_3whcr")
+region = Rect2(18, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhjda"]
+atlas = ExtResource("2_3whcr")
+region = Rect2(36, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_royog"]
+atlas = ExtResource("2_3whcr")
+region = Rect2(54, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_654dg"]
+atlas = ExtResource("2_3whcr")
+region = Rect2(72, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d86y"]
+atlas = ExtResource("2_3whcr")
+region = Rect2(90, 0, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xjuwc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxvv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71juo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhjda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_royog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_654dg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5d86y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SavePoint" type="Area2D" node_paths=PackedStringArray("SavePointSprite_node", "CircleSprite_node")]
+script = ExtResource("1_m4sy0")
+SavePointSprite_node = NodePath("SavePointSprite")
+CircleSprite_node = NodePath("CircleSprite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ivwdy")
+
+[node name="SavePointSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_01jq5")
+
+[node name="CircleSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xjuwc")
+frame_progress = 0.634123
