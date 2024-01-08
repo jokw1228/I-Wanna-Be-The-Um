@@ -1,13 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dd6bm63eljmey"]
+[gd_scene load_steps=3 format=3 uid="uid://dd6bm63eljmey"]
 
 [ext_resource type="Texture2D" uid="uid://crmi66ykumes" path="res://Resources/Sprites/Items/SavePoint/sprite_savepoint.png" id="1_gmyjk"]
 [ext_resource type="Script" path="res://Scenes/Items/SavePoint/SavePointSaved.gd" id="1_qaqso"]
-[ext_resource type="PackedScene" uid="uid://d25vehfudqlvb" path="res://Scenes/Items/SavePoint/SavePoint.tscn" id="2_a770q"]
 
 [node name="SavePointSaved" type="Node2D" node_paths=PackedStringArray("SavePoint_node")]
 script = ExtResource("1_qaqso")
 SavePoint_node = NodePath("Sprite2D")
-SavePoint_scene = ExtResource("2_a770q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_gmyjk")

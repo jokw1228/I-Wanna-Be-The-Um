@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://d25vehfudqlvb"]
+[gd_scene load_steps=12 format=3 uid="uid://d25vehfudqlvb"]
 
 [ext_resource type="Texture2D" uid="uid://crmi66ykumes" path="res://Resources/Sprites/Items/SavePoint/sprite_savepoint.png" id="1_01jq5"]
 [ext_resource type="Script" path="res://Scenes/Items/SavePoint/SavePoint.gd" id="1_m4sy0"]
 [ext_resource type="Texture2D" uid="uid://canlibvw6hqju" path="res://Resources/Sprites/Items/SavePoint/sprite_savepoint_circle.png" id="2_3whcr"]
-[ext_resource type="PackedScene" uid="uid://dd6bm63eljmey" path="res://Scenes/Items/SavePoint/SavePointSaved.tscn" id="2_y1akd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ivwdy"]
 radius = 6.0
@@ -62,7 +61,6 @@ animations = [{
 script = ExtResource("1_m4sy0")
 SavePointSprite_node = NodePath("SavePointSprite")
 CircleSprite_node = NodePath("CircleSprite")
-SavePointSaved_scene = ExtResource("2_y1akd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ivwdy")
@@ -72,6 +70,6 @@ texture = ExtResource("1_01jq5")
 
 [node name="CircleSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xjuwc")
-frame_progress = 0.634123
+frame_progress = 0.424742
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
