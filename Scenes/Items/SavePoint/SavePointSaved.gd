@@ -11,7 +11,7 @@ func _ready():
 		await get_tree().create_timer(0.1).timeout
 		SavePoint_node.modulate = Color(1, 1, 1, 1)
 		await get_tree().create_timer(0.1).timeout
-	var inst = SavePoint_scene.instantiate()
-	inst.position = position
-	get_tree().current_scene.add_child(inst)
+	#var inst = SavePoint_scene.instantiate()
+	#inst.position = position
+	#get_tree().current_scene.add_child(inst)
 	queue_free()
