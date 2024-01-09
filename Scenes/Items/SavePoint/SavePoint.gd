@@ -1,10 +1,9 @@
 extends Area2D
 
+@export var CollisionShape2D_node: CollisionShape2D
 @export var SavePointSprite_node: Sprite2D
 @export var CircleSprite_node: AnimatedSprite2D
 
-#@export var SavePointSaved_scene: PackedScene
-var SavePointSaved_scene = load("res://Scenes/Items/SavePoint/SavePointSaved.tscn")
 
 var theta = 0
 
@@ -21,7 +20,13 @@ func _process(delta):
 
 func _on_area_entered(area):
 	if area.is_in_group("PlayerArea2D"):
-		var inst = SavePointSaved_scene.instantiate()
-		inst.position = position
-		get_tree().current_scene.add_child.call_deferred(inst)
-		queue_free()
+		_saved()
+		
+func _saved():
+	CollisionShape2D_node.set_deferred("disabled", true)
+	for i in range(5):
+		SavePointSprite_node.modulate = Color(0.5, 0.5, 0.5, 1)
+		await get_tree().create_timer(0.1).timeout
+		SavePointSprite_node.modulate = Color(1, 1, 1, 1)
+		await get_tree().create_timer(0.1).timeout
+	CollisionShape2D_node.set_deferred("disabled", false)

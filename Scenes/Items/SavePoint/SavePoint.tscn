@@ -57,8 +57,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="SavePoint" type="Area2D" node_paths=PackedStringArray("SavePointSprite_node", "CircleSprite_node")]
+[node name="SavePoint" type="Area2D" node_paths=PackedStringArray("CollisionShape2D_node", "SavePointSprite_node", "CircleSprite_node")]
 script = ExtResource("1_m4sy0")
+CollisionShape2D_node = NodePath("CollisionShape2D")
 SavePointSprite_node = NodePath("SavePointSprite")
 CircleSprite_node = NodePath("CircleSprite")
 
@@ -70,6 +71,6 @@ texture = ExtResource("1_01jq5")
 
 [node name="CircleSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xjuwc")
-frame_progress = 0.424742
+frame_progress = 0.497158
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
