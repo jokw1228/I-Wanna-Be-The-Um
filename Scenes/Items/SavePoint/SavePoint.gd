@@ -23,6 +23,7 @@ func _on_area_entered(area):
 		_saved()
 		
 func _saved():
+	SaveFileManager.save_game(get_tree().current_scene.name, position)
 	CollisionShape2D_node.set_deferred("disabled", true)
 	for i in range(5):
 		SavePointSprite_node.modulate = Color(0.5, 0.5, 0.5, 1)

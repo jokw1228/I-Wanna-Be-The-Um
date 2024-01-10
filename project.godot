@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="I Wanna Be The Um"
-run/main_scene="res://Scenes/DemoScene.tscn"
+run/main_scene="res://Scenes/Rooms/DemoScene.tscn"
 config/features=PackedStringArray("4.2")
 config/icon="res://icon.png"
+
+[autoload]
+
+SaveFileManager="*res://Scenes/Managers/SaveFileManager.gd"
 
 [display]
 
