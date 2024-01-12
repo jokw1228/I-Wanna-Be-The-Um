@@ -384,4 +384,3 @@ func update_animation():
 
 func kill_player():
 	killed.emit()
-	queue_free()

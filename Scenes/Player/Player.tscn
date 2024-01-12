@@ -152,6 +152,8 @@ DoubleJumpEffectGenerator_scene = ExtResource("12_qonmi")
 script = ExtResource("13_e0mcf")
 PlayerDeadBody_scene = ExtResource("14_max22")
 
+[node name="PlayerShootHandler" type="Node2D" parent="."]
+
 [connection signal="hit_ground" from="." to="PlayerEffectHandler" method="_on_player_hit_ground"]
 [connection signal="jumped" from="." to="PlayerEffectHandler" method="_on_player_jumped"]
 [connection signal="killed" from="." to="PlayerKilledHandler" method="_on_player_killed"]
