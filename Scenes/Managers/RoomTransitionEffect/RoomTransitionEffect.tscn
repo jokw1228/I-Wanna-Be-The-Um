@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr7knve255bxe"]
+
+[ext_resource type="Texture2D" uid="uid://k8gmfp5snaft" path="res://Resources/Sprites/Effects/sprite_room_transition_effect.png" id="1_8kpat"]
+[ext_resource type="Script" path="res://Scenes/Managers/RoomTransitionEffect/RoomTransitionEffect.gd" id="2_ykpod"]
+
+[node name="RoomTransitionEffect" type="Sprite2D"]
+z_index = 50
+texture = ExtResource("1_8kpat")
+script = ExtResource("2_ykpod")

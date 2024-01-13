@@ -17,7 +17,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-SaveFileManager="*res://Scenes/Managers/SaveFileManager.gd"
+SaveFileManager="*res://Scenes/Managers/SaveFile/SaveFileManager.gd"
+RoomTransitionEffectManager="*res://Scenes/Managers/RoomTransitionEffect/RoomTransitionEffectManager.gd"
 
 [display]
 
