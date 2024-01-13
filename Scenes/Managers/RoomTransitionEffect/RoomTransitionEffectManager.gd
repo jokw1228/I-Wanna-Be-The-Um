@@ -6,11 +6,11 @@ var size = 16
 var x_num = 320 / size + 1
 var y_num = 180 / size + 1
 
-enum type {left_to_right, right_to_left, up_to_down, down_to_up, in_to_out, out_to_in}
+enum type {left_to_right, right_to_left, up_to_down, down_to_up}
 
 func _ready():
 	effect_ready()
-	effecting(type.up_to_down, 0)
+	#effecting(type.up_to_down, 0)
 
 func effect_ready():
 	for y in range(y_num):
