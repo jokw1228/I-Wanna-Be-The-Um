@@ -3,8 +3,8 @@ extends Node2D
 var Effect_scene = load("res://Scenes/Managers/RoomTransition/RoomTransitionEffect/RoomTransitionEffect.tscn")
 var effects = []
 var size = 16
-var x_num = 320 / size + 1
-var y_num = 176 / size + 1
+var x_num: int = (320 / size) + 1
+var y_num: int = (176 / size) + 1
 
 enum type {left_to_right, right_to_left, up_to_down, down_to_up}
 signal effecting_end

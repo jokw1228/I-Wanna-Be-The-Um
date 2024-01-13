@@ -20,6 +20,10 @@ config/icon="res://icon.png"
 SaveFileManager="*res://Scenes/Managers/SaveFile/SaveFileManager.gd"
 RoomTransitionEffectManager="*res://Scenes/Managers/RoomTransition/RoomTransitionEffect/RoomTransitionEffectManager.gd"
 
+[debug]
+
+gdscript/warnings/integer_division=0
+
 [display]
 
 window/size/viewport_width=320
