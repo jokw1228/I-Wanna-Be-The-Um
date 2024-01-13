@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://xkbr2x0b12gc"]
+
+[ext_resource type="PackedScene" uid="uid://6aen5tortl71" path="res://Scenes/Effects/SnowParticle.tscn" id="1_x0nsn"]
+
+[node name="RoomMainMenu" type="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 320.0
+offset_bottom = 176.0
+color = Color(0.105882, 0.105882, 0.105882, 1)
+
+[node name="SnowParticle" parent="." instance=ExtResource("1_x0nsn")]

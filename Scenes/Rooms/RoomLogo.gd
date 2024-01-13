@@ -15,7 +15,7 @@ func start_coroutine():
 	
 	LogoSound_node.play()
 	
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.7).timeout
 	
 	from_color = Color(1, 1, 1, 0) # 처음 색상
 	to_color = Color(1, 1, 1, 1)  # 변경하려는 색상
@@ -33,11 +33,11 @@ func start_coroutine():
 	
 	Logos_node.modulate = to_color
 	
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.4).timeout
 	
 	from_color = Color(1, 1, 1, 1) # 처음 색상
 	to_color = Color(1, 1, 1, 0)  # 변경하려는 색상
-	duration = 1.0  # 색상 변경에 걸리는 시간
+	duration = 0.8  # 색상 변경에 걸리는 시간
 	start_time = Time.get_ticks_msec() / 1000.0
 
 	while true:
@@ -53,3 +53,7 @@ func start_coroutine():
 	
 	await get_tree().create_timer(0.2).timeout
 	RoomTransitionEffectManager.effecting(RoomTransitionEffectManager.type.up_to_down, 1)
+	await RoomTransitionEffectManager.effecting_end
+	get_tree().change_scene_to_file("res://Scenes/Rooms/RoomMainMenu.tscn")
+	#await get_tree().create_timer(1.0).timeout
+	#RoomTransitionEffectManager.effecting(RoomTransitionEffectManager.type.up_to_down, 0)

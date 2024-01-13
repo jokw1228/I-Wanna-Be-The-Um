@@ -5,21 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://dmodr51chnryj" path="res://Resources/Sprites/Logos/sprite_cat_and_dog.png" id="2_blrb7"]
 [ext_resource type="FontFile" uid="uid://dbont61qxs5ay" path="res://Resources/Fonts/고려대학교B.ttf" id="3_a25ei"]
 [ext_resource type="AudioStream" uid="uid://bc8w1n3qxse0r" path="res://Resources/Sounds/SFX/sfx_logo.wav" id="5_1r2xf"]
+[ext_resource type="PackedScene" uid="uid://6aen5tortl71" path="res://Scenes/Effects/SnowParticle.tscn" id="6_f5g6p"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fwi6w"]
 font = ExtResource("3_a25ei")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_45b8h"]
-particle_flag_disable_z = true
-emission_shape_offset = Vector3(16, -4, 0)
-emission_shape = 3
-emission_box_extents = Vector3(176, 1, 1)
-direction = Vector3(-1, 5, 0)
-spread = 15.0
-initial_velocity_min = 40.0
-initial_velocity_max = 100.0
-gravity = Vector3(0, 0, 0)
-scale_max = 2.0
 
 [node name="RoomLogo" type="Node" node_paths=PackedStringArray("Logos_node", "LogoSound_node")]
 script = ExtResource("1_ygy41")
@@ -66,8 +55,4 @@ vertical_alignment = 1
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Logos"]
 stream = ExtResource("5_1r2xf")
 
-[node name="SnowParticle" type="GPUParticles2D" parent="."]
-position = Vector2(160, 0)
-amount = 50
-process_material = SubResource("ParticleProcessMaterial_45b8h")
-lifetime = 4.0
+[node name="SnowParticle" parent="." instance=ExtResource("6_f5g6p")]

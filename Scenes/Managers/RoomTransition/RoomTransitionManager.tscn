@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvljl852uug0y"]
+
+[ext_resource type="Script" path="res://Scenes/Managers/RoomTransition/RoomTransitionManager.gd" id="1_cdi4h"]
+
+[node name="RoomTransitionManager" type="Node2D"]
+script = ExtResource("1_cdi4h")
