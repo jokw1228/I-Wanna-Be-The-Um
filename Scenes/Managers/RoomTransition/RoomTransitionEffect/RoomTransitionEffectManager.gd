@@ -68,4 +68,5 @@ func effecting(from_to: type, is_fade_in: bool):
 					effects[a][b].fade_out()
 			await get_tree().create_timer(delay).timeout
 	
+	await get_tree().create_timer(0.5).timeout#last effect delay
 	effecting_end.emit()
