@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bbm72675nvcda"]
+[gd_scene load_steps=39 format=3 uid="uid://bbm72675nvcda"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_r2ilq"]
 [ext_resource type="Script" path="res://Scenes/Player/PlayerSpriteHandler.gd" id="2_dj0kt"]
@@ -7,14 +7,22 @@
 [ext_resource type="Texture2D" uid="uid://cadqfve1nujug" path="res://Resources/Sprites/Player/sprite_player_fall.png" id="3_n4luc"]
 [ext_resource type="Texture2D" uid="uid://btmy7kh43b6s2" path="res://Resources/Sprites/Player/sprite_player_jump.png" id="4_0hewo"]
 [ext_resource type="Texture2D" uid="uid://5q5nksowyvm1" path="res://Resources/Sprites/Player/sprite_player_idle.png" id="4_qfim3"]
+[ext_resource type="Texture2D" uid="uid://bhabfwg8lrywx" path="res://Resources/Sprites/Player/sprite_player_fall_down.png" id="4_qp0nu"]
+[ext_resource type="Texture2D" uid="uid://dn22ijp6v2dd3" path="res://Resources/Sprites/Player/sprite_player_idle_down.png" id="5_cjpua"]
+[ext_resource type="Texture2D" uid="uid://dmooqa7kho3n8" path="res://Resources/Sprites/Player/sprite_player_fall_up.png" id="5_h7qcr"]
+[ext_resource type="Texture2D" uid="uid://bl52spgdro1m5" path="res://Resources/Sprites/Player/sprite_player_idle_up.png" id="5_l1vyr"]
 [ext_resource type="Texture2D" uid="uid://djo6mck7c88pr" path="res://Resources/Sprites/Player/sprite_player_walk.png" id="6_2djx6"]
-[ext_resource type="Texture2D" uid="uid://c25dg3p0623gl" path="res://Resources/Sprites/Player/sprite_player_um_fall.png" id="6_cwewl"]
+[ext_resource type="Texture2D" uid="uid://c25dg3p0623gl" path="res://Resources/Sprites/Player/sprite_player_um_down.png" id="6_cwewl"]
 [ext_resource type="Texture2D" uid="uid://bh6mr1dtivqqq" path="res://Resources/Sprites/Player/sprite_player_um_idle.png" id="7_ltmdp"]
-[ext_resource type="Texture2D" uid="uid://befsjqb22m7xp" path="res://Resources/Sprites/Player/sprite_player_um_jump.png" id="8_dxt1r"]
+[ext_resource type="Texture2D" uid="uid://befsjqb22m7xp" path="res://Resources/Sprites/Player/sprite_player_um_up.png" id="8_dxt1r"]
+[ext_resource type="Texture2D" uid="uid://dc01holuhifrp" path="res://Resources/Sprites/Player/sprite_player_jump_down.png" id="10_ijvap"]
+[ext_resource type="Texture2D" uid="uid://bnrmstoid36it" path="res://Resources/Sprites/Player/sprite_player_jump_up.png" id="11_obc75"]
 [ext_resource type="Script" path="res://Scenes/Player/PlayerEffectHandler.gd" id="11_yi2oj"]
 [ext_resource type="PackedScene" uid="uid://daxr5i4rmoa4m" path="res://Scenes/Player/Effects/DoubleJumpEffectGenerator.tscn" id="12_qonmi"]
+[ext_resource type="Texture2D" uid="uid://ca8btbk6gio5q" path="res://Resources/Sprites/Player/sprite_player_walk_down.png" id="13_4gh3q"]
 [ext_resource type="Script" path="res://Scenes/Player/PlayerKilledHandler.gd" id="13_e0mcf"]
 [ext_resource type="PackedScene" uid="uid://uv7a1f7lp06a" path="res://Scenes/Player/DeadBody/PlayerDeadBody.tscn" id="14_max22"]
+[ext_resource type="Texture2D" uid="uid://cylmoei7dv8eq" path="res://Resources/Sprites/Player/sprite_player_walk_up.png" id="14_ou1p2"]
 [ext_resource type="Script" path="res://Scenes/Player/PlayerShootHandler.gd" id="15_xmtqf"]
 [ext_resource type="PackedScene" uid="uid://cjpbh2ad404ab" path="res://Scenes/Player/Bullet/PlayerBullet.tscn" id="16_s268r"]
 
@@ -38,6 +46,30 @@ region = Rect2(16, 0, 16, 16)
 atlas = ExtResource("6_2djx6")
 region = Rect2(32, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk3tc"]
+atlas = ExtResource("13_4gh3q")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cct1s"]
+atlas = ExtResource("13_4gh3q")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6igo"]
+atlas = ExtResource("13_4gh3q")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8qvf"]
+atlas = ExtResource("14_ou1p2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_174qa"]
+atlas = ExtResource("14_ou1p2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hutn4"]
+atlas = ExtResource("14_ou1p2")
+region = Rect2(32, 0, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_fal7p"]
 animations = [{
 "frames": [{
@@ -50,6 +82,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("4_qp0nu")
+}],
+"loop": true,
+"name": &"fall_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_h7qcr")
+}],
+"loop": true,
+"name": &"fall_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("4_qfim3")
 }],
 "loop": true,
@@ -58,10 +106,42 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("5_cjpua")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_l1vyr")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("4_0hewo")
 }],
 "loop": true,
 "name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_ijvap")
+}],
+"loop": true,
+"name": &"jump_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_obc75")
+}],
+"loop": true,
+"name": &"jump_up",
 "speed": 5.0
 }, {
 "frames": [{
@@ -77,6 +157,34 @@ animations = [{
 "loop": true,
 "name": &"walk",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yk3tc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cct1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6igo")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8qvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_174qa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hutn4")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ug6b3"]
@@ -86,7 +194,7 @@ animations = [{
 "texture": ExtResource("6_cwewl")
 }],
 "loop": true,
-"name": &"fall",
+"name": &"down",
 "speed": 5.0
 }, {
 "frames": [{
@@ -102,15 +210,7 @@ animations = [{
 "texture": ExtResource("8_dxt1r")
 }],
 "loop": true,
-"name": &"jump",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_ltmdp")
-}],
-"loop": true,
-"name": &"walk",
+"name": &"up",
 "speed": 5.0
 }]
 
@@ -139,11 +239,11 @@ UmAnimatedSprite2D_node = NodePath("UmAnimatedSprite2D")
 
 [node name="PlayerAnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerSpriteHandler"]
 sprite_frames = SubResource("SpriteFrames_fal7p")
-animation = &"idle"
+animation = &"walk_down"
 
 [node name="UmAnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerSpriteHandler"]
 sprite_frames = SubResource("SpriteFrames_ug6b3")
-animation = &"walk"
+animation = &"up"
 offset = Vector2(0, -1)
 
 [node name="PlayerEffectHandler" type="Node2D" parent="."]
@@ -164,4 +264,3 @@ PlayerBullet_scene = ExtResource("16_s268r")
 [connection signal="jumped" from="." to="PlayerEffectHandler" method="_on_player_jumped"]
 [connection signal="killed" from="." to="PlayerKilledHandler" method="_on_player_killed"]
 [connection signal="shooted" from="." to="PlayerShootHandler" method="_on_player_shooted"]
-[connection signal="update_state" from="." to="PlayerSpriteHandler" method="update_animation"]

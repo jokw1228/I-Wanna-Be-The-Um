@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 class_name Player
 
-signal update_state()
 signal jumped(is_ground_jump: bool)
 signal hit_ground()
 signal killed()
@@ -11,9 +10,13 @@ signal shooted()
 
 # Set these to the name of your action (in the Input Map)
 ## Name of input action to move left.
-@export var input_left : String = "move_left"
+@export var input_left : String = "left"
 ## Name of input action to move right.
-@export var input_right : String = "move_right"
+@export var input_right : String = "right"
+## Name of input action to up.
+@export var input_up : String = "up"
+## Name of input action to down.
+@export var input_down : String = "down"
 ## Name of input action to jump.
 @export var input_jump : String = "jump"
 ## Name of input action to shoot.
@@ -114,6 +117,9 @@ var acc = Vector2()
 enum flip_h_type {LEFT = 1, RIGHT = 0}
 var flip_h_state: flip_h_type = flip_h_type.RIGHT
 
+enum is_up_or_down_type {NONE, UP, DOWN}
+var is_up_or_down_state: is_up_or_down_type = is_up_or_down_type.NONE
+
 enum is_moving_side_to_side_type {STOP, MOVING}
 var is_moving_side_to_side_state: is_moving_side_to_side_type = is_moving_side_to_side_type.STOP
 
@@ -161,6 +167,13 @@ func _input(_event):
 		change_state("is_moving_side_to_side_state", is_moving_side_to_side_type.MOVING)
 	else:
 		change_state("is_moving_side_to_side_state", is_moving_side_to_side_type.STOP)
+	
+	if not (Input.is_action_pressed(input_up) or Input.is_action_pressed(input_down)):
+		change_state("is_up_or_down_state", is_up_or_down_type.NONE)
+	elif Input.is_action_pressed(input_up):
+		change_state("is_up_or_down_state", is_up_or_down_type.UP)
+	elif Input.is_action_pressed(input_down):
+		change_state("is_up_or_down_state", is_up_or_down_type.DOWN)
 	
 	if Input.is_action_just_pressed(input_jump):
 		holding_jump = true
@@ -357,15 +370,15 @@ func change_state(state, value):
 	if state == "flip_h_state":
 		if flip_h_state != value:
 			flip_h_state = value
-			update_state.emit()
 	elif state == "is_moving_side_to_side_state":
 		if is_moving_side_to_side_state != value:
 			is_moving_side_to_side_state = value
-			update_state.emit()
+	elif state == "is_up_or_down_state":
+		if is_up_or_down_state != value:
+			is_up_or_down_state = value
 	elif state == "is_floating_in_the_air_state":
 		if is_floating_in_the_air_state != value:
 			is_floating_in_the_air_state = value
-			update_state.emit()
 
 func kill_player():
 	killed.emit()
