@@ -3,6 +3,8 @@ extends Node
 @export var Logos_node: Node2D
 @export var LogoSound_node: AudioStreamPlayer2D
 
+@export var RoomMainMenu_room: PackedScene
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	start_coroutine()
@@ -24,4 +26,4 @@ func start_coroutine():
 	await tween.finished
 	await get_tree().create_timer(0.2).timeout
 	
-	RoomTransitionEffectManager.effecting(RoomTransitionEffectManager.type.up_to_down, 1)
+	RoomTransitionManager.room_change(RoomTransitionEffectManager.type.up_to_down, 1, RoomMainMenu_room, RoomTransitionEffectManager.type.up_to_down, 0)

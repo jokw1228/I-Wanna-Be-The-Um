@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 
 SaveFileManager="*res://Scenes/Managers/SaveFile/SaveFileManager.gd"
 RoomTransitionEffectManager="*res://Scenes/Managers/RoomTransition/RoomTransitionEffect/RoomTransitionEffectManager.gd"
+RoomTransitionManager="*res://Scenes/Managers/RoomTransition/RoomTransitionManager.tscn"
 
 [debug]
 

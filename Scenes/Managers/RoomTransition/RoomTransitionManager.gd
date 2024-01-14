@@ -1,11 +1,8 @@
 extends Node2D
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func room_change(effect1: RoomTransitionEffectManager.type, fade1: bool, room_to_go: PackedScene, effect2: RoomTransitionEffectManager.type, fade2: bool):
+	RoomTransitionEffectManager.effecting(effect1, fade1)
+	await RoomTransitionEffectManager.effecting_end
+	get_tree().change_scene_to_packed(room_to_go)
+	RoomTransitionEffectManager.effecting(effect2, fade2)
