@@ -5,6 +5,7 @@ class_name Player
 signal jumped(is_ground_jump: bool)
 signal hit_ground()
 signal killed()
+signal shooted()
 
 
 # Set these to the name of your action (in the Input Map)
@@ -14,6 +15,8 @@ signal killed()
 @export var input_right : String = "move_right"
 ## Name of input action to jump.
 @export var input_jump : String = "jump"
+## Name of input action to shoot.
+@export var input_shoot : String = "shoot"
 
 
 const DEFAULT_MAX_JUMP_HEIGHT = 150
@@ -172,6 +175,9 @@ func _input(_event):
 		
 	if Input.is_action_just_released(input_jump):
 		holding_jump = false
+	
+	if Input.is_action_just_pressed(input_shoot):
+		player_shoot()
 
 
 func _physics_process(delta):
@@ -384,3 +390,6 @@ func update_animation():
 
 func kill_player():
 	killed.emit()
+
+func player_shoot():
+	shooted.emit()

@@ -1,6 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8myecjig8jf7"]
 
-[ext_resource type="Script" path="res://Scenes/Player/effects/HitGroundEffectGenerator.gd" id="1_tnji6"]
+[ext_resource type="Script" path="res://Scenes/Player/Effects/HitGroundEffectGenerator.gd" id="1_tnji6"]
+
 
 [sub_resource type="Curve" id="Curve_pyfj2"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

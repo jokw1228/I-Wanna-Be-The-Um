@@ -1,8 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://bbm72675nvcda"]
+[gd_scene load_steps=24 format=3 uid="uid://bbm72675nvcda"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_r2ilq"]
-[ext_resource type="PackedScene" uid="uid://c8myecjig8jf7" path="res://Scenes/Player/effects/HitGroundEffectGenerator.tscn" id="2_f8b16"]
-[ext_resource type="PackedScene" uid="uid://bsls0u1jw7mwb" path="res://Scenes/Player/effects/GroundJumpEffectGenerator.tscn" id="3_bdh1b"]
+[ext_resource type="PackedScene" uid="uid://c8myecjig8jf7" path="res://Scenes/Player/Effects/HitGroundEffectGenerator.tscn" id="2_f8b16"]
+[ext_resource type="PackedScene" uid="uid://bsls0u1jw7mwb" path="res://Scenes/Player/Effects/GroundJumpEffectGenerator.tscn" id="3_bdh1b"]
 [ext_resource type="Texture2D" uid="uid://cadqfve1nujug" path="res://Resources/Sprites/Player/sprite_player_fall.png" id="3_n4luc"]
 [ext_resource type="Texture2D" uid="uid://btmy7kh43b6s2" path="res://Resources/Sprites/Player/sprite_player_jump.png" id="4_0hewo"]
 [ext_resource type="Texture2D" uid="uid://5q5nksowyvm1" path="res://Resources/Sprites/Player/sprite_player_idle.png" id="4_qfim3"]
@@ -11,9 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://bh6mr1dtivqqq" path="res://Resources/Sprites/Player/sprite_player_um_idle.png" id="7_ltmdp"]
 [ext_resource type="Texture2D" uid="uid://befsjqb22m7xp" path="res://Resources/Sprites/Player/sprite_player_um_jump.png" id="8_dxt1r"]
 [ext_resource type="Script" path="res://Scenes/Player/PlayerEffectHandler.gd" id="11_yi2oj"]
-[ext_resource type="PackedScene" uid="uid://daxr5i4rmoa4m" path="res://Scenes/Player/effects/DoubleJumpEffectGenerator.tscn" id="12_qonmi"]
+[ext_resource type="PackedScene" uid="uid://daxr5i4rmoa4m" path="res://Scenes/Player/Effects/DoubleJumpEffectGenerator.tscn" id="12_qonmi"]
 [ext_resource type="Script" path="res://Scenes/Player/PlayerKilledHandler.gd" id="13_e0mcf"]
 [ext_resource type="PackedScene" uid="uid://uv7a1f7lp06a" path="res://Scenes/Player/DeadBody/PlayerDeadBody.tscn" id="14_max22"]
+[ext_resource type="Script" path="res://Scenes/Player/PlayerShootHandler.gd" id="15_xmtqf"]
+[ext_resource type="PackedScene" uid="uid://cjpbh2ad404ab" path="res://Scenes/Player/Bullet/PlayerBullet.tscn" id="16_s268r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vmrs7"]
 radius = 3.5
@@ -153,7 +155,10 @@ script = ExtResource("13_e0mcf")
 PlayerDeadBody_scene = ExtResource("14_max22")
 
 [node name="PlayerShootHandler" type="Node2D" parent="."]
+script = ExtResource("15_xmtqf")
+PlayerBullet_scene = ExtResource("16_s268r")
 
 [connection signal="hit_ground" from="." to="PlayerEffectHandler" method="_on_player_hit_ground"]
 [connection signal="jumped" from="." to="PlayerEffectHandler" method="_on_player_jumped"]
 [connection signal="killed" from="." to="PlayerKilledHandler" method="_on_player_killed"]
+[connection signal="shooted" from="." to="PlayerShootHandler" method="_on_player_shooted"]

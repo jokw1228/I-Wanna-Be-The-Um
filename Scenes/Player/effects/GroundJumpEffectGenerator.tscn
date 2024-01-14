@@ -1,6 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bsls0u1jw7mwb"]
 
-[ext_resource type="Script" path="res://Scenes/Player/effects/GroundJumpEffectGenerator.gd" id="1_whcvo"]
+[ext_resource type="Script" path="res://Scenes/Player/Effects/GroundJumpEffectGenerator.gd" id="1_whcvo"]
+
 
 [sub_resource type="Curve" id="Curve_6n6xh"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
