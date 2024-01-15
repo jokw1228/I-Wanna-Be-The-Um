@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://xkbr2x0b12gc" path="res://Scenes/Rooms/RoomMainMenu.tscn" id="2_u5pun"]
 [ext_resource type="FontFile" uid="uid://dbont61qxs5ay" path="res://Resources/Fonts/고려대학교B.ttf" id="3_a25ei"]
 [ext_resource type="AudioStream" uid="uid://bc8w1n3qxse0r" path="res://Resources/Sounds/SFX/sfx_logo.wav" id="5_1r2xf"]
-[ext_resource type="PackedScene" uid="uid://6aen5tortl71" path="res://Scenes/Effects/SnowParticle.tscn" id="6_f5g6p"]
+[ext_resource type="PackedScene" uid="uid://6aen5tortl71" path="res://Scenes/BackgroundEffects/SnowParticle.tscn" id="6_f5g6p"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fwi6w"]
 font = ExtResource("3_a25ei")

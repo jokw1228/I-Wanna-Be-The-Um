@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://xkbr2x0b12gc"]
 
-[ext_resource type="PackedScene" uid="uid://6aen5tortl71" path="res://Scenes/Effects/SnowParticle.tscn" id="1_x0nsn"]
+[ext_resource type="PackedScene" uid="uid://6aen5tortl71" path="res://Scenes/BackgroundEffects/SnowParticle.tscn" id="1_x0nsn"]
 
 [node name="RoomMainMenu" type="Node"]
 

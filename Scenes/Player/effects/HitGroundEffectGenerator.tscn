@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://Scenes/Player/Effects/HitGroundEffectGenerator.gd" id="1_tnji6"]
 
-
 [sub_resource type="Curve" id="Curve_pyfj2"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2

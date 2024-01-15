@@ -15,4 +15,4 @@ func _on_player_killed():
 		inst.scale.x = -1
 	get_tree().current_scene.add_child(inst)
 	
-	get_parent().queue_free()
+	player.queue_free()
