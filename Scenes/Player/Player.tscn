@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bbm72675nvcda"]
+[gd_scene load_steps=40 format=3 uid="uid://bbm72675nvcda"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_r2ilq"]
 [ext_resource type="Script" path="res://Scenes/Player/PlayerSpriteHandler.gd" id="2_dj0kt"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://cylmoei7dv8eq" path="res://Resources/Sprites/Player/sprite_player_walk_up.png" id="14_ou1p2"]
 [ext_resource type="Script" path="res://Scenes/Player/PlayerShootHandler.gd" id="15_xmtqf"]
 [ext_resource type="PackedScene" uid="uid://cjpbh2ad404ab" path="res://Scenes/Player/Bullet/PlayerBullet.tscn" id="16_s268r"]
+[ext_resource type="PackedScene" uid="uid://du501rmucqm7e" path="res://Scenes/Player/Effects/PlayerShootEffectGenerator.tscn" id="26_rqs2j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vmrs7"]
 radius = 3.5
@@ -259,6 +260,7 @@ PlayerDeadBody_scene = ExtResource("14_max22")
 [node name="PlayerShootHandler" type="Node2D" parent="."]
 script = ExtResource("15_xmtqf")
 PlayerBullet_scene = ExtResource("16_s268r")
+PlayerShootEffectGenerator_scene = ExtResource("26_rqs2j")
 
 [connection signal="hit_ground" from="." to="PlayerEffectHandler" method="_on_player_hit_ground"]
 [connection signal="jumped" from="." to="PlayerEffectHandler" method="_on_player_jumped"]

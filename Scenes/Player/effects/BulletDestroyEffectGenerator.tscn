@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://5g4srintd6wo"]
+[gd_scene load_steps=4 format=3 uid="uid://5g4srintd6wo"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Effects/BulletDestoryEffectGenerator.gd" id="1_vrbpn"]
+[ext_resource type="AudioStream" uid="uid://d4jyn3vku2wsh" path="res://Resources/Sounds/SFX/Player/sfx_bullet_destory.wav" id="2_b22bp"]
 
 [sub_resource type="Curve" id="Curve_rlkgl"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="BulletDestroyEffectGenerator" type="Node2D" node_paths=PackedStringArray("BulletDestroyEffect_node")]
+[node name="BulletDestroyEffectGenerator" type="Node2D" node_paths=PackedStringArray("BulletDestroyEffect_node", "audio_node")]
 script = ExtResource("1_vrbpn")
 BulletDestroyEffect_node = NodePath("BulletDestoryEffect")
+audio_node = NodePath("AudioStreamPlayer2D")
 
 [node name="BulletDestoryEffect" type="CPUParticles2D" parent="."]
 emitting = false
@@ -22,3 +24,7 @@ initial_velocity_max = 12.0
 scale_amount_min = 0.4
 scale_amount_max = 3.0
 scale_amount_curve = SubResource("Curve_rlkgl")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_b22bp")
+volume_db = -10.0

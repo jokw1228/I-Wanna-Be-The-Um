@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var PlayerBullet_scene: PackedScene
+@export var PlayerShootEffectGenerator_scene: PackedScene
 
 var player
 
@@ -10,7 +11,7 @@ func _ready():
 
 func _on_player_shooted():
 	var inst = PlayerBullet_scene.instantiate()
-	inst.position = to_global(position)
+	inst.position = player.position
 	
 	const velocity_magnitude = 300
 	
@@ -28,4 +29,8 @@ func _on_player_shooted():
 		inst.position.y += 10
 		inst.velocity = Vector2(0, velocity_magnitude)
 	
+	var inst_effect = PlayerShootEffectGenerator_scene.instantiate()
+	inst_effect.position = inst.position
+	
 	get_tree().current_scene.add_child(inst)
+	get_tree().current_scene.add_child(inst_effect)

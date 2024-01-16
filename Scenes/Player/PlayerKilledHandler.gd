@@ -9,8 +9,8 @@ func _ready():
 
 func _on_player_killed():
 	var inst = PlayerDeadBody_scene.instantiate()
-	inst.position = to_global(position)
-	inst.set_velocity(get_parent().get_real_velocity())
+	inst.position = player.position
+	inst.set_velocity(player.get_real_velocity())
 	if player.flip_h_state:
 		inst.scale.x = -1
 	get_tree().current_scene.add_child(inst)

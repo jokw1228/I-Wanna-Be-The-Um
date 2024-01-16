@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Player/DeadBody/PlayerDeadBody.gd" id="1_py0lb"]
 [ext_resource type="Texture2D" uid="uid://yprr4rfw5q0v" path="res://Resources/Sprites/Player/sprite_player_dead.png" id="2_lfs80"]
-[ext_resource type="AudioStream" uid="uid://dsqh5nnv80234" path="res://Resources/Sounds/SFX/sfx_um.wav" id="3_xpslq"]
+[ext_resource type="AudioStream" uid="uid://dsqh5nnv80234" path="res://Resources/Sounds/SFX/Player/sfx_um.wav" id="3_xpslq"]
 [ext_resource type="Texture2D" uid="uid://befsjqb22m7xp" path="res://Resources/Sprites/Player/sprite_player_um_up.png" id="4_1ostm"]
 
 [node name="PlayerDeadBody" type="Node2D"]
