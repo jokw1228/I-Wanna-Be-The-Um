@@ -3,6 +3,7 @@ extends Area2D
 @export var CollisionShape2D_node: CollisionShape2D
 @export var SavePointSprite_node: Sprite2D
 @export var CircleSprite_node: AnimatedSprite2D
+@export var Audio_node: AudioStreamPlayer2D
 
 
 var theta = 0
@@ -24,6 +25,7 @@ func _on_area_entered(area):
 		
 func _saved():
 	SaveFileManager.save_game(get_tree().current_scene.name, position)
+	Audio_node.play()
 	CollisionShape2D_node.set_deferred("disabled", true)
 	for i in range(5):
 		SavePointSprite_node.modulate = Color(0.5, 0.5, 0.5, 1)

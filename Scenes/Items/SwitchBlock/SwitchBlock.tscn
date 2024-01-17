@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://7vf40w4mmlbp"]
+
+[ext_resource type="Texture2D" uid="uid://x6y6cas2tt4h" path="res://Resources/Sprites/Items/SwitchBlock/sprite_switch_block.png" id="1_0uv74"]
+[ext_resource type="Script" path="res://Scenes/Items/SwitchBlock/SwitchBlock.gd" id="1_4x5o2"]
+[ext_resource type="Texture2D" uid="uid://dkcyxsq6xvh0r" path="res://Resources/Sprites/Items/SwitchBlock/sprite_switch_block_light_on.png" id="2_60j7o"]
+[ext_resource type="PackedScene" uid="uid://deg3pmrxiamjp" path="res://Scenes/Items/SwitchBlock/SwitchBlockLightEffectGenerator.tscn" id="2_776g4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g522u"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_km3b8"]
+atlas = ExtResource("2_60j7o")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dh2hq"]
+atlas = ExtResource("2_60j7o")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x462d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0uv74")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_km3b8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh2hq")
+}],
+"loop": true,
+"name": &"light_on",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqs8k"]
+size = Vector2(16, 16)
+
+[node name="SwitchBlock" type="StaticBody2D" node_paths=PackedStringArray("Sprite_node", "Timer_node")]
+script = ExtResource("1_4x5o2")
+EffectGenerator_scene = ExtResource("2_776g4")
+Sprite_node = NodePath("AnimatedSprite2D")
+Timer_node = NodePath("Timer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_g522u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_x462d")
+animation = &"idle"
+frame_progress = 1.0
+speed_scale = 2.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_gqs8k")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

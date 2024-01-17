@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqfhnpb7xftpo"]
+[gd_scene load_steps=8 format=3 uid="uid://cqfhnpb7xftpo"]
 
 [ext_resource type="PackedScene" uid="uid://bbm72675nvcda" path="res://Scenes/Player/Player.tscn" id="1_gtbxy"]
 [ext_resource type="PackedScene" uid="uid://brwwqd6l1oxk" path="res://Scenes/TileMaps/TileMapGround1.tscn" id="2_228rj"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://2kjb1txrafg0" path="res://Scenes/TileMaps/TileMapGround3.tscn" id="4_3xof5"]
 [ext_resource type="PackedScene" uid="uid://d25vehfudqlvb" path="res://Scenes/Items/SavePoint/SavePoint.tscn" id="5_s3mbe"]
 [ext_resource type="PackedScene" uid="uid://d3kvujmdn05tj" path="res://Scenes/Spikes/SpikeUp16.tscn" id="6_ou2em"]
+[ext_resource type="PackedScene" uid="uid://7vf40w4mmlbp" path="res://Scenes/Items/SwitchBlock/SwitchBlock.tscn" id="7_ak0ji"]
 
 [node name="DemoScene" type="Node2D"]
 
@@ -26,3 +27,6 @@ position = Vector2(96, 72)
 
 [node name="SpikeUp16" parent="." instance=ExtResource("6_ou2em")]
 position = Vector2(40, 88)
+
+[node name="SwitchBlock" parent="." instance=ExtResource("7_ak0ji")]
+position = Vector2(200, 72)

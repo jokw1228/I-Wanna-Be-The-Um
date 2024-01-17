@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://d25vehfudqlvb"]
+[gd_scene load_steps=13 format=3 uid="uid://d25vehfudqlvb"]
 
 [ext_resource type="Texture2D" uid="uid://crmi66ykumes" path="res://Resources/Sprites/Items/SavePoint/sprite_savepoint.png" id="1_01jq5"]
 [ext_resource type="Script" path="res://Scenes/Items/SavePoint/SavePoint.gd" id="1_m4sy0"]
 [ext_resource type="Texture2D" uid="uid://canlibvw6hqju" path="res://Resources/Sprites/Items/SavePoint/sprite_savepoint_circle.png" id="2_3whcr"]
+[ext_resource type="AudioStream" uid="uid://yf7v5fsdll8a" path="res://Resources/Sounds/SFX/Items/SavePoint/sfx_savepoint_saved.wav" id="4_vjg6u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ivwdy"]
 radius = 6.0
@@ -57,11 +58,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="SavePoint" type="Area2D" node_paths=PackedStringArray("CollisionShape2D_node", "SavePointSprite_node", "CircleSprite_node")]
+[node name="SavePoint" type="Area2D" node_paths=PackedStringArray("CollisionShape2D_node", "SavePointSprite_node", "CircleSprite_node", "Audio_node")]
 script = ExtResource("1_m4sy0")
 CollisionShape2D_node = NodePath("CollisionShape2D")
 SavePointSprite_node = NodePath("SavePointSprite")
 CircleSprite_node = NodePath("CircleSprite")
+Audio_node = NodePath("AudioStreamPlayer2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ivwdy")
@@ -72,5 +74,9 @@ texture = ExtResource("1_01jq5")
 [node name="CircleSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xjuwc")
 frame_progress = 0.497158
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_vjg6u")
+volume_db = -10.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

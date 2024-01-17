@@ -31,6 +31,7 @@ animations = [{
 
 [node name="PlayerBullet" type="CharacterBody2D" node_paths=PackedStringArray("Sprite")]
 collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_lv4og")
 Sprite = NodePath("AnimatedSprite2D")
 BulletDestoryEffectGenerator_scene = ExtResource("2_vbamg")
