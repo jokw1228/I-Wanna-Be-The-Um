@@ -23,6 +23,7 @@ func _on_area_2d_area_entered(area):
 		Timer_node.start()
 		if Sprite_node.animation == "idle":
 			Sprite_node.animation = "light_on"
+			Sprite_node.frame = 0
 
 
 func _on_timer_timeout():

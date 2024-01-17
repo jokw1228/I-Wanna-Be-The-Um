@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://36l2b1n421sa"]
+
+[ext_resource type="Script" path="res://Scenes/Items/SwitchBlock/SwitchNode.gd" id="1_cjsub"]
+
+[node name="SwitchNode" type="Node2D"]
+script = ExtResource("1_cjsub")

@@ -8,13 +8,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g522u"]
 size = Vector2(16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_km3b8"]
-atlas = ExtResource("2_60j7o")
-region = Rect2(0, 0, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_dh2hq"]
 atlas = ExtResource("2_60j7o")
 region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_km3b8"]
+atlas = ExtResource("2_60j7o")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x462d"]
 animations = [{
@@ -28,10 +28,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_km3b8")
+"texture": SubResource("AtlasTexture_dh2hq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dh2hq")
+"texture": SubResource("AtlasTexture_km3b8")
 }],
 "loop": true,
 "name": &"light_on",
@@ -53,7 +53,7 @@ shape = SubResource("RectangleShape2D_g522u")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_x462d")
 animation = &"idle"
-frame_progress = 1.0
+frame_progress = 0.407652
 speed_scale = 2.0
 
 [node name="Timer" type="Timer" parent="."]
