@@ -14,9 +14,9 @@ func _ready():
 func _on_switch_block_switched():
 	if switched == false:
 		switched = true
-		tween = get_tree().create_tween()
+		tween = get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		tween.tween_property(self, "position", position_original + position_offset, delay)
 	elif switched == true:
 		switched = false
-		tween = get_tree().create_tween()
+		tween = get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		tween.tween_property(self, "position", position_original, delay)

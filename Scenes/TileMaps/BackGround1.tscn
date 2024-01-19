@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://g5uiqkeis1bc"]
+
+[ext_resource type="Texture2D" uid="uid://cbtgte6darbai" path="res://Resources/Sprites/Tilesets/sprite_background1.png" id="1_p5jrh"]
+
+[node name="BackGround1" type="Sprite2D"]
+z_index = -50
+position = Vector2(160, 88)
+texture = ExtResource("1_p5jrh")
