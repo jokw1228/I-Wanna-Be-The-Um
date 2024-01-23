@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://xkbr2x0b12gc"]
+
+[ext_resource type="PackedScene" uid="uid://6aen5tortl71" path="res://Scenes/BackgroundEffects/SnowParticle.tscn" id="1_v07dv"]
+[ext_resource type="Texture2D" uid="uid://2tjm0bf6vvgc" path="res://Resources/Sprites/Logos/sprite_title.png" id="2_npapx"]
+[ext_resource type="Script" path="res://Scenes/Rooms/RoomMainMenu/MainMenu.gd" id="3_hvr66"]
+[ext_resource type="PackedScene" uid="uid://cqfhnpb7xftpo" path="res://Scenes/Rooms/DemoScene.tscn" id="4_pbhca"]
+[ext_resource type="FontFile" uid="uid://b3jby0svdovo" path="res://Resources/Fonts/Kenney Mini Square.ttf" id="5_ipfy2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p8qqt"]
+line_spacing = 1.0
+font = ExtResource("5_ipfy2")
+
+[node name="RoomMainMenu" type="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.105882, 0.105882, 0.105882, 1)
+
+[node name="SnowParticle" parent="." instance=ExtResource("1_v07dv")]
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(160, 60)
+texture = ExtResource("2_npapx")
+
+[node name="MainMenu" type="Control" parent="." node_paths=PackedStringArray("PressAnyKey_node", "SelectMenu_node", "StartGame_node", "EndGame_node")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_hvr66")
+PressAnyKey_node = NodePath("PressAnyKey")
+SelectMenu_node = NodePath("SelectMenu")
+StartGame_node = NodePath("SelectMenu/StartGame")
+EndGame_node = NodePath("SelectMenu/EndGame")
+DemoScene_room = ExtResource("4_pbhca")
+
+[node name="PressAnyKey" type="Label" parent="MainMenu"]
+layout_mode = 0
+offset_top = 96.0
+offset_right = 320.0
+offset_bottom = 176.0
+pivot_offset = Vector2(160, 40)
+text = "Press Any Key
+to Start"
+label_settings = SubResource("LabelSettings_p8qqt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SelectMenu" type="Node2D" parent="MainMenu"]
+modulate = Color(1, 1, 1, 0)
+
+[node name="StartGame" type="Label" parent="MainMenu/SelectMenu"]
+offset_top = 114.0
+offset_right = 320.0
+offset_bottom = 134.0
+pivot_offset = Vector2(160, 10)
+text = "Start Game"
+label_settings = SubResource("LabelSettings_p8qqt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EndGame" type="Label" parent="MainMenu/SelectMenu"]
+offset_top = 134.0
+offset_right = 320.0
+offset_bottom = 154.0
+pivot_offset = Vector2(160, 10)
+text = "End Game"
+label_settings = SubResource("LabelSettings_p8qqt")
+horizontal_alignment = 1
+vertical_alignment = 1
