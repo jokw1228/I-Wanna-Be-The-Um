@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://xkbr2x0b12gc"]
+[gd_scene load_steps=9 format=3 uid="uid://xkbr2x0b12gc"]
 
 [ext_resource type="PackedScene" uid="uid://6aen5tortl71" path="res://Scenes/BackgroundEffects/SnowParticle.tscn" id="1_v07dv"]
 [ext_resource type="Texture2D" uid="uid://2tjm0bf6vvgc" path="res://Resources/Sprites/Logos/sprite_title.png" id="2_npapx"]
 [ext_resource type="Script" path="res://Scenes/Rooms/RoomMainMenu/MainMenu.gd" id="3_hvr66"]
 [ext_resource type="PackedScene" uid="uid://cqfhnpb7xftpo" path="res://Scenes/Rooms/DemoScene.tscn" id="4_pbhca"]
 [ext_resource type="FontFile" uid="uid://b3jby0svdovo" path="res://Resources/Fonts/Kenney Mini Square.ttf" id="5_ipfy2"]
+[ext_resource type="AudioStream" uid="uid://djkm2r24psky3" path="res://Resources/Sounds/SFX/MainMenu/sfx_menu_selected.wav" id="6_b7605"]
+[ext_resource type="AudioStream" uid="uid://bkqqtospk1olh" path="res://Resources/Sounds/SFX/MainMenu/sfx_menu_moved.wav" id="7_6squf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p8qqt"]
 line_spacing = 1.0
@@ -26,7 +28,7 @@ color = Color(0.105882, 0.105882, 0.105882, 1)
 position = Vector2(160, 60)
 texture = ExtResource("2_npapx")
 
-[node name="MainMenu" type="Control" parent="." node_paths=PackedStringArray("PressAnyKey_node", "SelectMenu_node", "StartGame_node", "EndGame_node")]
+[node name="MainMenu" type="Control" parent="." node_paths=PackedStringArray("PressAnyKey_node", "SelectMenu_node", "StartGame_node", "EndGame_node", "audio1", "audio2")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,6 +40,8 @@ PressAnyKey_node = NodePath("PressAnyKey")
 SelectMenu_node = NodePath("SelectMenu")
 StartGame_node = NodePath("SelectMenu/StartGame")
 EndGame_node = NodePath("SelectMenu/EndGame")
+audio1 = NodePath("AudioSelected")
+audio2 = NodePath("AudioMoved")
 DemoScene_room = ExtResource("4_pbhca")
 
 [node name="PressAnyKey" type="Label" parent="MainMenu"]
@@ -74,3 +78,11 @@ text = "End Game"
 label_settings = SubResource("LabelSettings_p8qqt")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioSelected" type="AudioStreamPlayer2D" parent="MainMenu"]
+stream = ExtResource("6_b7605")
+volume_db = -10.0
+
+[node name="AudioMoved" type="AudioStreamPlayer2D" parent="MainMenu"]
+stream = ExtResource("7_6squf")
+volume_db = -10.0
