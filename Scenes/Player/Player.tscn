@@ -218,9 +218,10 @@ animations = [{
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_r2ilq")
 max_jump_height = 40.0
-min_jump_height = 20.0
+min_jump_height = 10.0
 double_jump_height = 30.0
 jump_duration = 0.4
+falling_gravity_multiplier = 1.2
 max_jump_amount = 2
 max_acceleration = 2000
 friction = 30
