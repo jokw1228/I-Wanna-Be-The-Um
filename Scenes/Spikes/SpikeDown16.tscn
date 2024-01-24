@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://j2fxsih5y307" path="res://Resources/Sprites/Spikes/sprite_spike_down_16.png" id="2_v32jv"]
 
 [node name="SpikeDown16" type="Area2D" node_paths=PackedStringArray("Sprite2D_node")]
+z_index = -1
 script = ExtResource("1_2dr8g")
 Sprite2D_node = NodePath("Sprite2D")
 
