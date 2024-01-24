@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://Scenes/Managers/RoomTransition/RoomTransitionEffect/RoomTransitionEffectManager.gd" id="1_0ungk"]
 
-[node name="RoomTransitionEffectManager" type="Node2D"]
+[node name="RoomTransitionEffectManager" type="CanvasLayer"]
 script = ExtResource("1_0ungk")

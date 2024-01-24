@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 var Effect_scene = load("res://Scenes/Managers/RoomTransition/RoomTransitionEffect/RoomTransitionEffect.tscn")
 var effects = []
