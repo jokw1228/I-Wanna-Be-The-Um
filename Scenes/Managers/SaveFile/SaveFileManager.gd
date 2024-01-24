@@ -2,6 +2,9 @@ extends Node
 
 var Player_scene = load("res://Scenes/Player/Player.tscn")
 
+var load_room
+var load_position
+
 const SAVE_PATH = "res://IWBTU_savefile.dat" #"user://IWBTU_savefile.dat"
 
 func save_game(save_room, save_position):
@@ -23,17 +26,11 @@ func load_game():
 		if not load_file.eof_reached():
 			var current_line = JSON.parse_string(load_file.get_line())
 			if current_line:
-				var load_room = current_line["save_room"]
-				var load_position = current_line["save_position"]
+				load_room = current_line["save_room"]
+				load_position = current_line["save_position"]
 				
 				load_room = "res://Scenes/Rooms/" + load_room + ".tscn"
 				var split_string = load_position.replace("(", "").replace(")", "").split(",")
 				load_position = Vector2(float(split_string[0]), float(split_string[1]))
 				
-				get_tree().change_scene_to_file(load_room)
-				"""
-				var inst = Player_scene.instantiate()
-				inst.position = load_position
-				await get_tree().create_timer(0.2).timeout
-				get_tree().current_scene.add_child(inst)
-				"""
+				RoomTransitionManager.room_change(RoomTransitionEffectManager.type.up_to_down, 1, load_room, RoomTransitionEffectManager.type.up_to_down, 0)

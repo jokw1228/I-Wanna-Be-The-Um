@@ -8,8 +8,6 @@ extends Control
 @export var audio1: AudioStreamPlayer2D
 @export var audio2: AudioStreamPlayer2D
 
-@export var DemoScene_room: PackedScene
-
 var state = 0;
 
 func _input(event):
@@ -33,7 +31,7 @@ func _input(event):
 			state = 3
 			light_out(StartGame_node)
 			audio1.play()
-			RoomTransitionManager.room_change(RoomTransitionEffectManager.type.up_to_down, true, DemoScene_room, RoomTransitionEffectManager.type.up_to_down, 0)
+			SaveFileManager.load_game()
 	elif state == 2:
 		if Input.is_action_just_pressed("up"):
 			state = 1

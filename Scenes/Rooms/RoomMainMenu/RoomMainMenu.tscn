@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://xkbr2x0b12gc"]
+[gd_scene load_steps=8 format=3 uid="uid://xkbr2x0b12gc"]
 
 [ext_resource type="PackedScene" uid="uid://6aen5tortl71" path="res://Scenes/BackgroundEffects/SnowParticle.tscn" id="1_v07dv"]
 [ext_resource type="Texture2D" uid="uid://2tjm0bf6vvgc" path="res://Resources/Sprites/Logos/sprite_title.png" id="2_npapx"]
 [ext_resource type="Script" path="res://Scenes/Rooms/RoomMainMenu/MainMenu.gd" id="3_hvr66"]
-[ext_resource type="PackedScene" uid="uid://cqfhnpb7xftpo" path="res://Scenes/Rooms/DemoScene.tscn" id="4_pbhca"]
 [ext_resource type="FontFile" uid="uid://b3jby0svdovo" path="res://Resources/Fonts/Kenney Mini Square.ttf" id="5_ipfy2"]
 [ext_resource type="AudioStream" uid="uid://djkm2r24psky3" path="res://Resources/Sounds/SFX/MainMenu/sfx_menu_selected.wav" id="6_b7605"]
 [ext_resource type="AudioStream" uid="uid://bkqqtospk1olh" path="res://Resources/Sounds/SFX/MainMenu/sfx_menu_moved.wav" id="7_6squf"]
@@ -42,7 +41,6 @@ StartGame_node = NodePath("SelectMenu/StartGame")
 EndGame_node = NodePath("SelectMenu/EndGame")
 audio1 = NodePath("AudioSelected")
 audio2 = NodePath("AudioMoved")
-DemoScene_room = ExtResource("4_pbhca")
 
 [node name="PressAnyKey" type="Label" parent="MainMenu"]
 layout_mode = 0
