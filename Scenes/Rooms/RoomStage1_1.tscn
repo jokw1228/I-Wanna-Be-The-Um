@@ -69,7 +69,7 @@ offset_bottom = 81.0
 text = "You can move
 those blocks
 by shooting
-this switch blocks."
+this switch block."
 
 [node name="SwitchBlock" parent="Switch1" instance=ExtResource("6_jt1yk")]
 position = Vector2(160, 24)
