@@ -18,7 +18,7 @@ LogoSound_node = NodePath("Logos/AudioStreamPlayer2D")
 RoomMainMenu_room = ExtResource("2_u5pun")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0.105882, 0.105882, 0.105882, 1)
