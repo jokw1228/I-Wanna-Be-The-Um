@@ -2,9 +2,9 @@ extends Node2D
 
 var Effect_scene = load("res://Scenes/Managers/RoomTransition/RoomTransitionEffect/RoomTransitionEffect.tscn")
 var effects = []
-var size = 16
-var x_num: int = (320 / size) + 1
-var y_num: int = (176 / size) + 1
+var _size = 16
+var x_num: int = (320 / _size) + 1
+var y_num: int = (176 / _size) + 1
 
 enum type {left_to_right, right_to_left, up_to_down, down_to_up}
 signal effecting_end
@@ -18,7 +18,7 @@ func effect_ready():
 		effects.append([])
 		for x in range(x_num):
 			var inst = Effect_scene.instantiate()
-			inst.position = Vector2(x * size, y * size)
+			inst.position = Vector2(x * _size, y * _size)
 			add_child(inst)
 			effects[y].append(inst)
 

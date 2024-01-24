@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct21fcu5al8eq"]
+
+[ext_resource type="Script" path="res://Scenes/Items/Cameras/CameraLock.gd" id="1_iooml"]
+
+[node name="CameraLock" type="Camera2D"]
+offset = Vector2(160, 88)
+script = ExtResource("1_iooml")

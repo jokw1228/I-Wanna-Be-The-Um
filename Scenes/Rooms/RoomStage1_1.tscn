@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3m4dm2ytmgd2"]
+[gd_scene load_steps=10 format=3 uid="uid://c3m4dm2ytmgd2"]
 
 [ext_resource type="PackedScene" uid="uid://g5uiqkeis1bc" path="res://Scenes/TileMaps/BackGround1.tscn" id="1_f4t8o"]
 [ext_resource type="PackedScene" uid="uid://d4iisx858y4co" path="res://Scenes/Player/PlayerSpawner.tscn" id="1_xwmy7"]
+[ext_resource type="PackedScene" uid="uid://ct21fcu5al8eq" path="res://Scenes/Items/Cameras/CameraLock.tscn" id="2_40c4l"]
 [ext_resource type="PackedScene" uid="uid://1kdhl0avp55s" path="res://Scenes/TileMaps/TileMapGround2.tscn" id="3_65bvr"]
 [ext_resource type="PackedScene" uid="uid://d25vehfudqlvb" path="res://Scenes/Items/SavePoint/SavePoint.tscn" id="4_4ssid"]
 [ext_resource type="PackedScene" uid="uid://d3kvujmdn05tj" path="res://Scenes/Spikes/SpikeUp16.tscn" id="5_emxbb"]
@@ -15,6 +16,8 @@ size = Vector2(18, 54)
 
 [node name="BackGround1" parent="." instance=ExtResource("1_f4t8o")]
 metadata/_edit_lock_ = true
+
+[node name="CameraLock" parent="." instance=ExtResource("2_40c4l")]
 
 [node name="PlayerSpawner" parent="." instance=ExtResource("1_xwmy7")]
 position = Vector2(44, 132)
@@ -32,7 +35,7 @@ position = Vector2(128, 152)
 position = Vector2(172, 132)
 
 [node name="PlayerWarp" parent="." instance=ExtResource("6_tquqt")]
-position = Vector2(204, 116)
+position = Vector2(252, 28)
 RoomToGo_room = ExtResource("7_6hoo8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerWarp"]
