@@ -3,7 +3,7 @@ extends Node2D
 var velocity_vector = Vector2.ZERO
 
 func _ready():
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.1).timeout
 	SaveFileManager.load_game()
 
 # Called when the node enters the scene tree for the first time.
