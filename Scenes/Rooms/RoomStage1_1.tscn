@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3m4dm2ytmgd2"]
+[gd_scene load_steps=12 format=3 uid="uid://c3m4dm2ytmgd2"]
 
 [ext_resource type="PackedScene" uid="uid://g5uiqkeis1bc" path="res://Scenes/TileMaps/BackGround1.tscn" id="1_f4t8o"]
 [ext_resource type="PackedScene" uid="uid://d4iisx858y4co" path="res://Scenes/Player/PlayerSpawner.tscn" id="1_xwmy7"]
 [ext_resource type="PackedScene" uid="uid://ct21fcu5al8eq" path="res://Scenes/Items/Cameras/CameraLock.tscn" id="2_40c4l"]
 [ext_resource type="PackedScene" uid="uid://1kdhl0avp55s" path="res://Scenes/TileMaps/TileMapGround2.tscn" id="3_65bvr"]
 [ext_resource type="PackedScene" uid="uid://d25vehfudqlvb" path="res://Scenes/Items/SavePoint/SavePoint.tscn" id="4_4ssid"]
+[ext_resource type="PackedScene" uid="uid://cygo3s32tr1xt" path="res://Scenes/Items/InGameTexts/InGameText.tscn" id="6_jp2he"]
 [ext_resource type="PackedScene" uid="uid://7vf40w4mmlbp" path="res://Scenes/Items/SwitchBlock/SwitchBlock.tscn" id="6_jt1yk"]
 [ext_resource type="PackedScene" uid="uid://36l2b1n421sa" path="res://Scenes/Items/SwitchBlock/SwitchNode.tscn" id="7_0omj7"]
 [ext_resource type="PackedScene" uid="uid://2kjb1txrafg0" path="res://Scenes/TileMaps/TileMapGround3.tscn" id="8_jvsok"]
@@ -23,6 +24,10 @@ position = Vector2(92, 116)
 [node name="BackGround1" parent="BackGround" instance=ExtResource("1_f4t8o")]
 metadata/_edit_lock_ = true
 
+[node name="BackGround2" parent="BackGround" instance=ExtResource("1_f4t8o")]
+position = Vector2(480, 88)
+metadata/_edit_lock_ = true
+
 [node name="TileMap" type="Node" parent="."]
 
 [node name="TileMapGround2" parent="TileMap" instance=ExtResource("3_65bvr")]
@@ -30,10 +35,23 @@ layer_0/tile_data = PackedInt32Array(524288, 327680, 3, 524289, 327680, 1, 58982
 
 [node name="SavePoints" type="Node" parent="."]
 
+[node name="SavePoint2" parent="SavePoints" instance=ExtResource("4_4ssid")]
+position = Vector2(352, 136)
+
 [node name="SavePoint" parent="SavePoints" instance=ExtResource("4_4ssid")]
 position = Vector2(92, 116)
 
 [node name="Switch1" type="Node" parent="."]
+
+[node name="InGameText" parent="Switch1" instance=ExtResource("6_jp2he")]
+offset_left = 108.0
+offset_top = 32.0
+offset_right = 186.0
+offset_bottom = 81.0
+text = "You can move
+those blocks
+by shooting
+this switch blocks."
 
 [node name="SwitchBlock" parent="Switch1" instance=ExtResource("6_jt1yk")]
 position = Vector2(160, 24)
