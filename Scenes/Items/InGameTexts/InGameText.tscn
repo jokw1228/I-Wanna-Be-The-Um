@@ -7,6 +7,7 @@ font = ExtResource("1_qxdgb")
 font_size = 8
 
 [node name="InGameText" type="Label"]
+z_index = -1
 offset_right = 40.0
 offset_bottom = 23.0
 label_settings = SubResource("LabelSettings_igfdw")
