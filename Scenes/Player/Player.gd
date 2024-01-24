@@ -381,8 +381,7 @@ func change_state(state, value):
 			is_floating_in_the_air_state = value
 
 func kill_player():
-	#killed.emit()
-	pass
+	killed.emit()
 
 func player_shoot():
 	shooted.emit()

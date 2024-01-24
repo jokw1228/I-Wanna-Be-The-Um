@@ -25,6 +25,7 @@ size = Vector2(10, 32)
 [node name="RoomStage1_1" type="Node2D"]
 
 [node name="CameraLock" parent="." instance=ExtResource("2_40c4l")]
+RoomSize = Vector2(960, 176)
 
 [node name="PlayerSpawner" parent="." instance=ExtResource("1_xwmy7")]
 position = Vector2(92, 116)
