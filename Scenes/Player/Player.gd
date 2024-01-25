@@ -387,6 +387,7 @@ func change_state(state, value):
 
 func kill_player():
 	killed.emit()
+	pass
 
 func player_shoot():
 	shooted.emit()

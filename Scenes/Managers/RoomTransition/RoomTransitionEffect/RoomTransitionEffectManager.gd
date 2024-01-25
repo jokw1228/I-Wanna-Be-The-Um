@@ -24,7 +24,7 @@ func effect_ready():
 
 func effecting(from_to: type, is_fade_in: bool):
 	
-	var delay = 0.06
+	var delay = 0.03
 	
 	if from_to == type.left_to_right or from_to == type.right_to_left:
 		

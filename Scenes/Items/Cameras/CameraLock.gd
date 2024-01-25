@@ -16,7 +16,7 @@ func _ready():
 func _process(_delta):
 	var player = get_tree().get_nodes_in_group("Player")
 	if player != []:
-		var position_target: Vector2
+		var position_target: Vector2 = Vector2.ZERO
 		position_target.x = int(player[0].position.x / width) * width
 		position_target.y = int(player[0].position.y / height) * height
 		if position_state != position_target and not (position_target.x < 0 or position_target.x > position_maximum.x or position_target.y < 0 or position_maximum.y > position_maximum.y):

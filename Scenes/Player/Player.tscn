@@ -29,11 +29,11 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vmrs7"]
 radius = 3.5
-height = 15.0
+height = 11.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4mgtw"]
 radius = 3.5
-height = 15.0
+height = 11.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w3ys6"]
 atlas = ExtResource("6_2djx6")
@@ -227,11 +227,13 @@ max_acceleration = 2000
 friction = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_vmrs7")
 
 [node name="PlayerArea2D" type="Area2D" parent="." groups=["PlayerArea2D"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D"]
+position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_4mgtw")
 
 [node name="PlayerSpriteHandler" type="Node2D" parent="." node_paths=PackedStringArray("PlayerAnimatedSprite2D_node", "UmAnimatedSprite2D_node")]
