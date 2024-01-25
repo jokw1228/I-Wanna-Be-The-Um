@@ -41,7 +41,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gqs8k"]
 size = Vector2(16, 16)
 
-[node name="SwitchBlock" type="StaticBody2D" node_paths=PackedStringArray("Sprite_node", "Timer_node")]
+[node name="SwitchBlock" type="AnimatableBody2D" node_paths=PackedStringArray("Sprite_node", "Timer_node")]
 script = ExtResource("1_4x5o2")
 EffectGenerator_scene = ExtResource("2_776g4")
 Sprite_node = NodePath("AnimatedSprite2D")

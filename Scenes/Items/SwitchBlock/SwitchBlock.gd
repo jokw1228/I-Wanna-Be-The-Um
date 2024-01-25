@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends AnimatableBody2D
 
 @export var EffectGenerator_scene: PackedScene
 @export var Sprite_node: AnimatedSprite2D
