@@ -22,6 +22,8 @@ signal shooted()
 ## Name of input action to shoot.
 @export var input_shoot : String = "shoot"
 
+@export var input_restart : String = "restart"
+
 
 const DEFAULT_MAX_JUMP_HEIGHT = 150
 const DEFAULT_MIN_JUMP_HEIGHT = 60
@@ -186,6 +188,9 @@ func _input(_event):
 	
 	if Input.is_action_just_pressed(input_shoot):
 		player_shoot()
+	
+	if Input.is_action_just_pressed(input_restart):
+		kill_player()
 
 
 func _physics_process(delta):
