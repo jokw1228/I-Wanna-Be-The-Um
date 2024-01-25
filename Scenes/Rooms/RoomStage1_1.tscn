@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c3m4dm2ytmgd2"]
+[gd_scene load_steps=25 format=3 uid="uid://c3m4dm2ytmgd2"]
 
 [ext_resource type="PackedScene" uid="uid://g5uiqkeis1bc" path="res://Scenes/TileMaps/BackGround1.tscn" id="1_f4t8o"]
 [ext_resource type="PackedScene" uid="uid://d4iisx858y4co" path="res://Scenes/Player/PlayerSpawner.tscn" id="1_xwmy7"]
@@ -12,12 +12,51 @@
 [ext_resource type="PackedScene" uid="uid://36l2b1n421sa" path="res://Scenes/Items/SwitchBlock/SwitchNode.tscn" id="7_0omj7"]
 [ext_resource type="PackedScene" uid="uid://dkyuca6sjdabc" path="res://Scenes/Rooms/RoomStage1_2.tscn" id="7_6hoo8"]
 [ext_resource type="PackedScene" uid="uid://2kjb1txrafg0" path="res://Scenes/TileMaps/TileMapGround3.tscn" id="8_jvsok"]
+[ext_resource type="PackedScene" uid="uid://cbaj370ggnqr8" path="res://Scenes/TileMaps/TileMapBlockWithNoPhysics.tscn" id="9_72rrf"]
 [ext_resource type="PackedScene" uid="uid://dhwk184241m3i" path="res://Scenes/Spikes/SpikeDown8.tscn" id="9_puhtn"]
 [ext_resource type="PackedScene" uid="uid://b03qp1gnvrqsl" path="res://Scenes/Spikes/SpikeUp8.tscn" id="10_cmp1j"]
+[ext_resource type="Script" path="res://Scenes/Items/SwitchBlock/SwitchAnimationPlayer.gd" id="11_yix3e"]
 [ext_resource type="PackedScene" uid="uid://cthvy4nnj76xi" path="res://Scenes/Spikes/SpikeRight16.tscn" id="12_dnhkc"]
 [ext_resource type="PackedScene" uid="uid://bfc8ff6j13ard" path="res://Scenes/Spikes/SpikeRight8.tscn" id="12_hygel"]
 [ext_resource type="PackedScene" uid="uid://c85d3mw7tw21o" path="res://Scenes/Spikes/SpikeLeft8.tscn" id="12_y5m1b"]
 [ext_resource type="PackedScene" uid="uid://mqh46i0tapbg" path="res://Scenes/Spikes/SpikeDown16.tscn" id="16_dudqk"]
+
+[sub_resource type="Animation" id="Animation_bpya8"]
+resource_name = "move"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatableBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(208, 64), Vector2(208, 48)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatableBody2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(208, 96), Vector2(208, 112)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fsiw0"]
+_data = {
+"move": SubResource("Animation_bpya8")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53npe"]
+size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ag5fs"]
 size = Vector2(10, 32)
@@ -59,9 +98,7 @@ position = Vector2(352, 136)
 [node name="SavePoint3" parent="SavePoints" instance=ExtResource("4_4ssid")]
 position = Vector2(664, 128)
 
-[node name="Switch1" type="Node" parent="."]
-
-[node name="InGameText" parent="Switch1" instance=ExtResource("6_jp2he")]
+[node name="InGameText" parent="." instance=ExtResource("6_jp2he")]
 offset_left = 108.0
 offset_top = 32.0
 offset_right = 186.0
@@ -71,34 +108,46 @@ those blocks
 by shooting
 this switch block."
 
+[node name="Switch1" type="Node" parent="."]
+
 [node name="SwitchBlock" parent="Switch1" instance=ExtResource("6_jt1yk")]
 position = Vector2(160, 24)
 
-[node name="SwitchNode1" parent="Switch1" instance=ExtResource("7_0omj7")]
-position = Vector2(160, 40)
-position_offset = Vector2(0, -16)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Switch1"]
+libraries = {
+"": SubResource("AnimationLibrary_fsiw0")
+}
+script = ExtResource("11_yix3e")
 
-[node name="TileMapGround3" parent="Switch1/SwitchNode1" instance=ExtResource("8_jvsok")]
-layer_0/tile_data = PackedInt32Array(131077, 131073, 0, 131078, 131073, 0, 196613, 1, 0, 196614, 131073, 0)
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Switch1"]
+position = Vector2(208, 64)
 
-[node name="SpikeDown9" parent="Switch1/SwitchNode1" instance=ExtResource("9_puhtn")]
-position = Vector2(44, 36)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Switch1/AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_53npe")
 
-[node name="SpikeDown10" parent="Switch1/SwitchNode1" instance=ExtResource("9_puhtn")]
-position = Vector2(52, 36)
+[node name="TileMapBlockWithNoPhysics" parent="Switch1/AnimatableBody2D" instance=ExtResource("9_72rrf")]
+layer_0/tile_data = PackedInt32Array(-1, 1, 0, 65535, 1, 0, 0, 131073, 0, -65536, 1, 0)
 
-[node name="SwitchNode2" parent="Switch1" instance=ExtResource("7_0omj7")]
-position = Vector2(160, 56)
-position_offset = Vector2(0, 16)
+[node name="SpikeDown9" parent="Switch1/AnimatableBody2D" instance=ExtResource("9_puhtn")]
+position = Vector2(-4, 12)
 
-[node name="TileMapGround3" parent="Switch1/SwitchNode2" instance=ExtResource("8_jvsok")]
-layer_0/tile_data = PackedInt32Array(327686, 131073, 0, 327685, 65537, 0, 262149, 131073, 0, 262150, 1, 0)
+[node name="SpikeDown10" parent="Switch1/AnimatableBody2D" instance=ExtResource("9_puhtn")]
+position = Vector2(4, 12)
 
-[node name="SpikeUp10" parent="Switch1/SwitchNode2" instance=ExtResource("10_cmp1j")]
-position = Vector2(52, 28)
+[node name="AnimatableBody2D2" type="AnimatableBody2D" parent="Switch1"]
+position = Vector2(208, 96)
 
-[node name="SpikeUp9" parent="Switch1/SwitchNode2" instance=ExtResource("10_cmp1j")]
-position = Vector2(44, 28)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Switch1/AnimatableBody2D2"]
+shape = SubResource("RectangleShape2D_53npe")
+
+[node name="TileMapBlockWithNoPhysics" parent="Switch1/AnimatableBody2D2" instance=ExtResource("9_72rrf")]
+layer_0/tile_data = PackedInt32Array(-1, 1, 0, 65535, 1, 0, 0, 131073, 0, -65536, 1, 0)
+
+[node name="SpikeUp8" parent="Switch1/AnimatableBody2D2" instance=ExtResource("10_cmp1j")]
+position = Vector2(-4, -12)
+
+[node name="SpikeUp9" parent="Switch1/AnimatableBody2D2" instance=ExtResource("10_cmp1j")]
+position = Vector2(4, -12)
 
 [node name="Switch2" type="Node" parent="."]
 
@@ -324,8 +373,7 @@ RoomToGo_room = ExtResource("7_6hoo8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerWarp"]
 shape = SubResource("RectangleShape2D_ag5fs")
 
-[connection signal="switched" from="Switch1/SwitchBlock" to="Switch1/SwitchNode1" method="_on_switch_block_switched"]
-[connection signal="switched" from="Switch1/SwitchBlock" to="Switch1/SwitchNode2" method="_on_switch_block_switched"]
+[connection signal="switched" from="Switch1/SwitchBlock" to="Switch1/AnimationPlayer" method="_on_switch_block_switched"]
 [connection signal="switched" from="Switch2/SwitchBlock" to="Switch2/SwitchNode" method="_on_switch_block_switched"]
 [connection signal="switched" from="Switch2/SwitchBlock" to="Switch2/SwitchNode2" method="_on_switch_block_switched"]
 [connection signal="switched" from="Switch3/SwitchNode/SwitchBlock" to="Switch3/SwitchNode" method="_on_switch_block_switched"]
