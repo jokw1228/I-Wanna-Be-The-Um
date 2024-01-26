@@ -264,10 +264,10 @@ layer_0/tile_data = PackedInt32Array(524288, 327680, 2, 524289, 196608, 2, 58982
 [node name="SavePoints" type="Node" parent="."]
 
 [node name="SavePoint" parent="SavePoints" instance=ExtResource("4_4ssid")]
-position = Vector2(92, 116)
+position = Vector2(92, 120)
 
 [node name="SavePoint2" parent="SavePoints" instance=ExtResource("4_4ssid")]
-position = Vector2(352, 136)
+position = Vector2(352, 144)
 
 [node name="SavePoint3" parent="SavePoints" instance=ExtResource("4_4ssid")]
 position = Vector2(664, 128)

@@ -485,6 +485,6 @@ position = Vector2(220, 44)
 [node name="SpikeUp23" parent="Spikes" instance=ExtResource("15_imdeq")]
 position = Vector2(228, 44)
 
-[connection signal="switched" from="Switch1/SwitchBlock" to="Switch1/End" method="_on_switch_block_switched"]
 [connection signal="switched" from="Switch1/SwitchBlock" to="Switch1/Start" method="_on_switch_block_switched"]
+[connection signal="switched" from="Switch1/SwitchBlock" to="Switch1/End" method="_on_switch_block_switched"]
 [connection signal="switched" from="Switch2/SwitchBlock" to="Switch2/AnimationPlayer" method="_on_switch_block_switched"]
