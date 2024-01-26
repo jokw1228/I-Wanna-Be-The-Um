@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://cu5fl26vu4vqg"]
+
+[ext_resource type="PackedScene" uid="uid://dead8g0krll6g" path="res://Scenes/Items/Cameras/CameraPlayerFollower.tscn" id="1_ixwsf"]
+[ext_resource type="PackedScene" uid="uid://g5uiqkeis1bc" path="res://Scenes/TileMaps/BackGround1.tscn" id="2_3imky"]
+[ext_resource type="PackedScene" uid="uid://d4iisx858y4co" path="res://Scenes/Player/PlayerSpawner.tscn" id="3_58w66"]
+[ext_resource type="PackedScene" uid="uid://1kdhl0avp55s" path="res://Scenes/TileMaps/TileMapGround2.tscn" id="4_cap5v"]
+[ext_resource type="PackedScene" uid="uid://d25vehfudqlvb" path="res://Scenes/Items/SavePoint/SavePoint.tscn" id="5_biyv6"]
+
+[node name="RoomStage1_4" type="Node2D"]
+
+[node name="CameraPlayerFollower" parent="." instance=ExtResource("1_ixwsf")]
+
+[node name="BackGround" type="Node" parent="."]
+
+[node name="BackGround1" parent="BackGround" instance=ExtResource("2_3imky")]
+
+[node name="PlayerSpawner" parent="." instance=ExtResource("3_58w66")]
+position = Vector2(124, 84)
+
+[node name="TileMapGround2" parent="." instance=ExtResource("4_cap5v")]
+
+[node name="SavePoint" parent="." instance=ExtResource("5_biyv6")]
+position = Vector2(124, 84)

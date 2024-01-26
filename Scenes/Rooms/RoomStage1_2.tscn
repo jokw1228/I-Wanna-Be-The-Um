@@ -437,17 +437,11 @@ position = Vector2(108, 76)
 [node name="SpikeDown15" parent="Spikes" instance=ExtResource("11_au5q5")]
 position = Vector2(100, 76)
 
-[node name="SpikeDown16" parent="Spikes" instance=ExtResource("11_au5q5")]
-position = Vector2(92, 76)
-
 [node name="SpikeDown17" parent="Spikes" instance=ExtResource("11_au5q5")]
 position = Vector2(212, 76)
 
 [node name="SpikeDown18" parent="Spikes" instance=ExtResource("11_au5q5")]
 position = Vector2(220, 76)
-
-[node name="SpikeDown19" parent="Spikes" instance=ExtResource("11_au5q5")]
-position = Vector2(228, 76)
 
 [node name="SpikeUp14" parent="Spikes" instance=ExtResource("15_imdeq")]
 position = Vector2(52, 100)
