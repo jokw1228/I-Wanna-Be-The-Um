@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://5fxh7x1bdfdr"]
+
+[ext_resource type="PackedScene" uid="uid://ct21fcu5al8eq" path="res://Scenes/Items/Cameras/CameraLock.tscn" id="1_4tg1l"]
+[ext_resource type="PackedScene" uid="uid://g5uiqkeis1bc" path="res://Scenes/TileMaps/BackGround1.tscn" id="2_axhb4"]
+[ext_resource type="PackedScene" uid="uid://1kdhl0avp55s" path="res://Scenes/TileMaps/TileMapGround2.tscn" id="3_4vwp0"]
+[ext_resource type="PackedScene" uid="uid://d4iisx858y4co" path="res://Scenes/Player/PlayerSpawner.tscn" id="4_26wcx"]
+[ext_resource type="PackedScene" uid="uid://d25vehfudqlvb" path="res://Scenes/Items/SavePoint/SavePoint.tscn" id="5_xfgny"]
+
+[node name="RoomStage1_6" type="Node2D"]
+
+[node name="CameraLock" parent="." instance=ExtResource("1_4tg1l")]
+RoomSize = Vector2(320, 176)
+
+[node name="BackGround1" parent="." instance=ExtResource("2_axhb4")]
+
+[node name="TileMapGround2" parent="." instance=ExtResource("3_4vwp0")]
+layer_0/tile_data = PackedInt32Array(1376256, 393216, 0, 1376257, 589824, 1, 1441793, 458752, 1, 1441792, 196608, 4, 1507327, 0, 4, 1441791, 0, 3, 1376255, 0, 0, 1310720, 458752, 3, 1310721, 458752, 3, 1376258, 327680, 0, 1441794, 196608, 4, 1310722, 131072, 0, 1376259, 458752, 4, 1441795, 65536, 4, 1310723, 196608, 0, 1376260, 458752, 0, 1441796, 131072, 4, 1310724, 196608, 0, 1376261, 393216, 4, 1441797, 458752, 1, 1310725, 196608, 0, 1376262, 458752, 4, 1441798, 196608, 4, 1310726, 196608, 0, 1376263, 458752, 4, 1441799, 196608, 4, 1310727, 458752, 3, 1376264, 393216, 4, 1441800, 65536, 4, 1310728, 458752, 3, 1376265, 327680, 1, 1441801, 458752, 1, 1310729, 196608, 0, 1376266, 458752, 4, 1441802, 196608, 4, 1310730, 196608, 0, 1376267, 327680, 1, 1441803, 131072, 4, 1310731, 458752, 3, 1376268, 393216, 2, 1441804, 262144, 4, 1310732, 262144, 0)
+
+[node name="PlayerSpawner" parent="." instance=ExtResource("4_26wcx")]
+position = Vector2(60, 112)
+
+[node name="SavePoint" parent="." instance=ExtResource("5_xfgny")]
+position = Vector2(60, 112)
