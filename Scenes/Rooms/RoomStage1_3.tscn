@@ -691,6 +691,18 @@ position = Vector2(524, 84)
 [node name="SpikeDown22" parent="Spikes" instance=ExtResource("16_1gphq")]
 position = Vector2(532, 76)
 
+[node name="SpikeUp31" parent="Spikes" instance=ExtResource("7_8nm8d")]
+position = Vector2(396, 84)
+
+[node name="SpikeUp32" parent="Spikes" instance=ExtResource("7_8nm8d")]
+position = Vector2(460, 84)
+
+[node name="SpikeDown23" parent="Spikes" instance=ExtResource("16_1gphq")]
+position = Vector2(396, 68)
+
+[node name="SpikeDown24" parent="Spikes" instance=ExtResource("16_1gphq")]
+position = Vector2(460, 68)
+
 [connection signal="switched" from="PlatformSwitch/SwitchBlock" to="PlatformSwitch/AnimationPlayer" method="_on_switch_block_switched"]
 [connection signal="switched" from="Switch1/SwitchBlock" to="Switch1/AnimationPlayer" method="_on_switch_block_switched"]
 [connection signal="switched" from="Switch2/SwitchBlock" to="Switch2/AnimationPlayer" method="_on_switch_block_switched"]

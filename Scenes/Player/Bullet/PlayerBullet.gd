@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 func _ready():
 	Sprite.play()
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	destory_bullet()
 
 func _physics_process(delta):

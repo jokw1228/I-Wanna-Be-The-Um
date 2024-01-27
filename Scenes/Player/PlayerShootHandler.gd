@@ -13,7 +13,7 @@ func _on_player_shooted():
 	var inst = PlayerBullet_scene.instantiate()
 	inst.position = player.position
 	
-	const velocity_magnitude = 300
+	const velocity_magnitude = 320
 	
 	if player.is_up_or_down_state == player.is_up_or_down_type.NONE:
 		if player.flip_h_state == player.flip_h_type.RIGHT:

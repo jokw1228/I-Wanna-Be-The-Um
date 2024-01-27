@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://drvapvyvhmq3h"]
+
+[ext_resource type="PackedScene" uid="uid://ct21fcu5al8eq" path="res://Scenes/Items/Cameras/CameraLock.tscn" id="1_4njbk"]
+[ext_resource type="PackedScene" uid="uid://g5uiqkeis1bc" path="res://Scenes/TileMaps/BackGround1.tscn" id="2_agit5"]
+[ext_resource type="PackedScene" uid="uid://1kdhl0avp55s" path="res://Scenes/TileMaps/TileMapGround2.tscn" id="3_wlkdd"]
+[ext_resource type="PackedScene" uid="uid://2kjb1txrafg0" path="res://Scenes/TileMaps/TileMapGround3.tscn" id="4_dga1v"]
+[ext_resource type="PackedScene" uid="uid://d4iisx858y4co" path="res://Scenes/Player/PlayerSpawner.tscn" id="4_wduki"]
+[ext_resource type="PackedScene" uid="uid://d25vehfudqlvb" path="res://Scenes/Items/SavePoint/SavePoint.tscn" id="5_ql20c"]
+
+[node name="RoomStage1_5" type="Node2D"]
+
+[node name="CameraLock" parent="." instance=ExtResource("1_4njbk")]
+
+[node name="BackGround1" parent="." instance=ExtResource("2_agit5")]
+metadata/_edit_lock_ = true
+
+[node name="TileMapGround2" parent="." instance=ExtResource("3_wlkdd")]
+layer_0/tile_data = PackedInt32Array(0, 65536, 2, 1, 262144, 3, 65537, 262144, 2, 65536, 327680, 4, 131071, 524288, 2, 65535, 0, 2, -1, 0, 2, -65536, 196608, 2, -65535, 262144, 2, -65537, 0, 1, -131072, 589824, 3, -131071, 262144, 1, -131073, 524288, 2, -196608, 131072, 1, -196607, 262144, 1, -196609, 0, 1, -262144, 524288, 0, -262143, 393216, 2, -262145, 0, 2, -327680, 458752, 2, -327679, 262144, 1, -327681, 0, 1, -393216, 327680, 0, -393215, 393216, 2, -393217, 0, 1, -458752, 524288, 4, -458751, 262144, 3, -458753, 0, 1, -524288, 65536, 3, -524287, 262144, 1, -524289, 0, 0, -589824, 458752, 3, -589823, 262144, 0, 7, 327680, 4, 8, 393216, 2, 65544, 262144, 2, 65543, 458752, 0, 65542, 0, 3, 6, 0, 3, -65530, 0, 1, -65529, 393216, 0, -65528, 262144, 2, -131066, 0, 2, -131065, 589824, 4, -131064, 393216, 2, -196602, 524288, 2, -196601, 589824, 1, -196600, 262144, 3, -262138, 0, 2, -262137, 327680, 1, -262136, 393216, 2, -327674, 524288, 2, -327673, 65536, 3, -327672, 262144, 2, -393210, 0, 2, -393209, 327680, 2, -393208, 262144, 3, -458746, 0, 3, -458745, 196608, 2, -458744, 262144, 2, -524282, 0, 2, -524281, 327680, 3, -524280, 262144, 1, -589818, 0, 0, -589817, 196608, 0, -589816, 262144, 0, 131073, 393216, 2, 131072, 131072, 1, 196607, 0, 2, 196609, 262144, 3, 196608, 65536, 3, 262143, 524288, 2, 262145, 262144, 3, 262144, 589824, 3, 327679, 0, 2, 327681, 262144, 3, 327680, 458752, 4, 393215, 524288, 2, 393217, 262144, 2, 393216, 131072, 1, 458751, 0, 1, 458753, 262144, 2, 458752, 458752, 2, 524287, 0, 3, 524289, 262144, 4, 524288, 196608, 4, 589823, 0, 4, 131080, 262144, 4, 131079, 131072, 4, 131078, 0, 4)
+
+[node name="TileMapGround3" parent="." instance=ExtResource("4_dga1v")]
+layer_0/tile_data = PackedInt32Array(524290, 1, 0, 524291, 131073, 0, 524292, 65537, 0, 524293, 131073, 0, 458757, 65537, 0, 458756, 1, 0, 458755, 131073, 0, 458754, 1, 0)
+
+[node name="PlayerSpawner" parent="." instance=ExtResource("4_wduki")]
+position = Vector2(32, 40)
+
+[node name="SavePoint" parent="." instance=ExtResource("5_ql20c")]
+position = Vector2(32, 40)
