@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://drvapvyvhmq3h"]
+[gd_scene load_steps=34 format=3 uid="uid://drvapvyvhmq3h"]
 
 [ext_resource type="PackedScene" uid="uid://ct21fcu5al8eq" path="res://Scenes/Items/Cameras/CameraLock.tscn" id="1_4njbk"]
 [ext_resource type="PackedScene" uid="uid://g5uiqkeis1bc" path="res://Scenes/TileMaps/BackGround1.tscn" id="2_agit5"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cthvy4nnj76xi" path="res://Scenes/Spikes/SpikeRight16.tscn" id="14_xub4i"]
 [ext_resource type="PackedScene" uid="uid://bhamvca4ii6ak" path="res://Scenes/Spikes/SpikeLeft16.tscn" id="15_kj658"]
 [ext_resource type="PackedScene" uid="uid://c85d3mw7tw21o" path="res://Scenes/Spikes/SpikeLeft8.tscn" id="16_ohw3x"]
+[ext_resource type="PackedScene" uid="uid://jm07b2gcmwf0" path="res://Scenes/Items/MoreJump/MoreJump.tscn" id="18_0mx67"]
 
 [sub_resource type="Animation" id="Animation_agr58"]
 resource_name = "move"
@@ -76,7 +77,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(232, 64), Vector2(88, 64)]
+"values": [Vector2(232, 64), Vector2(152, 64)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2g4j3"]
@@ -406,6 +407,9 @@ position = Vector2(12, -12)
 
 [node name="SpikeUp16" parent="Switch5/Block2/Spikes" instance=ExtResource("12_2p40x")]
 position = Vector2(0, -16)
+
+[node name="MoreJump" parent="." instance=ExtResource("18_0mx67")]
+position = Vector2(272, 88)
 
 [connection signal="switched" from="Switch1/SwitchBlock" to="Switch1/AnimationPlayer" method="_on_switch_block_switched"]
 [connection signal="switched" from="Switch2/SwitchBlock" to="Switch2/AnimationPlayer" method="_on_switch_block_switched"]
