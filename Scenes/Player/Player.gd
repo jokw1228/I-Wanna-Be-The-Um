@@ -25,10 +25,10 @@ signal shooted()
 @export var input_restart : String = "restart"
 
 
-const DEFAULT_MAX_JUMP_HEIGHT = 150
-const DEFAULT_MIN_JUMP_HEIGHT = 60
-const DEFAULT_DOUBLE_JUMP_HEIGHT = 100
-const DEFAULT_JUMP_DURATION = 0.3
+const DEFAULT_MAX_JUMP_HEIGHT = 40
+const DEFAULT_MIN_JUMP_HEIGHT = 10
+const DEFAULT_DOUBLE_JUMP_HEIGHT = 30
+const DEFAULT_JUMP_DURATION = 0.4
 
 var _max_jump_height: float = DEFAULT_MAX_JUMP_HEIGHT
 ## The max jump height in pixels (holding jump).
@@ -81,11 +81,11 @@ var _jump_duration: float = DEFAULT_JUMP_DURATION
 				jump_velocity, min_jump_height, default_gravity)
 		
 ## Multiplies the gravity by this while falling.
-@export var falling_gravity_multiplier = 1.5
+@export var falling_gravity_multiplier = 1.0
 ## Amount of jumps allowed before needing to touch the ground again. Set to 2 for double jump.
-@export var max_jump_amount = 1
-@export var max_acceleration = 10000
-@export var friction = 20
+@export var max_jump_amount = 2
+@export var max_acceleration = 2000
+@export var friction = 30
 @export var can_hold_jump : bool = false
 ## You can still jump this many seconds after falling off a ledge.
 @export var coyote_time : float = 0.1
