@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://ykpsnwojkpix"]
+
+[ext_resource type="PackedScene" uid="uid://ct21fcu5al8eq" path="res://Scenes/Items/Cameras/CameraLock.tscn" id="1_mlntr"]
+[ext_resource type="PackedScene" uid="uid://g5uiqkeis1bc" path="res://Scenes/TileMaps/BackGround1.tscn" id="2_xbaq1"]
+[ext_resource type="PackedScene" uid="uid://1kdhl0avp55s" path="res://Scenes/TileMaps/TileMapGround2.tscn" id="3_vvfkg"]
+[ext_resource type="PackedScene" uid="uid://d4iisx858y4co" path="res://Scenes/Player/PlayerSpawner.tscn" id="4_nadjc"]
+[ext_resource type="PackedScene" uid="uid://d25vehfudqlvb" path="res://Scenes/Items/SavePoint/SavePoint.tscn" id="5_5ypw2"]
+
+[node name="RoomStage1_Boss" type="Node2D"]
+
+[node name="CameraLock" parent="." instance=ExtResource("1_mlntr")]
+
+[node name="BackGround1" parent="." instance=ExtResource("2_xbaq1")]
+
+[node name="TileMapGround2" parent="." instance=ExtResource("3_vvfkg")]
+
+[node name="PlayerSpawner" parent="." instance=ExtResource("4_nadjc")]
+position = Vector2(156, 96)
+
+[node name="SavePoint" parent="." instance=ExtResource("5_5ypw2")]
+position = Vector2(156, 108)
