@@ -10,6 +10,7 @@ const y_over = -16
 const y_ground = 152
 
 var player_position: Vector2
+var player_flip: bool
 
 func _ready():
 	player_position = Vector2.ZERO
@@ -20,6 +21,7 @@ func _process(_delta):
 	var player = get_tree().get_nodes_in_group("Player")
 	if player != []:
 		player_position = player[0].position
+		player_flip = player[0].flip_h_state
 
 func _on_area_entered(area):
 	if area.is_in_group("PlayerArea2D"):
@@ -40,20 +42,21 @@ func pattern_ready():
 
 func pattern_0():
 	const x_offset = 32
-	var is_flipped: bool = false
+	var is_flipped: bool = true
 	
 	if player_position.x < 0 + 64 + x_offset:
 		position.x = player_position.x + x_offset
 		is_flipped = true
 	elif player_position.x > 320 - (64 + x_offset):
 		position.x = player_position.x - x_offset
+		is_flipped = false
 	else:
-		var um = randi() % 2
-		if um:
+		if player_flip:
+			position.x = player_position.x - x_offset
+			is_flipped = false
+		else:
 			position.x = player_position.x + x_offset
 			is_flipped = true
-		else:
-			position.x = player_position.x - x_offset
 	
 	position.y = y_over
 	Sprite_node.flip_h = is_flipped
@@ -86,6 +89,8 @@ func pattern_0():
 	pattern_ready()
 
 func pattern_1():
+	Sprite_node.flip_h = player_flip
+	
 	position = Vector2(160, y_over)
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "position", Vector2(position.x, y_ground), 0.3)
@@ -93,9 +98,30 @@ func pattern_1():
 	
 	await get_tree().create_timer(1.0).timeout
 	
+	const rising_duration = 1.2
+	
 	tween = get_tree().create_tween()
-	tween.tween_property(self, "position", Vector2(position.x, y_over), 1.2)
+	tween.tween_property(self, "position", Vector2(position.x, y_over), rising_duration)
+	
+	#barrage
+	create_spinning_barrage(rising_duration, 36, randi(), 32 * choose_pos_or_neg(), 128)
+	create_spinning_barrage(rising_duration, 88, randi(), 12 * choose_pos_or_neg(), 64)
+	create_spinning_barrage(rising_duration, 24, randi(), 96 * choose_pos_or_neg(), 196)
+	
 	await tween.finished
 	
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	pattern_ready()
+
+func create_spinning_barrage(duration, shoot_times, angle_start, angle_delta, speed):
+	var delay = duration / shoot_times
+	for i in range(shoot_times):
+		var inst = Boss1EnergyBall_scene.instantiate()
+		inst.position = position
+		inst.velocity = Vector2(cos( angle_start + i * angle_delta ), sin( angle_start + i * angle_delta )) * speed
+		get_tree().current_scene.add_child(inst)
+		await get_tree().create_timer(delay).timeout
+
+func choose_pos_or_neg() -> int:
+	var array = [-1, 1]
+	return array[randi() % 2]
