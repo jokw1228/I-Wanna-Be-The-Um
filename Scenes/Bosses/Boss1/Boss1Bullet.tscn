@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvucbk1qkfpiq"]
+
+[ext_resource type="Texture2D" uid="uid://c6nfw1xjal8jc" path="res://Resources/Sprites/Nw/sprite_nw_bullet.png" id="1_b53ng"]
+[ext_resource type="Script" path="res://Scenes/Bosses/Boss1/Boss1Bullet.gd" id="1_brioy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8geoo"]
+atlas = ExtResource("1_b53ng")
+region = Rect2(0, 0, 4, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58wa5"]
+atlas = ExtResource("1_b53ng")
+region = Rect2(4, 0, 4, 4)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kk5uf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8geoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58wa5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kudf8"]
+radius = 2.0
+
+[node name="Boss1Bullet" type="Area2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_brioy")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kk5uf")
+speed_scale = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kudf8")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
