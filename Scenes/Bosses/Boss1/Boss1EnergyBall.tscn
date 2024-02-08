@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://xhmrya20uoau"]
 
 [ext_resource type="Script" path="res://Scenes/Bosses/Boss1/Boss1EnergyBall.gd" id="1_lufvg"]
-[ext_resource type="Texture2D" uid="uid://dol84dnkywyw" path="res://Resources/Sprites/Mu/sprite_mu_energyball.png" id="2_fpx4d"]
+[ext_resource type="Texture2D" uid="uid://dol84dnkywyw" path="res://Resources/Sprites/Mu/sprite_mu_energyball.png" id="2_gii3p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5yo6d"]
 radius = 2.0
@@ -13,6 +13,6 @@ script = ExtResource("1_lufvg")
 shape = SubResource("CircleShape2D_5yo6d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_fpx4d")
+texture = ExtResource("2_gii3p")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

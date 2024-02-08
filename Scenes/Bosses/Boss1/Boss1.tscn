@@ -1,28 +1,75 @@
-[gd_scene load_steps=7 format=3 uid="uid://dd6ch60up46wh"]
+[gd_scene load_steps=15 format=3 uid="uid://dd6ch60up46wh"]
 
 [ext_resource type="Script" path="res://Scenes/Bosses/Boss1/Boss1.gd" id="1_hgkg1"]
 [ext_resource type="PackedScene" uid="uid://dvucbk1qkfpiq" path="res://Scenes/Bosses/Boss1/Boss1Bullet.tscn" id="2_kid0i"]
 [ext_resource type="PackedScene" uid="uid://xhmrya20uoau" path="res://Scenes/Bosses/Boss1/Boss1EnergyBall.tscn" id="3_41le7"]
-[ext_resource type="Texture2D" uid="uid://jcj34hwlepfm" path="res://Resources/Sprites/Mu/sprite_mu_idle.png" id="4_qjel2"]
+[ext_resource type="Texture2D" uid="uid://jcj34hwlepfm" path="res://Resources/Sprites/Mu/sprite_mu_idle.png" id="4_4cr7s"]
+[ext_resource type="Texture2D" uid="uid://cc2dtms15nl5l" path="res://Resources/Sprites/Mu/sprite_mu_landing.png" id="5_7qbsk"]
+[ext_resource type="Texture2D" uid="uid://ci6ae0vghdqwo" path="res://Resources/Sprites/Mu/sprite_mu_laser.png" id="6_twg2m"]
+[ext_resource type="AudioStream" uid="uid://0jph7y41mer0" path="res://Resources/Sounds/SFX/Mu/sfx_mu_bullet.wav" id="7_3drpy"]
+[ext_resource type="AudioStream" uid="uid://bmjme3r3nleq7" path="res://Resources/Sounds/SFX/Mu/sfx_mu_laser.wav" id="7_be80w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sactj"]
 radius = 3.5
 height = 11.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_61wsj"]
+atlas = ExtResource("5_7qbsk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rf0y"]
+atlas = ExtResource("5_7qbsk")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ginn3"]
+atlas = ExtResource("5_7qbsk")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7mx0"]
+atlas = ExtResource("5_7qbsk")
+region = Rect2(48, 0, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_cl45y"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_qjel2")
+"texture": ExtResource("4_4cr7s")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61wsj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rf0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ginn3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7mx0")
+}],
+"loop": false,
+"name": &"landing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_twg2m")
+}],
+"loop": true,
+"name": &"laser",
+"speed": 5.0
 }]
 
-[node name="Boss1" type="Area2D" node_paths=PackedStringArray("Sprite_node")]
+[node name="Boss1" type="Area2D" node_paths=PackedStringArray("Sprite_node", "audio_laser", "audio_bullet")]
 script = ExtResource("1_hgkg1")
 Sprite_node = NodePath("AnimatedSprite2D")
+audio_laser = NodePath("Sounds/Laser")
+audio_bullet = NodePath("Sounds/Bullet")
 Boss1Bullet_scene = ExtResource("2_kid0i")
 Boss1EnergyBall_scene = ExtResource("3_41le7")
 
@@ -32,5 +79,15 @@ shape = SubResource("CapsuleShape2D_sactj")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cl45y")
 animation = &"idle"
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Bullet" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("7_3drpy")
+volume_db = -10.0
+
+[node name="Laser" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("7_be80w")
+volume_db = -15.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,6 +1,8 @@
 extends Area2D
 
 @export var Sprite_node: AnimatedSprite2D
+@export var audio_laser: AudioStreamPlayer2D
+@export var audio_bullet: AudioStreamPlayer2D
 @export var Boss1Bullet_scene: PackedScene
 @export var Boss1EnergyBall_scene: PackedScene
 
@@ -61,15 +63,25 @@ func pattern_0():
 	position.y = y_over
 	Sprite_node.flip_h = is_flipped
 	
+	Sprite_node.animation = "laser"
+	audio_laser.play()
+	
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "position", Vector2(position.x, y_ground), 0.3)
 	await tween.finished
+	
+	Sprite_node.animation = "landing"
+	Sprite_node.speed_scale = 16
+	Sprite_node.play()
+	await Sprite_node.animation_finished
+	Sprite_node.animation = "idle"
 	
 	await get_tree().create_timer(0.2).timeout
 	
 	const bullet_speed = 320
 	
 	for i in range(3):
+		audio_bullet.play()
 		var inst = Boss1Bullet_scene.instantiate()
 		inst.position = position
 		inst.position.x += 5 if !is_flipped else -5
@@ -81,11 +93,18 @@ func pattern_0():
 	
 	await get_tree().create_timer(0.2).timeout
 	
+	Sprite_node.animation = "landing"
+	Sprite_node.speed_scale = 16
+	Sprite_node.play_backwards()
+	await Sprite_node.animation_finished
+	Sprite_node.animation = "laser"
+	audio_laser.play()
+	
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "position", Vector2(position.x, y_over), 0.3)
 	await tween.finished
-	await get_tree().create_timer(0.5).timeout
 	
+	await get_tree().create_timer(0.5).timeout
 	pattern_ready()
 
 func pattern_1():
@@ -95,14 +114,23 @@ func pattern_1():
 		Sprite_node.flip_h = true
 	
 	position = Vector2(160, y_over)
+	
+	Sprite_node.animation = "laser"
+	audio_laser.play()
+	
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "position", Vector2(position.x, y_ground), 0.3)
 	await tween.finished
 	
+	Sprite_node.animation = "landing"
+	Sprite_node.speed_scale = 16
+	Sprite_node.play()
+	await Sprite_node.animation_finished
+	Sprite_node.animation = "idle"
+	
 	await get_tree().create_timer(1.0).timeout
 	
 	const rising_duration = 1.2
-	
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "position", Vector2(position.x, y_over), rising_duration)
 	
@@ -128,3 +156,8 @@ func create_spinning_barrage(duration, shoot_times, angle_start, angle_delta, sp
 func choose_pos_or_neg() -> int:
 	var array = [-1, 1]
 	return array[randi() % 2]
+
+func pattern_2():
+	
+	await get_tree().create_timer(1.0).timeout
+	pattern_ready()
