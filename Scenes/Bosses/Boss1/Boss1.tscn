@@ -1,13 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://dd6ch60up46wh"]
+[gd_scene load_steps=16 format=3 uid="uid://dd6ch60up46wh"]
 
 [ext_resource type="Script" path="res://Scenes/Bosses/Boss1/Boss1.gd" id="1_hgkg1"]
 [ext_resource type="PackedScene" uid="uid://dvucbk1qkfpiq" path="res://Scenes/Bosses/Boss1/Boss1Bullet.tscn" id="2_kid0i"]
+[ext_resource type="PackedScene" uid="uid://ca1q0tiepf4n1" path="res://Scenes/Bosses/Boss1/MuShootEffectGenerator.tscn" id="2_nynpc"]
 [ext_resource type="PackedScene" uid="uid://xhmrya20uoau" path="res://Scenes/Bosses/Boss1/Boss1EnergyBall.tscn" id="3_41le7"]
 [ext_resource type="Texture2D" uid="uid://jcj34hwlepfm" path="res://Resources/Sprites/Mu/sprite_mu_idle.png" id="4_4cr7s"]
 [ext_resource type="Texture2D" uid="uid://cc2dtms15nl5l" path="res://Resources/Sprites/Mu/sprite_mu_landing.png" id="5_7qbsk"]
 [ext_resource type="Texture2D" uid="uid://ci6ae0vghdqwo" path="res://Resources/Sprites/Mu/sprite_mu_laser.png" id="6_twg2m"]
-[ext_resource type="AudioStream" uid="uid://0jph7y41mer0" path="res://Resources/Sounds/SFX/Mu/sfx_mu_bullet.wav" id="7_3drpy"]
 [ext_resource type="AudioStream" uid="uid://bmjme3r3nleq7" path="res://Resources/Sounds/SFX/Mu/sfx_mu_laser.wav" id="7_be80w"]
+[ext_resource type="AudioStream" uid="uid://bxnqwb5gv4d7o" path="res://Resources/Sounds/SFX/Mu/sfx_mu_charging.wav" id="9_jb0hw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sactj"]
 radius = 3.5
@@ -65,11 +66,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Boss1" type="Area2D" node_paths=PackedStringArray("Sprite_node", "audio_laser", "audio_bullet")]
+[node name="Boss1" type="Area2D" node_paths=PackedStringArray("Sprite_node", "audio_laser", "audio_charging")]
 script = ExtResource("1_hgkg1")
 Sprite_node = NodePath("AnimatedSprite2D")
 audio_laser = NodePath("Sounds/Laser")
-audio_bullet = NodePath("Sounds/Bullet")
+audio_charging = NodePath("Sounds/Charging")
+MuShootEffect_scene = ExtResource("2_nynpc")
 Boss1Bullet_scene = ExtResource("2_kid0i")
 Boss1EnergyBall_scene = ExtResource("3_41le7")
 
@@ -82,12 +84,12 @@ animation = &"idle"
 
 [node name="Sounds" type="Node" parent="."]
 
-[node name="Bullet" type="AudioStreamPlayer2D" parent="Sounds"]
-stream = ExtResource("7_3drpy")
-volume_db = -10.0
-
 [node name="Laser" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("7_be80w")
 volume_db = -15.0
+
+[node name="Charging" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("9_jb0hw")
+pitch_scale = 4.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

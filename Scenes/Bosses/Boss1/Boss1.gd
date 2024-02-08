@@ -2,7 +2,8 @@ extends Area2D
 
 @export var Sprite_node: AnimatedSprite2D
 @export var audio_laser: AudioStreamPlayer2D
-@export var audio_bullet: AudioStreamPlayer2D
+@export var audio_charging: AudioStreamPlayer2D
+@export var MuShootEffect_scene: PackedScene
 @export var Boss1Bullet_scene: PackedScene
 @export var Boss1EnergyBall_scene: PackedScene
 
@@ -81,7 +82,6 @@ func pattern_0():
 	const bullet_speed = 320
 	
 	for i in range(3):
-		audio_bullet.play()
 		var inst = Boss1Bullet_scene.instantiate()
 		inst.position = position
 		inst.position.x += 5 if !is_flipped else -5
@@ -89,6 +89,9 @@ func pattern_0():
 		if is_flipped:
 			inst.velocity.x *= -1
 		get_tree().current_scene.add_child(inst)
+		var audio = MuShootEffect_scene.instantiate()
+		audio.position = inst.position
+		get_tree().current_scene.add_child(audio)
 		await get_tree().create_timer(0.1).timeout
 	
 	await get_tree().create_timer(0.2).timeout
@@ -128,6 +131,7 @@ func pattern_1():
 	await Sprite_node.animation_finished
 	Sprite_node.animation = "idle"
 	
+	audio_charging.play()
 	await get_tree().create_timer(1.0).timeout
 	
 	const rising_duration = 1.2

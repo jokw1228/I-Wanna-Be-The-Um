@@ -39,3 +39,27 @@ position = Vector2(296, 168)
 
 [node name="SpikeUp19" parent="Spikes" instance=ExtResource("7_e32kb")]
 position = Vector2(312, 168)
+
+[node name="SpikeUp20" parent="Spikes" instance=ExtResource("7_e32kb")]
+position = Vector2(-8, 168)
+
+[node name="SpikeUp21" parent="Spikes" instance=ExtResource("7_e32kb")]
+position = Vector2(-24, 168)
+
+[node name="SpikeUp22" parent="Spikes" instance=ExtResource("7_e32kb")]
+position = Vector2(-40, 168)
+
+[node name="SpikeUp23" parent="Spikes" instance=ExtResource("7_e32kb")]
+position = Vector2(-56, 168)
+
+[node name="SpikeUp24" parent="Spikes" instance=ExtResource("7_e32kb")]
+position = Vector2(328, 168)
+
+[node name="SpikeUp25" parent="Spikes" instance=ExtResource("7_e32kb")]
+position = Vector2(344, 168)
+
+[node name="SpikeUp26" parent="Spikes" instance=ExtResource("7_e32kb")]
+position = Vector2(360, 168)
+
+[node name="SpikeUp27" parent="Spikes" instance=ExtResource("7_e32kb")]
+position = Vector2(376, 168)
