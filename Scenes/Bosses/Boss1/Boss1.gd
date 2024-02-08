@@ -89,7 +89,10 @@ func pattern_0():
 	pattern_ready()
 
 func pattern_1():
-	Sprite_node.flip_h = player_flip
+	if player_position.x > 160:
+		Sprite_node.flip_h = false
+	else:
+		Sprite_node.flip_h = true
 	
 	position = Vector2(160, y_over)
 	var tween = get_tree().create_tween()

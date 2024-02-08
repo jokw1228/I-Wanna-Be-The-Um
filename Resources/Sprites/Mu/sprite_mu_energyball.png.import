@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ff1qe5ppl1ep"
-path="res://.godot/imported/sprite_nw_jump_up.png-a01d42e5b1aee6c2ebb5783a459dad6c.ctex"
+uid="uid://dol84dnkywyw"
+path="res://.godot/imported/sprite_mu_energyball.png-f329039c38c1d282d390bddfc6aa205a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/Nw/sprite_nw_jump_up.png"
-dest_files=["res://.godot/imported/sprite_nw_jump_up.png-a01d42e5b1aee6c2ebb5783a459dad6c.ctex"]
+source_file="res://Resources/Sprites/Mu/sprite_mu_energyball.png"
+dest_files=["res://.godot/imported/sprite_mu_energyball.png-f329039c38c1d282d390bddfc6aa205a.ctex"]
 
 [params]
 

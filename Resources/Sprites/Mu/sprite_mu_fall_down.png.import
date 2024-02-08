@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://065cnd1p3sfh"
-path="res://.godot/imported/sprite_nw_idle_up.png-576a6b5a1e562e5c7fa46e257aaf2369.ctex"
+uid="uid://chqnq652kfa6"
+path="res://.godot/imported/sprite_mu_fall_down.png-17766e0275534556419090637c0c06e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/Nw/sprite_nw_idle_up.png"
-dest_files=["res://.godot/imported/sprite_nw_idle_up.png-576a6b5a1e562e5c7fa46e257aaf2369.ctex"]
+source_file="res://Resources/Sprites/Mu/sprite_mu_fall_down.png"
+dest_files=["res://.godot/imported/sprite_mu_fall_down.png-17766e0275534556419090637c0c06e5.ctex"]
 
 [params]
 

@@ -1,14 +1,14 @@
 [gd_scene load_steps=7 format=3 uid="uid://dvucbk1qkfpiq"]
 
-[ext_resource type="Texture2D" uid="uid://c6nfw1xjal8jc" path="res://Resources/Sprites/Nw/sprite_nw_bullet.png" id="1_b53ng"]
 [ext_resource type="Script" path="res://Scenes/Bosses/Boss1/Boss1Bullet.gd" id="1_brioy"]
+[ext_resource type="Texture2D" uid="uid://c6nfw1xjal8jc" path="res://Resources/Sprites/Mu/sprite_mu_bullet.png" id="2_y4876"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8geoo"]
-atlas = ExtResource("1_b53ng")
+atlas = ExtResource("2_y4876")
 region = Rect2(0, 0, 4, 4)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_58wa5"]
-atlas = ExtResource("1_b53ng")
+atlas = ExtResource("2_y4876")
 region = Rect2(4, 0, 4, 4)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kk5uf"]

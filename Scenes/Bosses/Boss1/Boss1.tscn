@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://dd6ch60up46wh"]
 
-[ext_resource type="Texture2D" uid="uid://jcj34hwlepfm" path="res://Resources/Sprites/Nw/sprite_nw_idle.png" id="1_aojyt"]
 [ext_resource type="Script" path="res://Scenes/Bosses/Boss1/Boss1.gd" id="1_hgkg1"]
 [ext_resource type="PackedScene" uid="uid://dvucbk1qkfpiq" path="res://Scenes/Bosses/Boss1/Boss1Bullet.tscn" id="2_kid0i"]
 [ext_resource type="PackedScene" uid="uid://xhmrya20uoau" path="res://Scenes/Bosses/Boss1/Boss1EnergyBall.tscn" id="3_41le7"]
+[ext_resource type="Texture2D" uid="uid://jcj34hwlepfm" path="res://Resources/Sprites/Mu/sprite_mu_idle.png" id="4_qjel2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sactj"]
 radius = 3.5
@@ -13,7 +13,7 @@ height = 11.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_aojyt")
+"texture": ExtResource("4_qjel2")
 }],
 "loop": true,
 "name": &"idle",

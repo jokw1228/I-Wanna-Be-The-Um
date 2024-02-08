@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chqnq652kfa6"
-path="res://.godot/imported/sprite_nw_fall_down.png-b8d00fd7d503b3bbcbffa8b8611f1bfe.ctex"
+uid="uid://b0sg2j6bhso07"
+path="res://.godot/imported/sprite_nw_walk_up.png-de1fd9e60846f6705d73a672d39ea7a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/Nw/sprite_nw_fall_down.png"
-dest_files=["res://.godot/imported/sprite_nw_fall_down.png-b8d00fd7d503b3bbcbffa8b8611f1bfe.ctex"]
+source_file="res://Resources/Sprites/Mu/sprite_nw_walk_up.png"
+dest_files=["res://.godot/imported/sprite_nw_walk_up.png-de1fd9e60846f6705d73a672d39ea7a0.ctex"]
 
 [params]
 
