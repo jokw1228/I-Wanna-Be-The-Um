@@ -1,3 +1,19 @@
-[gd_scene format=3 uid="uid://dtm07uhwo23kx"]
+[gd_scene load_steps=4 format=3 uid="uid://dtm07uhwo23kx"]
 
-[node name="Boss1FallingSpike" type="Area2D"]
+[ext_resource type="Script" path="res://Scenes/Bosses/Boss1/Boss1FallingSpike.gd" id="1_aotkr"]
+[ext_resource type="Texture2D" uid="uid://j2fxsih5y307" path="res://Resources/Sprites/Spikes/sprite_spike_down_16.png" id="1_aq67t"]
+[ext_resource type="Script" path="res://Scenes/Killer/KillerArea2D.gd" id="2_23lbg"]
+
+[node name="Boss1FallingSpike" type="Node2D"]
+script = ExtResource("1_aotkr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_aq67t")
+
+[node name="KillerArea2D" type="Area2D" parent="."]
+script = ExtResource("2_23lbg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KillerArea2D"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 0, 8)
+
+[connection signal="area_entered" from="KillerArea2D" to="KillerArea2D" method="_on_area_entered"]

@@ -7,6 +7,7 @@ extends Area2D
 @export var Boss1Bullet_scene: PackedScene
 @export var Boss1EnergyBall_scene: PackedScene
 @export var Boss1Rock_scene: PackedScene
+@export var Boss1FallingSpike_scene: PackedScene
 
 var hp_max = 100
 var hp = 100
@@ -17,6 +18,8 @@ const y_ground = 152
 
 var player_position: Vector2
 var player_flip: bool
+
+var last_pattern = -1
 
 func _ready():
 	player_position = Vector2.ZERO
@@ -44,13 +47,18 @@ func BossHitEffect():
 
 func pattern_ready():
 	randomize()
-	var num = randi() % 3
+	var num
+	while true:
+		num = randi() % 3
+		if num != last_pattern:
+			break
 	if num == 0:
-		pattern_2()
+		pattern_0()
 	elif num == 1:
-		pattern_2()
+		pattern_1()
 	elif num == 2:
 		pattern_2()
+	last_pattern = num
 
 func pattern_0():
 	const x_offset = 32
@@ -139,6 +147,7 @@ func pattern_1():
 	Sprite_node.play()
 	await Sprite_node.animation_finished
 	Sprite_node.animation = "idle"
+	await get_tree().create_timer(0.2).timeout
 	
 	audio_charging.play()
 	await get_tree().create_timer(1.0).timeout
@@ -171,9 +180,52 @@ func choose_pos_or_neg() -> int:
 	return array[randi() % 2]
 
 func pattern_2():
-	var inst = Boss1Rock_scene.instantiate()
-	inst.position = Vector2(160, -32)
-	get_tree().current_scene.add_child(inst)
+	if player_position.x > 160:
+		Sprite_node.flip_h = false
+		position = Vector2(40, y_over)
+	else:
+		Sprite_node.flip_h = true
+		position = Vector2(320-40, y_over)
+	
+		Sprite_node.animation = "laser"
+	audio_laser.play()
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "position", Vector2(position.x, y_ground), 0.3)
+	await tween.finished
+	
+	Sprite_node.animation = "landing"
+	Sprite_node.speed_scale = 16
+	Sprite_node.play()
+	await Sprite_node.animation_finished
+	Sprite_node.animation = "idle"
+	await get_tree().create_timer(0.2).timeout
+	
+	##just do it
+	for i in range(3):
+		var inst = Boss1Rock_scene.instantiate()
+		inst.position = Vector2(player_position.x, -32)
+		get_tree().current_scene.add_child(inst)
+		await get_tree().create_timer(0.5).timeout
+	
+	for i in range(10):
+		var inst1 = Boss1FallingSpike_scene.instantiate()
+		inst1.position = Vector2(i * 320 / 10 + 16 + (randf() - 0.5) * 8, -16)
+		get_tree().current_scene.add_child(inst1)
+	
+	#end
+	await get_tree().create_timer(0.2).timeout
+	
+	Sprite_node.animation = "landing"
+	Sprite_node.speed_scale = 16
+	Sprite_node.play_backwards()
+	await Sprite_node.animation_finished
+	Sprite_node.animation = "laser"
+	audio_laser.play()
+	
+	tween = get_tree().create_tween()
+	tween.tween_property(self, "position", Vector2(position.x, y_over), 0.3)
+	await tween.finished
 	
 	await get_tree().create_timer(1.0).timeout
 	pattern_ready()

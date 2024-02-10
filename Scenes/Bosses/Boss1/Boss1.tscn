@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dd6ch60up46wh"]
+[gd_scene load_steps=19 format=3 uid="uid://dd6ch60up46wh"]
 
 [ext_resource type="Script" path="res://Scenes/Bosses/Boss1/Boss1.gd" id="1_hgkg1"]
 [ext_resource type="PackedScene" uid="uid://dvucbk1qkfpiq" path="res://Scenes/Bosses/Boss1/Boss1Bullet.tscn" id="2_kid0i"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://jcj34hwlepfm" path="res://Resources/Sprites/Mu/sprite_mu_idle.png" id="4_4cr7s"]
 [ext_resource type="Texture2D" uid="uid://cc2dtms15nl5l" path="res://Resources/Sprites/Mu/sprite_mu_landing.png" id="5_7qbsk"]
 [ext_resource type="PackedScene" uid="uid://dg3ha7l21h8bd" path="res://Scenes/Bosses/Boss1/Boss1Rock.tscn" id="5_54cyw"]
+[ext_resource type="PackedScene" uid="uid://dtm07uhwo23kx" path="res://Scenes/Bosses/Boss1/Boss1FallingSpike.tscn" id="6_elqb0"]
 [ext_resource type="Texture2D" uid="uid://ci6ae0vghdqwo" path="res://Resources/Sprites/Mu/sprite_mu_laser.png" id="6_twg2m"]
 [ext_resource type="AudioStream" uid="uid://bmjme3r3nleq7" path="res://Resources/Sounds/SFX/Mu/sfx_mu_laser.wav" id="7_be80w"]
 [ext_resource type="AudioStream" uid="uid://bxnqwb5gv4d7o" path="res://Resources/Sounds/SFX/Mu/sfx_mu_charging.wav" id="9_jb0hw"]
@@ -77,6 +78,7 @@ MuShootEffect_scene = ExtResource("2_nynpc")
 Boss1Bullet_scene = ExtResource("2_kid0i")
 Boss1EnergyBall_scene = ExtResource("3_41le7")
 Boss1Rock_scene = ExtResource("5_54cyw")
+Boss1FallingSpike_scene = ExtResource("6_elqb0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_sactj")
