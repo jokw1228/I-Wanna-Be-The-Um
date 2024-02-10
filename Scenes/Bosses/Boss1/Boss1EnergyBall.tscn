@@ -1,18 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://xhmrya20uoau"]
+[gd_scene load_steps=6 format=3 uid="uid://xhmrya20uoau"]
 
 [ext_resource type="Script" path="res://Scenes/Bosses/Boss1/Boss1EnergyBall.gd" id="1_lufvg"]
 [ext_resource type="Texture2D" uid="uid://dol84dnkywyw" path="res://Resources/Sprites/Mu/sprite_mu_energy_ball.png" id="2_u2vid"]
 [ext_resource type="AudioStream" uid="uid://bagevjwcjgbmj" path="res://Resources/Sounds/SFX/Mu/sfx_mu_energy_ball.wav" id="3_ere6l"]
+[ext_resource type="Script" path="res://Scenes/Killer/KillerArea2D.gd" id="4_v8iyu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5yo6d"]
 radius = 2.0
 
-[node name="Boss1EnergyBall" type="Area2D" node_paths=PackedStringArray("audio")]
+[node name="Boss1EnergyBall" type="Node2D" node_paths=PackedStringArray("audio")]
 script = ExtResource("1_lufvg")
 audio = NodePath("AudioStreamPlayer2D")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_5yo6d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_u2vid")
@@ -21,4 +19,10 @@ texture = ExtResource("2_u2vid")
 stream = ExtResource("3_ere6l")
 pitch_scale = 0.5
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[node name="KillerArea2D" type="Area2D" parent="."]
+script = ExtResource("4_v8iyu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillerArea2D"]
+shape = SubResource("CircleShape2D_5yo6d")
+
+[connection signal="area_entered" from="KillerArea2D" to="KillerArea2D" method="_on_area_entered"]

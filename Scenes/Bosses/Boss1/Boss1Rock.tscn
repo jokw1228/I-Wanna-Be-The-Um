@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dg3ha7l21h8bd"]
+[gd_scene load_steps=7 format=3 uid="uid://dg3ha7l21h8bd"]
 
 [ext_resource type="Texture2D" uid="uid://o30kacb1lenl" path="res://Resources/Sprites/Mu/sprite_rock.png" id="1_1ydmt"]
 [ext_resource type="Script" path="res://Scenes/Bosses/Boss1/Boss1Rock.gd" id="1_bhp8r"]
 [ext_resource type="PackedScene" uid="uid://cmivt1d6cukoj" path="res://Scenes/Bosses/Boss1/Boss1RockFragment.tscn" id="2_f6yqw"]
 [ext_resource type="PackedScene" uid="uid://bpv4lcp4mb663" path="res://Scenes/Bosses/Boss1/Boss1RockFragmentEffectGenerator.tscn" id="3_xt5sa"]
+[ext_resource type="Script" path="res://Scenes/Killer/KillerArea2D.gd" id="5_aqbyb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_abxe2"]
 radius = 16.0
@@ -20,5 +21,11 @@ shape = SubResource("CircleShape2D_abxe2")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_1ydmt")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[node name="KillerArea2D" type="Area2D" parent="."]
+script = ExtResource("5_aqbyb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillerArea2D"]
+shape = SubResource("CircleShape2D_abxe2")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="KillerArea2D" to="KillerArea2D" method="_on_area_entered"]

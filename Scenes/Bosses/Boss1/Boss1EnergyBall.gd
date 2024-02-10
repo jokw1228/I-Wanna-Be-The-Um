@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 @export var audio: AudioStreamPlayer2D
 
@@ -11,7 +11,3 @@ func _ready():
 
 func _physics_process(delta):
 	position += velocity * delta
-
-func _on_area_entered(area):
-	if area.is_in_group("PlayerArea2D"):
-		area.get_parent().kill_player()

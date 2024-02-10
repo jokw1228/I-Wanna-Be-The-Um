@@ -31,10 +31,7 @@ func _process(_delta):
 		player_flip = player[0].flip_h_state
 
 func _on_area_entered(area):
-	if area.is_in_group("PlayerArea2D"):
-		area.get_parent().kill_player()
-		
-	elif area.is_in_group("PlayerBulletArea2D"):
+	if area.is_in_group("PlayerBulletArea2D"):
 		area.get_parent().destory_bullet()
 		hp -= 1
 		hp_changed.emit(hp, hp_max)

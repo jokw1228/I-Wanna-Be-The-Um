@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmivt1d6cukoj"]
+[gd_scene load_steps=9 format=3 uid="uid://cmivt1d6cukoj"]
 
 [ext_resource type="Script" path="res://Scenes/Bosses/Boss1/Boss1RockFragment.gd" id="1_lky8v"]
 [ext_resource type="Texture2D" uid="uid://dfyd5jdf46828" path="res://Resources/Sprites/Mu/sprite_rock_fragments.png" id="1_r2mit"]
+[ext_resource type="Script" path="res://Scenes/Killer/KillerArea2D.gd" id="3_eyrbe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6tcbs"]
 atlas = ExtResource("1_r2mit")
@@ -45,7 +46,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_s2c1b"]
 radius = 8.94427
 
-[node name="Boss1RockFragment" type="Area2D" node_paths=PackedStringArray("sprite")]
+[node name="Boss1RockFragment" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_lky8v")
 sprite = NodePath("AnimatedSprite2D")
 
@@ -54,7 +55,10 @@ sprite_frames = SubResource("SpriteFrames_fq2q6")
 animation = &"2"
 speed_scale = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="KillerArea2D" type="Area2D" parent="."]
+script = ExtResource("3_eyrbe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillerArea2D"]
 shape = SubResource("CircleShape2D_s2c1b")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_entered" from="KillerArea2D" to="KillerArea2D" method="_on_area_entered"]

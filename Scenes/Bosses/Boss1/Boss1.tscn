@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dd6ch60up46wh"]
+[gd_scene load_steps=18 format=3 uid="uid://dd6ch60up46wh"]
 
 [ext_resource type="Script" path="res://Scenes/Bosses/Boss1/Boss1.gd" id="1_hgkg1"]
 [ext_resource type="PackedScene" uid="uid://dvucbk1qkfpiq" path="res://Scenes/Bosses/Boss1/Boss1Bullet.tscn" id="2_kid0i"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ci6ae0vghdqwo" path="res://Resources/Sprites/Mu/sprite_mu_laser.png" id="6_twg2m"]
 [ext_resource type="AudioStream" uid="uid://bmjme3r3nleq7" path="res://Resources/Sounds/SFX/Mu/sfx_mu_laser.wav" id="7_be80w"]
 [ext_resource type="AudioStream" uid="uid://bxnqwb5gv4d7o" path="res://Resources/Sounds/SFX/Mu/sfx_mu_charging.wav" id="9_jb0hw"]
+[ext_resource type="Script" path="res://Scenes/Killer/KillerArea2D.gd" id="11_cshcq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sactj"]
 radius = 3.5
@@ -94,4 +95,11 @@ volume_db = -15.0
 stream = ExtResource("9_jb0hw")
 pitch_scale = 4.0
 
+[node name="KillerArea2D" type="Area2D" parent="."]
+script = ExtResource("11_cshcq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillerArea2D"]
+shape = SubResource("CapsuleShape2D_sactj")
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_entered" from="KillerArea2D" to="KillerArea2D" method="_on_area_entered"]
