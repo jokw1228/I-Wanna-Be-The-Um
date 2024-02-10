@@ -27,7 +27,7 @@ func _on_area_entered(area):
 		area.get_parent().kill_player()
 
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	for i in range(3):
 		var inst = fragment_scene.instantiate()
 		inst.position = position

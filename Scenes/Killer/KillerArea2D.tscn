@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dewo08uvi6lvd"]
+
+[ext_resource type="Script" path="res://Scenes/Killer/KillerArea2D.gd" id="1_vg4co"]
+
+[node name="KillerArea2D" type="Area2D"]
+script = ExtResource("1_vg4co")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b03qp1gnvrqsl"]
+[gd_scene load_steps=4 format=3 uid="uid://b03qp1gnvrqsl"]
 
 [ext_resource type="Script" path="res://Scenes/Spikes/Spike.gd" id="1_u3s62"]
 [ext_resource type="Texture2D" uid="uid://c38nvyrgoe4xu" path="res://Resources/Sprites/Spikes/sprite_spike_up_8.png" id="2_6nk0o"]
+[ext_resource type="Script" path="res://Scenes/Killer/KillerArea2D.gd" id="3_l10gn"]
 
-[node name="SpikeUp8" type="Area2D" node_paths=PackedStringArray("Sprite2D_node")]
+[node name="SpikeUp8" type="Node2D" node_paths=PackedStringArray("Sprite2D_node")]
 script = ExtResource("1_u3s62")
 Sprite2D_node = NodePath("Sprite2D")
 
@@ -11,8 +12,12 @@ Sprite2D_node = NodePath("Sprite2D")
 z_index = -2
 texture = ExtResource("2_6nk0o")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="KillerArea2D" type="Area2D" parent="."]
+script = ExtResource("3_l10gn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KillerArea2D"]
 position = Vector2(-16, 0)
 polygon = PackedVector2Array(16, -4, 12, 4, 20, 4)
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_entered" from="KillerArea2D" to="KillerArea2D" method="_on_area_entered"]
+[connection signal="killed_player" from="KillerArea2D" to="." method="_on_killer_area_2d_killed_player"]
