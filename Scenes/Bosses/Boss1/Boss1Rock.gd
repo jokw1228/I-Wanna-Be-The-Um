@@ -1,0 +1,39 @@
+extends Area2D
+
+@export var sprite: Sprite2D
+@export var fragment_scene: PackedScene
+@export var effect_scene: PackedScene
+
+var angle_delta
+var velocity: Vector2
+
+func _ready():
+	angle_delta = (randf() - 0.5) * 20
+	velocity = Vector2.ZERO
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	sprite.rotation += angle_delta * delta
+
+func _physics_process(delta):
+	const accel = 500
+	velocity.y += accel * delta
+	position += velocity * delta
+
+
+func _on_area_entered(area):
+	if area.is_in_group("PlayerArea2D"):
+		area.get_parent().kill_player()
+
+
+func _on_body_entered(body):
+	for i in range(3):
+		var inst = fragment_scene.instantiate()
+		inst.position = position
+		get_tree().current_scene.add_child(inst)
+	
+	var inst = effect_scene.instantiate()
+	inst.position = position
+	get_tree().current_scene.add_child(inst)
+	queue_free()

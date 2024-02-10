@@ -6,6 +6,7 @@ extends Area2D
 @export var MuShootEffect_scene: PackedScene
 @export var Boss1Bullet_scene: PackedScene
 @export var Boss1EnergyBall_scene: PackedScene
+@export var Boss1Rock_scene: PackedScene
 
 var hp_max = 100
 var hp = 100
@@ -46,11 +47,13 @@ func BossHitEffect():
 
 func pattern_ready():
 	randomize()
-	var num = randi() % 2
+	var num = randi() % 3
 	if num == 0:
-		pattern_0()
+		pattern_2()
 	elif num == 1:
-		pattern_1()
+		pattern_2()
+	elif num == 2:
+		pattern_2()
 
 func pattern_0():
 	const x_offset = 32
@@ -171,6 +174,9 @@ func choose_pos_or_neg() -> int:
 	return array[randi() % 2]
 
 func pattern_2():
+	var inst = Boss1Rock_scene.instantiate()
+	inst.position = Vector2(160, -32)
+	get_tree().current_scene.add_child(inst)
 	
 	await get_tree().create_timer(1.0).timeout
 	pattern_ready()

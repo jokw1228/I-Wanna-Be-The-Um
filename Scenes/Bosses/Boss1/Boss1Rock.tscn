@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://dg3ha7l21h8bd"]
+
+[ext_resource type="Texture2D" uid="uid://o30kacb1lenl" path="res://Resources/Sprites/Mu/sprite_rock.png" id="1_1ydmt"]
+[ext_resource type="Script" path="res://Scenes/Bosses/Boss1/Boss1Rock.gd" id="1_bhp8r"]
+[ext_resource type="PackedScene" uid="uid://cmivt1d6cukoj" path="res://Scenes/Bosses/Boss1/Boss1RockFragment.tscn" id="2_f6yqw"]
+[ext_resource type="PackedScene" uid="uid://bpv4lcp4mb663" path="res://Scenes/Bosses/Boss1/Boss1RockFragmentEffectGenerator.tscn" id="3_xt5sa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_abxe2"]
+radius = 16.0
+
+[node name="Boss1Rock" type="Area2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_bhp8r")
+sprite = NodePath("Sprite2D")
+fragment_scene = ExtResource("2_f6yqw")
+effect_scene = ExtResource("3_xt5sa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_abxe2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1ydmt")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
