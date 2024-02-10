@@ -7,7 +7,9 @@ extends Area2D
 @export var Boss1Bullet_scene: PackedScene
 @export var Boss1EnergyBall_scene: PackedScene
 
+var hp_max = 100
 var hp = 100
+signal hp_changed(hp, hp_max)
 
 const y_over = -16
 const y_ground = 152
@@ -17,6 +19,7 @@ var player_flip: bool
 
 func _ready():
 	player_position = Vector2.ZERO
+	emit_signal("hp_changed", hp, hp_max)
 	await get_tree().create_timer(1.0).timeout
 	pattern_ready()
 
@@ -32,8 +35,14 @@ func _on_area_entered(area):
 		
 	elif area.is_in_group("PlayerBulletArea2D"):
 		area.get_parent().destory_bullet()
-		
 		hp -= 1
+		hp_changed.emit(hp, hp_max)
+		BossHitEffect()
+
+func BossHitEffect():
+	Sprite_node.modulate = Color(1, 0.6, 0.6, 1)
+	await get_tree().create_timer(0.1).timeout
+	Sprite_node.modulate = Color(1, 1, 1, 1)
 
 func pattern_ready():
 	randomize()

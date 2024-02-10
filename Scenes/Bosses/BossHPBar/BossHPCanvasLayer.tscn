@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpe3c8dv8w52p"]
+
+[ext_resource type="Texture2D" uid="uid://b0b7x0qan4x8t" path="res://Resources/Sprites/Mu/hp/sprite_hp_under.png" id="1_naux5"]
+[ext_resource type="Texture2D" uid="uid://dkfa06pij2urs" path="res://Resources/Sprites/Mu/hp/sprite_hp_progression.png" id="2_qrsxe"]
+[ext_resource type="Script" path="res://Scenes/Bosses/BossHPBar/BossHPBar.gd" id="3_cbv7n"]
+
+[node name="BossHPCanvasLayer" type="CanvasLayer"]
+
+[node name="BossHPBar" type="TextureProgressBar" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_under = ExtResource("1_naux5")
+texture_progress = ExtResource("2_qrsxe")
+script = ExtResource("3_cbv7n")
