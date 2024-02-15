@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8f28q1my7d0u"]
+[gd_scene load_steps=10 format=3 uid="uid://c8f28q1my7d0u"]
 
 [ext_resource type="Script" path="res://Scenes/Bosses/Boss1/Boss1DeadBody.gd" id="1_t48ju"]
 [ext_resource type="AudioStream" uid="uid://d3lf3bk7fmwbd" path="res://Resources/Sounds/SFX/Mu/sfx_mu_uh.wav" id="2_0wq26"]
 [ext_resource type="Texture2D" uid="uid://0dgxsyg0qenq" path="res://Resources/Sprites/Mu/sprite_mu_dead.png" id="2_75tu1"]
 [ext_resource type="PackedScene" uid="uid://dg3ha7l21h8bd" path="res://Scenes/Bosses/Boss1/Boss1Rock.tscn" id="2_fa4il"]
+[ext_resource type="PackedScene" uid="uid://byuakx51c7k6" path="res://Scenes/Rooms/RoomStage2_1.tscn" id="3_pern4"]
 [ext_resource type="AudioStream" uid="uid://dfsjj16rk3v0t" path="res://Resources/Sounds/SFX/Mu/sfx_mu_die.wav" id="3_syklr"]
 [ext_resource type="AudioStream" uid="uid://26pddgskiah2" path="res://Resources/Sounds/SFX/Mu/sfx_mu_explosion.wav" id="5_wwkxq"]
 [ext_resource type="Script" path="res://Scenes/Killer/KillerArea2D.gd" id="6_mig3m"]
@@ -18,6 +19,9 @@ audio_uh = NodePath("AudioUh")
 audio_die = NodePath("AudioDie")
 audio_explosion = NodePath("AudioExplosion")
 Rock_scene = ExtResource("2_fa4il")
+effect1 = 2
+RoomToGo_room = ExtResource("3_pern4")
+effect2 = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_75tu1")

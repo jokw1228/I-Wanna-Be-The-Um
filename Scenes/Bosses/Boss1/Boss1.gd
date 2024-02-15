@@ -11,8 +11,8 @@ extends Area2D
 
 @export var Boss1DeadBody_scene: PackedScene
 
-var hp_max = 1
-var hp = 1
+var hp_max = 100
+var hp = 100
 signal hp_changed(hp, hp_max)
 signal boss_die()
 
