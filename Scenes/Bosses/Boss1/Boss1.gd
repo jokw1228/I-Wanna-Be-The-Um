@@ -9,9 +9,12 @@ extends Area2D
 @export var Boss1Rock_scene: PackedScene
 @export var Boss1FallingSpike_scene: PackedScene
 
-var hp_max = 100
-var hp = 100
+@export var Boss1DeadBody_scene: PackedScene
+
+var hp_max = 1
+var hp = 1
 signal hp_changed(hp, hp_max)
+signal boss_die()
 
 const y_over = -16
 const y_ground = 152
@@ -37,8 +40,11 @@ func _on_area_entered(area):
 	if area.is_in_group("PlayerBulletArea2D"):
 		area.get_parent().destory_bullet()
 		hp -= 1
-		hp_changed.emit(hp, hp_max)
-		BossHitEffect()
+		if hp > 0:
+			hp_changed.emit(hp, hp_max)
+			BossHitEffect()
+		else:
+			die()
 
 func BossHitEffect():
 	Sprite_node.modulate = Color(1, 0.6, 0.6, 1)
@@ -50,7 +56,7 @@ func pattern_ready():
 	var num
 	while true:
 		num = randi() % 3
-		if num != last_pattern:
+		if num != last_pattern or num == 0:
 			break
 	if num == 0:
 		pattern_0()
@@ -241,3 +247,11 @@ func pattern_2():
 	
 	await get_tree().create_timer(1.0).timeout
 	pattern_ready()
+
+func die():
+	boss_die.emit()
+	var inst = Boss1DeadBody_scene.instantiate()
+	inst.position = position
+	inst.sprite.flip_h = Sprite_node.flip_h
+	get_tree().current_scene.add_child(inst)
+	queue_free()

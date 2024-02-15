@@ -24,6 +24,7 @@ func _on_area_entered(area):
 		get_tree().current_scene.add_child(hpbar)
 		
 		boss.hp_changed.connect(hpbar.get_child(0).update)
+		boss.boss_die.connect(hpbar.queue_free)
 		
 		savepoint.queue_free()
 		queue_free()

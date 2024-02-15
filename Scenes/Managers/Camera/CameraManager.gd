@@ -7,7 +7,7 @@ var shake_strength: float = 0.0
 var shake_fade: float = 5.0
 
 func apply_shake(strength: float, fade: float):
-	shake_strength = strength
+	shake_strength += strength
 	shake_fade = fade
 
 func random_offset() -> Vector2:
