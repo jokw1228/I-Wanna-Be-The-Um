@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://cq7q2ey2qf41a"]
+
+[ext_resource type="Script" path="res://Scenes/Bosses/Boss1/Boss1Player.gd" id="1_6dd8t"]
+[ext_resource type="Texture2D" uid="uid://c3wy2lolgwdvj" path="res://Resources/Sprites/Items/Play/sprite_play.png" id="1_sgw1v"]
+[ext_resource type="PackedScene" uid="uid://dd6ch60up46wh" path="res://Scenes/Bosses/Boss1/Boss1.tscn" id="2_7rvg5"]
+[ext_resource type="PackedScene" uid="uid://bpe3c8dv8w52p" path="res://Scenes/Bosses/BossHPBar/BossHPCanvasLayer.tscn" id="3_edh6f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_py1ei"]
+radius = 8.0
+
+[node name="Boss1Player" type="Area2D" node_paths=PackedStringArray("sprite_node")]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_6dd8t")
+sprite_node = NodePath("Sprite2D")
+boss_scene = ExtResource("2_7rvg5")
+hpbar_scene = ExtResource("3_edh6f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_sgw1v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_py1ei")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

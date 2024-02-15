@@ -9,6 +9,7 @@
 [node name="BossHPBar" type="TextureProgressBar" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
+value = 100.0
 texture_under = ExtResource("1_naux5")
 texture_progress = ExtResource("2_qrsxe")
 script = ExtResource("3_cbv7n")
