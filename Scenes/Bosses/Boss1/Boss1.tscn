@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dd6ch60up46wh"]
+[gd_scene load_steps=21 format=3 uid="uid://dd6ch60up46wh"]
 
 [ext_resource type="Script" path="res://Scenes/Bosses/Boss1/Boss1.gd" id="1_hgkg1"]
 [ext_resource type="PackedScene" uid="uid://dvucbk1qkfpiq" path="res://Scenes/Bosses/Boss1/Boss1Bullet.tscn" id="2_kid0i"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ci6ae0vghdqwo" path="res://Resources/Sprites/Mu/sprite_mu_laser.png" id="6_twg2m"]
 [ext_resource type="AudioStream" uid="uid://bmjme3r3nleq7" path="res://Resources/Sounds/SFX/Mu/sfx_mu_laser.wav" id="7_be80w"]
 [ext_resource type="AudioStream" uid="uid://bxnqwb5gv4d7o" path="res://Resources/Sounds/SFX/Mu/sfx_mu_charging.wav" id="9_jb0hw"]
+[ext_resource type="Texture2D" uid="uid://ff1qe5ppl1ep" path="res://Resources/Sprites/Mu/sprite_mu_jump_up.png" id="10_2b2ht"]
 [ext_resource type="Script" path="res://Scenes/Killer/KillerArea2D.gd" id="11_cshcq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sactj"]
@@ -32,6 +33,10 @@ region = Rect2(32, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_y7mx0"]
 atlas = ExtResource("5_7qbsk")
 region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_go200"]
+atlas = ExtResource("10_2b2ht")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cl45y"]
 animations = [{
@@ -67,6 +72,14 @@ animations = [{
 "loop": true,
 "name": &"laser",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_go200")
+}],
+"loop": true,
+"name": &"rising",
+"speed": 5.0
 }]
 
 [node name="Boss1" type="Area2D" node_paths=PackedStringArray("Sprite_node", "audio_laser", "audio_charging")]
@@ -85,7 +98,7 @@ shape = SubResource("CapsuleShape2D_sactj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cl45y")
-animation = &"idle"
+animation = &"rising"
 
 [node name="Sounds" type="Node" parent="."]
 

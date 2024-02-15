@@ -149,12 +149,15 @@ func pattern_1():
 	Sprite_node.animation = "idle"
 	await get_tree().create_timer(0.2).timeout
 	
+	const charging_time = 1.0
 	audio_charging.play()
-	await get_tree().create_timer(1.0).timeout
+	energy_charging(charging_time)
+	await get_tree().create_timer(charging_time).timeout
 	
 	const rising_duration = 1.2
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "position", Vector2(position.x, y_over), rising_duration)
+	Sprite_node.animation = "rising"
 	
 	#barrage
 	create_spinning_barrage(rising_duration, 36, randi(), 32 * choose_pos_or_neg(), 128)
@@ -165,6 +168,13 @@ func pattern_1():
 	
 	await get_tree().create_timer(2.0).timeout
 	pattern_ready()
+
+func energy_charging(time):
+	for i in range(10):
+		await get_tree().create_timer(time/25).timeout
+		Sprite_node.modulate = Color(0.5, 0.5, 0.5, 1)
+		await get_tree().create_timer(time/25).timeout
+		Sprite_node.modulate = Color(1, 1, 1, 1)
 
 func create_spinning_barrage(duration, shoot_times, angle_start, angle_delta, speed):
 	var delay = duration / shoot_times
@@ -187,7 +197,7 @@ func pattern_2():
 		Sprite_node.flip_h = true
 		position = Vector2(320-40, y_over)
 	
-		Sprite_node.animation = "laser"
+	Sprite_node.animation = "laser"
 	audio_laser.play()
 	
 	var tween = get_tree().create_tween()
