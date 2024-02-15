@@ -158,6 +158,7 @@ func pattern_1():
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "position", Vector2(position.x, y_over), rising_duration)
 	Sprite_node.animation = "rising"
+	shake_camera(30.0)
 	
 	#barrage
 	create_spinning_barrage(rising_duration, 36, randi(), 32 * choose_pos_or_neg(), 128)
@@ -239,3 +240,8 @@ func pattern_2():
 	
 	await get_tree().create_timer(1.0).timeout
 	pattern_ready()
+
+func shake_camera(strength):
+	var camera = get_tree().get_nodes_in_group("Camera")
+	if camera != []:
+		camera[0].apply_shake(strength)

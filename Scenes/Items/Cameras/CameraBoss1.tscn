@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxlalpmvon04c"]
+
+[ext_resource type="Script" path="res://Scenes/Items/Cameras/CameraBoss1.gd" id="1_3g6aj"]
+
+[node name="CameraBoss1" type="Camera2D" groups=["Camera"]]
+anchor_mode = 0
+script = ExtResource("1_3g6aj")

@@ -28,7 +28,7 @@ func _on_body_entered(_body):
 		inst.position = position
 		get_tree().current_scene.add_child(inst)
 	
-	var inst = effect_scene.instantiate()
-	inst.position = position
-	get_tree().current_scene.add_child(inst)
+	var inst2 = effect_scene.instantiate()
+	inst2.position = position
+	get_tree().current_scene.add_child(inst2)
 	queue_free()
