@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ykpsnwojkpix"]
 
-[ext_resource type="PackedScene" uid="uid://dxlalpmvon04c" path="res://Scenes/Items/Cameras/CameraBoss1.tscn" id="1_rygx4"]
+[ext_resource type="PackedScene" uid="uid://ct21fcu5al8eq" path="res://Scenes/Items/Cameras/CameraLock.tscn" id="1_mlntr"]
 [ext_resource type="PackedScene" uid="uid://g5uiqkeis1bc" path="res://Scenes/TileMaps/BackGround1.tscn" id="2_xbaq1"]
 [ext_resource type="PackedScene" uid="uid://1kdhl0avp55s" path="res://Scenes/TileMaps/TileMapGround2.tscn" id="3_vvfkg"]
 [ext_resource type="PackedScene" uid="uid://d4iisx858y4co" path="res://Scenes/Player/PlayerSpawner.tscn" id="4_nadjc"]
@@ -11,9 +11,44 @@
 
 [node name="RoomStage1_Boss" type="Node2D"]
 
-[node name="CameraBoss1" parent="." instance=ExtResource("1_rygx4")]
+[node name="CameraLock" parent="." instance=ExtResource("1_mlntr")]
+RoomSize = Vector2(320, 176)
 
-[node name="BackGround1" parent="." instance=ExtResource("2_xbaq1")]
+[node name="BackGrounds" type="Node" parent="."]
+
+[node name="BackGround1" parent="BackGrounds" instance=ExtResource("2_xbaq1")]
+metadata/_edit_lock_ = true
+
+[node name="BackGround2" parent="BackGrounds" instance=ExtResource("2_xbaq1")]
+position = Vector2(480, 88)
+metadata/_edit_lock_ = true
+
+[node name="BackGround3" parent="BackGrounds" instance=ExtResource("2_xbaq1")]
+position = Vector2(160, 264)
+metadata/_edit_lock_ = true
+
+[node name="BackGround4" parent="BackGrounds" instance=ExtResource("2_xbaq1")]
+position = Vector2(480, 264)
+metadata/_edit_lock_ = true
+
+[node name="BackGround5" parent="BackGrounds" instance=ExtResource("2_xbaq1")]
+position = Vector2(-160, 88)
+metadata/_edit_lock_ = true
+
+[node name="BackGround6" parent="BackGrounds" instance=ExtResource("2_xbaq1")]
+position = Vector2(-160, 264)
+metadata/_edit_lock_ = true
+
+[node name="BackGround7" parent="BackGrounds" instance=ExtResource("2_xbaq1")]
+position = Vector2(160, -88)
+metadata/_edit_lock_ = true
+
+[node name="BackGround8" parent="BackGrounds" instance=ExtResource("2_xbaq1")]
+position = Vector2(480, -88)
+metadata/_edit_lock_ = true
+
+[node name="BackGround9" parent="BackGrounds" instance=ExtResource("2_xbaq1")]
+position = Vector2(-160, -88)
 metadata/_edit_lock_ = true
 
 [node name="TileMapGround2" parent="." instance=ExtResource("3_vvfkg")]

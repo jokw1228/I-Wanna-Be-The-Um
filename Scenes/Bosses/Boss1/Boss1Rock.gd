@@ -27,7 +27,7 @@ func _on_body_entered(_body):
 		var inst = fragment_scene.instantiate()
 		inst.position = position
 		get_tree().current_scene.add_child(inst)
-	
+	CameraManager.apply_shake(2.0, 5)
 	var inst2 = effect_scene.instantiate()
 	inst2.position = position
 	get_tree().current_scene.add_child(inst2)

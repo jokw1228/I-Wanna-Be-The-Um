@@ -21,6 +21,7 @@ config/windows_native_icon="res://icon.ico"
 SaveFileManager="*res://Scenes/Managers/SaveFile/SaveFileManager.gd"
 RoomTransitionEffectManager="*res://Scenes/Managers/RoomTransition/RoomTransitionEffect/RoomTransitionEffectManager.gd"
 RoomTransitionManager="*res://Scenes/Managers/RoomTransition/RoomTransitionManager.tscn"
+CameraManager="*res://Scenes/Managers/Camera/CameraManager.tscn"
 
 [debug]
 
