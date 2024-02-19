@@ -7,6 +7,7 @@ extends Control
 
 @export var audio1: AudioStreamPlayer2D
 @export var audio2: AudioStreamPlayer2D
+@export var audio3: AudioStreamPlayer2D
 
 var state = 0;
 
@@ -30,7 +31,7 @@ func _input(event):
 		elif Input.is_action_just_pressed("jump"):
 			state = 3
 			light_out(StartGame_node)
-			audio1.play()
+			audio3.play()
 			SaveFileManager.load_game()
 	elif state == 2:
 		if Input.is_action_just_pressed("up"):
@@ -41,7 +42,7 @@ func _input(event):
 		elif Input.is_action_just_pressed("jump"):
 			state = 3
 			light_out(EndGame_node)
-			audio1.play()
+			audio3.play()
 			RoomTransitionEffectManager.effecting(RoomTransitionEffectManager.type.up_to_down, true)
 			await RoomTransitionEffectManager.effecting_end
 			get_tree().quit()
