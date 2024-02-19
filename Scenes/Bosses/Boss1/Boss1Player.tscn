@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cq7q2ey2qf41a"]
+[gd_scene load_steps=7 format=3 uid="uid://cq7q2ey2qf41a"]
 
 [ext_resource type="Script" path="res://Scenes/Bosses/Boss1/Boss1Player.gd" id="1_6dd8t"]
 [ext_resource type="Texture2D" uid="uid://c3wy2lolgwdvj" path="res://Resources/Sprites/Items/Play/sprite_play.png" id="1_sgw1v"]
 [ext_resource type="PackedScene" uid="uid://dd6ch60up46wh" path="res://Scenes/Bosses/Boss1/Boss1.tscn" id="2_7rvg5"]
 [ext_resource type="PackedScene" uid="uid://bpe3c8dv8w52p" path="res://Scenes/Bosses/BossHPBar/BossHPCanvasLayer.tscn" id="3_edh6f"]
+[ext_resource type="AudioStream" uid="uid://dcyp5bjfbintg" path="res://Resources/Sounds/BGM/bgm_boss_battle.wav" id="4_xp6ye"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_py1ei"]
 radius = 8.0
@@ -14,6 +15,7 @@ script = ExtResource("1_6dd8t")
 sprite_node = NodePath("Sprite2D")
 boss_scene = ExtResource("2_7rvg5")
 hpbar_scene = ExtResource("3_edh6f")
+bgm_battle = ExtResource("4_xp6ye")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_sgw1v")

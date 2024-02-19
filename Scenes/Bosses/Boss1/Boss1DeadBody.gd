@@ -1,9 +1,9 @@
 extends Node2D
 
 @export var sprite: Sprite2D
-@export var audio_uh: AudioStreamPlayer2D
-@export var audio_die: AudioStreamPlayer2D
-@export var audio_explosion: AudioStreamPlayer2D
+@export var audio_uh: AudioStream
+@export var audio_die: AudioStream
+@export var audio_explosion: AudioStream
 
 @export var Rock_scene: PackedScene
 
@@ -15,11 +15,11 @@ var velocity: Vector2
 
 func _ready():
 	velocity = Vector2((randf() * 150) - 75, -256)
-	audio_uh.play()
+	SoundManager.play_sound(audio_uh, "SFX")
 	
 	await get_tree().create_timer(1.5).timeout
-	audio_die.play()
-	audio_explosion.play()
+	SoundManager.play_sound(audio_die, "SFX")
+	SoundManager.play_sound(audio_explosion, "SFX")
 	CameraManager.apply_shake(12, 1)
 	for i in range(3):
 		var inst1 = Rock_scene.instantiate()

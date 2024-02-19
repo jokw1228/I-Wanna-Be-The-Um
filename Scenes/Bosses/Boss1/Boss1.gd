@@ -1,8 +1,8 @@
 extends Area2D
 
 @export var Sprite_node: AnimatedSprite2D
-@export var audio_laser: AudioStreamPlayer2D
-@export var audio_charging: AudioStreamPlayer2D
+@export var audio_laser: AudioStream
+@export var audio_charging: AudioStream
 @export var MuShootEffect_scene: PackedScene
 @export var Boss1Bullet_scene: PackedScene
 @export var Boss1EnergyBall_scene: PackedScene
@@ -88,7 +88,7 @@ func pattern_0():
 	Sprite_node.flip_h = is_flipped
 	
 	Sprite_node.animation = "laser"
-	audio_laser.play()
+	SoundManager.play_sound(audio_laser, "SFX")
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "position", Vector2(position.x, y_ground), 0.3)
@@ -124,7 +124,7 @@ func pattern_0():
 	Sprite_node.play_backwards()
 	await Sprite_node.animation_finished
 	Sprite_node.animation = "laser"
-	audio_laser.play()
+	SoundManager.play_sound(audio_laser, "SFX")
 	
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "position", Vector2(position.x, y_over), 0.3)
@@ -142,7 +142,7 @@ func pattern_1():
 	position = Vector2(160, y_over)
 	
 	Sprite_node.animation = "laser"
-	audio_laser.play()
+	SoundManager.play_sound(audio_laser, "SFX")
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "position", Vector2(position.x, y_ground), 0.3)
@@ -156,7 +156,7 @@ func pattern_1():
 	await get_tree().create_timer(0.2).timeout
 	
 	const charging_time = 1.0
-	audio_charging.play()
+	SoundManager.play_sound(audio_charging, "SFX")
 	energy_charging(charging_time)
 	CameraManager.apply_shake(1.0, 1.0)
 	await get_tree().create_timer(charging_time).timeout
@@ -206,7 +206,7 @@ func pattern_2():
 		position = Vector2(320-40, y_over)
 	
 	Sprite_node.animation = "laser"
-	audio_laser.play()
+	SoundManager.play_sound(audio_laser, "SFX")
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "position", Vector2(position.x, y_ground), 0.3)
@@ -239,7 +239,7 @@ func pattern_2():
 	Sprite_node.play_backwards()
 	await Sprite_node.animation_finished
 	Sprite_node.animation = "laser"
-	audio_laser.play()
+	SoundManager.play_sound(audio_laser, "SFX")
 	
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "position", Vector2(position.x, y_over), 0.3)
@@ -250,6 +250,7 @@ func pattern_2():
 
 func die():
 	boss_die.emit()
+	SoundManager.stop_music()
 	var inst = Boss1DeadBody_scene.instantiate()
 	inst.position = position
 	inst.sprite.flip_h = Sprite_node.flip_h

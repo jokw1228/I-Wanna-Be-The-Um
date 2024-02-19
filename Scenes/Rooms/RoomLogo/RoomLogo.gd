@@ -1,7 +1,7 @@
 extends Node
 
 @export var Logos_node: Node2D
-@export var LogoSound_node: AudioStreamPlayer2D
+@export var LogoSound: AudioStream
 
 @export var RoomMainMenu_room: PackedScene
 
@@ -11,7 +11,7 @@ func _ready():
 
 func start_coroutine():
 	
-	LogoSound_node.play()
+	SoundManager.play_sound(LogoSound, "SFX")
 	await get_tree().create_timer(0.7).timeout
 	
 	var tween = get_tree().create_tween()

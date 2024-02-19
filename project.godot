@@ -18,6 +18,7 @@ config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
+SoundManager="*res://addons/sound_manager/sound_manager.gd"
 SaveFileManager="*res://Scenes/Managers/SaveFile/SaveFileManager.gd"
 RoomTransitionEffectManager="*res://Scenes/Managers/RoomTransition/RoomTransitionEffect/RoomTransitionEffectManager.gd"
 RoomTransitionManager="*res://Scenes/Managers/RoomTransition/RoomTransitionManager.tscn"
@@ -37,6 +38,10 @@ window/stretch/mode="canvas_items"
 [editor]
 
 naming/scene_name_casing=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/sound_manager/plugin.cfg")
 
 [input]
 

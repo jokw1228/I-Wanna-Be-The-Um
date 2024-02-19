@@ -1,11 +1,11 @@
 extends Node2D
 
 @export var DoubleJumpEffect_node: Node
-@export var audio_node: AudioStreamPlayer2D
+@export var audio: AudioStream
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	DoubleJumpEffect_node.emitting = true
-	audio_node.play()
-	await get_tree().create_timer(3.0).timeout
+	SoundManager.play_sound(audio, "SFX")
+	await DoubleJumpEffect_node.finished
 	queue_free()

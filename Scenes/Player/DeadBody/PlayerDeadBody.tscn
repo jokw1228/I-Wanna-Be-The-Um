@@ -7,13 +7,10 @@
 
 [node name="PlayerDeadBody" type="Node2D"]
 script = ExtResource("1_py0lb")
+audio = ExtResource("3_xpslq")
 
 [node name="PlayerDeadBodySprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_lfs80")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_xpslq")
-autoplay = true
 
 [node name="UmSprite" type="Sprite2D" parent="."]
 position = Vector2(-1, -1)

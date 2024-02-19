@@ -12,12 +12,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_p0p3h"]
 radius = 8.0
 
-[node name="Boss1DeadBody" type="Node2D" node_paths=PackedStringArray("sprite", "audio_uh", "audio_die", "audio_explosion")]
+[node name="Boss1DeadBody" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_t48ju")
 sprite = NodePath("Sprite2D")
-audio_uh = NodePath("AudioUh")
-audio_die = NodePath("AudioDie")
-audio_explosion = NodePath("AudioExplosion")
+audio_uh = ExtResource("2_0wq26")
+audio_die = ExtResource("3_syklr")
+audio_explosion = ExtResource("5_wwkxq")
 Rock_scene = ExtResource("2_fa4il")
 effect1 = 2
 RoomToGo_room = ExtResource("3_pern4")
@@ -25,16 +25,6 @@ effect2 = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_75tu1")
-
-[node name="AudioUh" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_0wq26")
-
-[node name="AudioDie" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_syklr")
-
-[node name="AudioExplosion" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_wwkxq")
-volume_db = 10.0
 
 [node name="KillerArea2D" type="Area2D" parent="."]
 script = ExtResource("6_mig3m")

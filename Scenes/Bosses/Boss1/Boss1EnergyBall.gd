@@ -1,11 +1,11 @@
 extends Node2D
 
-@export var audio: AudioStreamPlayer2D
+@export var audio: AudioStream
 
 var velocity: Vector2
 
 func _ready():
-	audio.play()
+	SoundManager.play_sound(audio, "SFX")
 	await get_tree().create_timer(5.0).timeout
 	queue_free()
 

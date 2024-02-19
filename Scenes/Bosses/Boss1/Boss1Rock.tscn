@@ -10,12 +10,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_abxe2"]
 radius = 16.0
 
-[node name="Boss1Rock" type="Area2D" node_paths=PackedStringArray("sprite", "audio")]
+[node name="Boss1Rock" type="Area2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_bhp8r")
 sprite = NodePath("Sprite2D")
 fragment_scene = ExtResource("2_f6yqw")
 effect_scene = ExtResource("3_xt5sa")
-audio = NodePath("AudioStreamPlayer2D")
+audio = ExtResource("6_yuow3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_abxe2")
@@ -28,9 +28,6 @@ script = ExtResource("5_aqbyb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillerArea2D"]
 shape = SubResource("CircleShape2D_abxe2")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_yuow3")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="KillerArea2D" to="KillerArea2D" method="_on_area_entered"]

@@ -190,8 +190,8 @@ func _input(_event):
 		player_shoot()
 	
 	if Input.is_action_just_pressed(input_restart):
-		#kill_player()
-		SaveFileManager.load_game()
+		kill_player()
+		#SaveFileManager.load_game()
 
 
 func _physics_process(delta):
@@ -387,7 +387,7 @@ func change_state(state, value):
 			is_floating_in_the_air_state = value
 
 func kill_player():
-	#killed.emit()
+	killed.emit()
 	pass
 
 func player_shoot():

@@ -3,7 +3,7 @@ extends Area2D
 @export var sprite: Sprite2D
 @export var fragment_scene: PackedScene
 @export var effect_scene: PackedScene
-@export var audio: AudioStreamPlayer2D
+@export var audio: AudioStream
 
 var angle_delta
 var velocity: Vector2
@@ -11,7 +11,7 @@ var velocity: Vector2
 func _ready():
 	angle_delta = (randf() - 0.5) * 20
 	velocity = Vector2.ZERO
-	audio.play()
+	SoundManager.play_sound(audio, "SFX")
 
 func _process(delta):
 	sprite.rotation += angle_delta * delta

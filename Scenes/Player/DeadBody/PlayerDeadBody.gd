@@ -1,8 +1,11 @@
 extends Node2D
 
+@export var audio: AudioStream
+
 var velocity_vector = Vector2.ZERO
 
 func _ready():
+	SoundManager.play_sound(audio, "SFX")
 	await get_tree().create_timer(0.1).timeout
 	SaveFileManager.load_game()
 

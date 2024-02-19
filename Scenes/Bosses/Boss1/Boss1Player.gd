@@ -7,7 +7,12 @@ extends Area2D
 
 @export var savepoint: Node
 
+@export var bgm_battle: AudioStream
+
 var theta = 0
+
+func _ready():
+	SoundManager.stop_music()
 
 func _process(delta):
 	theta += delta * 2
@@ -16,6 +21,8 @@ func _process(delta):
 
 func _on_area_entered(area):
 	if area.is_in_group("PlayerArea2D"):
+		SoundManager.play_music(bgm_battle, 0.0, "BGM")
+		
 		var boss = boss_scene.instantiate()
 		boss.position = Vector2(-32, -32)
 		get_tree().current_scene.add_child(boss)

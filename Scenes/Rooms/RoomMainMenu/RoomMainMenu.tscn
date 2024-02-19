@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://xkbr2x0b12gc"]
+[gd_scene load_steps=10 format=3 uid="uid://xkbr2x0b12gc"]
 
 [ext_resource type="PackedScene" uid="uid://6aen5tortl71" path="res://Scenes/BackgroundEffects/SnowParticle.tscn" id="1_v07dv"]
 [ext_resource type="Texture2D" uid="uid://2tjm0bf6vvgc" path="res://Resources/Sprites/Logos/sprite_title.png" id="2_npapx"]
 [ext_resource type="Script" path="res://Scenes/Rooms/RoomMainMenu/MainMenu.gd" id="3_hvr66"]
 [ext_resource type="FontFile" uid="uid://b3jby0svdovo" path="res://Resources/Fonts/Kenney Mini Square.ttf" id="5_ipfy2"]
 [ext_resource type="AudioStream" uid="uid://djkm2r24psky3" path="res://Resources/Sounds/SFX/MainMenu/sfx_menu_selected.wav" id="6_b7605"]
+[ext_resource type="AudioStream" uid="uid://c0ke0716lutv8" path="res://Resources/Sounds/BGM/bgm_main_menu.wav" id="7_0dodf"]
 [ext_resource type="AudioStream" uid="uid://bkqqtospk1olh" path="res://Resources/Sounds/SFX/MainMenu/sfx_menu_moved.wav" id="7_6squf"]
 [ext_resource type="AudioStream" uid="uid://i6bd4h6qeo2m" path="res://Resources/Sounds/SFX/MainMenu/sfx_menu_chosen.wav" id="7_hsqhn"]
 
@@ -28,7 +29,7 @@ color = Color(0.105882, 0.105882, 0.105882, 1)
 position = Vector2(160, 60)
 texture = ExtResource("2_npapx")
 
-[node name="MainMenu" type="Control" parent="." node_paths=PackedStringArray("PressAnyKey_node", "SelectMenu_node", "StartGame_node", "EndGame_node", "audio1", "audio2", "audio3")]
+[node name="MainMenu" type="Control" parent="." node_paths=PackedStringArray("PressAnyKey_node", "SelectMenu_node", "StartGame_node", "EndGame_node")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,9 +41,10 @@ PressAnyKey_node = NodePath("PressAnyKey")
 SelectMenu_node = NodePath("SelectMenu")
 StartGame_node = NodePath("SelectMenu/StartGame")
 EndGame_node = NodePath("SelectMenu/EndGame")
-audio1 = NodePath("AudioSelected")
-audio2 = NodePath("AudioMoved")
-audio3 = NodePath("AudioChosen")
+audio1 = ExtResource("6_b7605")
+audio2 = ExtResource("7_6squf")
+audio3 = ExtResource("7_hsqhn")
+bgm = ExtResource("7_0dodf")
 
 [node name="PressAnyKey" type="Label" parent="MainMenu"]
 layout_mode = 0
@@ -78,12 +80,3 @@ text = "End Game"
 label_settings = SubResource("LabelSettings_p8qqt")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="AudioSelected" type="AudioStreamPlayer2D" parent="MainMenu"]
-stream = ExtResource("6_b7605")
-
-[node name="AudioMoved" type="AudioStreamPlayer2D" parent="MainMenu"]
-stream = ExtResource("7_6squf")
-
-[node name="AudioChosen" type="AudioStreamPlayer2D" parent="MainMenu"]
-stream = ExtResource("7_hsqhn")
