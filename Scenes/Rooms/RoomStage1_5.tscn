@@ -1,7 +1,9 @@
-[gd_scene load_steps=37 format=3 uid="uid://drvapvyvhmq3h"]
+[gd_scene load_steps=39 format=3 uid="uid://drvapvyvhmq3h"]
 
 [ext_resource type="PackedScene" uid="uid://ct21fcu5al8eq" path="res://Scenes/Items/Cameras/CameraLock.tscn" id="1_4njbk"]
+[ext_resource type="PackedScene" uid="uid://d2m13a8fyk3v1" path="res://Scenes/Items/StageBGM/StageBgm.tscn" id="1_xq707"]
 [ext_resource type="PackedScene" uid="uid://g5uiqkeis1bc" path="res://Scenes/TileMaps/BackGround1.tscn" id="2_agit5"]
+[ext_resource type="AudioStream" uid="uid://2cmm4xbl1mhc" path="res://Resources/Sounds/BGM/bgm_stage1.wav" id="2_whysr"]
 [ext_resource type="PackedScene" uid="uid://1kdhl0avp55s" path="res://Scenes/TileMaps/TileMapGround2.tscn" id="3_wlkdd"]
 [ext_resource type="PackedScene" uid="uid://2kjb1txrafg0" path="res://Scenes/TileMaps/TileMapGround3.tscn" id="4_dga1v"]
 [ext_resource type="PackedScene" uid="uid://d4iisx858y4co" path="res://Scenes/Player/PlayerSpawner.tscn" id="4_wduki"]
@@ -140,6 +142,9 @@ size = Vector2(33, 16)
 size = Vector2(16, 64)
 
 [node name="RoomStage1_5" type="Node2D"]
+
+[node name="StageBGM" parent="." instance=ExtResource("1_xq707")]
+bgm = ExtResource("2_whysr")
 
 [node name="CameraLock" parent="." instance=ExtResource("1_4njbk")]
 RoomSize = Vector2(320, 176)

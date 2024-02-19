@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://5fxh7x1bdfdr"]
+[gd_scene load_steps=14 format=3 uid="uid://5fxh7x1bdfdr"]
 
 [ext_resource type="PackedScene" uid="uid://ct21fcu5al8eq" path="res://Scenes/Items/Cameras/CameraLock.tscn" id="1_4tg1l"]
+[ext_resource type="PackedScene" uid="uid://d2m13a8fyk3v1" path="res://Scenes/Items/StageBGM/StageBgm.tscn" id="1_b3p0s"]
 [ext_resource type="PackedScene" uid="uid://g5uiqkeis1bc" path="res://Scenes/TileMaps/BackGround1.tscn" id="2_axhb4"]
 [ext_resource type="PackedScene" uid="uid://1kdhl0avp55s" path="res://Scenes/TileMaps/TileMapGround2.tscn" id="3_4vwp0"]
 [ext_resource type="PackedScene" uid="uid://d4iisx858y4co" path="res://Scenes/Player/PlayerSpawner.tscn" id="4_26wcx"]
@@ -16,6 +17,8 @@
 size = Vector2(8, 32)
 
 [node name="RoomStage1_6" type="Node2D"]
+
+[node name="StageBGM" parent="." instance=ExtResource("1_b3p0s")]
 
 [node name="CameraLock" parent="." instance=ExtResource("1_4tg1l")]
 RoomSize = Vector2(320, 176)

@@ -1,6 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://cxbcd23vp1o5w"]
+[gd_scene load_steps=31 format=3 uid="uid://cxbcd23vp1o5w"]
 
 [ext_resource type="PackedScene" uid="uid://dead8g0krll6g" path="res://Scenes/Items/Cameras/CameraPlayerFollower.tscn" id="1_heyal"]
+[ext_resource type="PackedScene" uid="uid://d2m13a8fyk3v1" path="res://Scenes/Items/StageBGM/StageBgm.tscn" id="1_pdxtj"]
+[ext_resource type="AudioStream" uid="uid://2cmm4xbl1mhc" path="res://Resources/Sounds/BGM/bgm_stage1.wav" id="2_ej2g3"]
 [ext_resource type="PackedScene" uid="uid://g5uiqkeis1bc" path="res://Scenes/TileMaps/BackGround1.tscn" id="2_tyaim"]
 [ext_resource type="PackedScene" uid="uid://d4iisx858y4co" path="res://Scenes/Player/PlayerSpawner.tscn" id="3_hs1ge"]
 [ext_resource type="PackedScene" uid="uid://1kdhl0avp55s" path="res://Scenes/TileMaps/TileMapGround2.tscn" id="4_0iu1c"]
@@ -111,6 +113,9 @@ _data = {
 size = Vector2(32, 16)
 
 [node name="RoomStage1_3" type="Node2D"]
+
+[node name="StageBGM" parent="." instance=ExtResource("1_pdxtj")]
+bgm = ExtResource("2_ej2g3")
 
 [node name="CameraPlayerFollower" parent="." instance=ExtResource("1_heyal")]
 limit_left = 0
