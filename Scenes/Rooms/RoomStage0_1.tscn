@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://brwwqd6l1oxk" path="res://Scenes/TileMaps/TileMapGround1.tscn" id="3_pw22p"]
 [ext_resource type="PackedScene" uid="uid://cygo3s32tr1xt" path="res://Scenes/Items/InGameTexts/InGameText.tscn" id="4_coh7t"]
 [ext_resource type="PackedScene" uid="uid://d25vehfudqlvb" path="res://Scenes/Items/SavePoint/SavePoint.tscn" id="5_g8e3b"]
-[ext_resource type="PackedScene" uid="uid://g5uiqkeis1bc" path="res://Scenes/TileMaps/BackGround1.tscn" id="6_75t5g"]
 [ext_resource type="PackedScene" uid="uid://d3kvujmdn05tj" path="res://Scenes/Spikes/SpikeUp16.tscn" id="7_2ixbv"]
 [ext_resource type="PackedScene" uid="uid://dlvoiqp1nkh36" path="res://Scenes/Items/Tutorial/TutorialRock.tscn" id="8_fkdsp"]
 [ext_resource type="PackedScene" uid="uid://1kdhl0avp55s" path="res://Scenes/TileMaps/TileMapGround2.tscn" id="9_aq28p"]
@@ -13,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c3m4dm2ytmgd2" path="res://Scenes/Rooms/RoomStage1_1.tscn" id="11_bc6gf"]
 [ext_resource type="PackedScene" uid="uid://divl44b26f4yp" path="res://Scenes/Items/Tutorial/TutorialHazard.tscn" id="12_ogyke"]
 [ext_resource type="PackedScene" uid="uid://jm07b2gcmwf0" path="res://Scenes/Items/MoreJump/MoreJump.tscn" id="12_w0g42"]
+[ext_resource type="PackedScene" uid="uid://dkwe8nx5rwkkp" path="res://Scenes/TileMaps/BackGround2.tscn" id="14_2in53"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hpxj6"]
 size = Vector2(16, 48)
@@ -42,9 +42,6 @@ offset_top = 104.0
 offset_right = 694.0
 offset_bottom = 127.0
 text = "Save Point!"
-
-[node name="BackGround1" parent="." instance=ExtResource("6_75t5g")]
-position = Vector2(1760, 88)
 
 [node name="InGameText3" parent="." instance=ExtResource("4_coh7t")]
 offset_left = 416.0
@@ -177,3 +174,22 @@ your double jump is refreshed"
 
 [node name="TileMapGround2" parent="." instance=ExtResource("9_aq28p")]
 layer_0/tile_data = PackedInt32Array(1245412, 589824, 2, 1245413, 589824, 3, 1310949, 393216, 4, 1310948, 589824, 2, 1310947, 524288, 2, 1245411, 0, 3, 1179875, 0, 0, 1179876, 65536, 0, 1179877, 196608, 0, 1245414, 196608, 2, 1310950, 458752, 2, 1179878, 196608, 0, 1245415, 327680, 2, 1310951, 327680, 4, 1179879, 196608, 0, 1245416, 131072, 1, 1310952, 589824, 3, 1179880, 65536, 0, 1245417, 65536, 1, 1310953, 327680, 4, 1179881, 196608, 0, 1245418, 589824, 4, 1310954, 589824, 0, 1179882, 65536, 0, 1245419, 393216, 4, 1310955, 196608, 1, 1179883, 131072, 0, 1245420, 131072, 2, 1310956, 524288, 0, 1179884, 65536, 0, 1245421, 524288, 4, 1310957, 131072, 2, 1179885, 196608, 0, 1245422, 524288, 4, 1310958, 589824, 2, 1179886, 65536, 0, 1245423, 131072, 2, 1310959, 131072, 1, 1179887, 196608, 0, 1245424, 393216, 4, 1310960, 327680, 0, 1179888, 131072, 0, 1245425, 589824, 4, 1310961, 65536, 2, 1179889, 458752, 3, 1245426, 65536, 3, 1310962, 131072, 3, 1179890, 131072, 0, 1245427, 589824, 4, 1310963, 589824, 2, 1179891, 196608, 0, 1245428, 458752, 4, 1310964, 524288, 0, 1179892, 196608, 0, 1245429, 393216, 2, 1310965, 262144, 3, 1179893, 262144, 0, 1376485, 589824, 2, 1376484, 131072, 3, 1376483, 0, 2, 1376486, 196608, 3, 1376487, 131072, 3, 1376488, 131072, 3, 1376489, 65536, 3, 1376490, 196608, 2, 1376491, 65536, 2, 1376492, 458752, 0, 1376493, 458752, 4, 1376494, 524288, 0, 1376495, 65536, 3, 1376496, 327680, 2, 1376497, 458752, 4, 1376498, 196608, 3, 1442034, 458752, 1, 1442033, 196608, 4, 1442032, 65536, 4, 1376499, 65536, 2, 1442035, 458752, 1, 1376500, 589824, 4, 1442036, 458752, 1, 1376501, 393216, 2, 1442037, 262144, 4, 1442031, 131072, 4, 1442030, 65536, 4, 1442029, 65536, 4, 1442028, 131072, 4, 1442027, 65536, 4, 1442026, 458752, 1, 1442025, 131072, 4, 1442024, 65536, 4, 1442023, 131072, 4, 1442022, 196608, 4, 1442021, 131072, 4, 1442020, 65536, 4, 1442019, 0, 4)
+
+[node name="BackGrounds" type="Node" parent="."]
+
+[node name="BackGround2" parent="BackGrounds" instance=ExtResource("14_2in53")]
+
+[node name="BackGround3" parent="BackGrounds" instance=ExtResource("14_2in53")]
+position = Vector2(480, 88)
+
+[node name="BackGround4" parent="BackGrounds" instance=ExtResource("14_2in53")]
+position = Vector2(800, 88)
+
+[node name="BackGround5" parent="BackGrounds" instance=ExtResource("14_2in53")]
+position = Vector2(1120, 88)
+
+[node name="BackGround6" parent="BackGrounds" instance=ExtResource("14_2in53")]
+position = Vector2(1440, 88)
+
+[node name="BackGround7" parent="BackGrounds" instance=ExtResource("14_2in53")]
+position = Vector2(1760, 88)

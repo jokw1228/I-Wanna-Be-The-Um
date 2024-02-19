@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkwe8nx5rwkkp"]
+
+[ext_resource type="Texture2D" uid="uid://buv1t8ekit6b8" path="res://Resources/Sprites/Tilesets/sprite_background2_layer1.png" id="1_10jmh"]
+[ext_resource type="Script" path="res://Scenes/TileMaps/BackGround2.gd" id="1_f2cri"]
+[ext_resource type="Texture2D" uid="uid://dqgvshhbi03sm" path="res://Resources/Sprites/Tilesets/sprite_background2_layer2.png" id="2_osgnd"]
+[ext_resource type="Texture2D" uid="uid://di71vunuak1ci" path="res://Resources/Sprites/Tilesets/sprite_background2_layer3.png" id="3_v5yrg"]
+[ext_resource type="Texture2D" uid="uid://djhobw5rtklpq" path="res://Resources/Sprites/Tilesets/sprite_background2_layer4.png" id="4_xmakm"]
+
+[node name="BackGround2" type="Node2D" node_paths=PackedStringArray("layer2", "layer3", "layer4")]
+z_index = -50
+position = Vector2(160, 88)
+script = ExtResource("1_f2cri")
+layer2 = NodePath("Layer2")
+layer3 = NodePath("Layer3")
+layer4 = NodePath("Layer4")
+
+[node name="Layer1" type="Sprite2D" parent="."]
+texture = ExtResource("1_10jmh")
+
+[node name="Layer2" type="Sprite2D" parent="."]
+texture = ExtResource("2_osgnd")
+
+[node name="Layer3" type="Sprite2D" parent="."]
+texture = ExtResource("3_v5yrg")
+
+[node name="Layer4" type="Sprite2D" parent="."]
+texture = ExtResource("4_xmakm")
