@@ -169,7 +169,7 @@ func pattern_1():
 	
 	#barrage
 	create_spinning_barrage(rising_duration, 36, randi(), 32 * choose_pos_or_neg(), 128)
-	create_spinning_barrage(rising_duration, 88, randi(), 12 * choose_pos_or_neg(), 64)
+	create_spinning_barrage(rising_duration, 88, randi(), 24 * choose_pos_or_neg(), 64)
 	create_spinning_barrage(rising_duration, 24, randi(), 96 * choose_pos_or_neg(), 196)
 	
 	await tween.finished
@@ -228,7 +228,7 @@ func pattern_2():
 	
 	for i in range(10):
 		var inst1 = Boss1FallingSpike_scene.instantiate()
-		inst1.position = Vector2(i * 320 / 10 + 16 + (randf() - 0.5) * 8, -16)
+		inst1.position = Vector2(i * 320 / 10 + 16 + (randf() - 0.5) * 6, -16)
 		get_tree().current_scene.add_child(inst1)
 	
 	#end
