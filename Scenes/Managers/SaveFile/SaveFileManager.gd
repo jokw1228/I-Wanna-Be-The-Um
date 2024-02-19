@@ -12,7 +12,7 @@ const NewStart_room = "res://Scenes/Rooms/RoomStage0_1.tscn"
 func save_game(save_room, save_position):
 	var save_data = {
 		"save_room" : save_room,
-		"save_position" : save_position
+		"save_position" : save_position,
 	}
 	var save_file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	var jstr = JSON.stringify(save_data)

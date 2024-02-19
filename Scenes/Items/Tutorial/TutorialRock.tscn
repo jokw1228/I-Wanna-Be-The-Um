@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlvoiqp1nkh36"]
+
+[ext_resource type="Script" path="res://Scenes/Items/Tutorial/TutorialRock.gd" id="1_1niu4"]
+[ext_resource type="Texture2D" uid="uid://o30kacb1lenl" path="res://Resources/Sprites/Mu/sprite_rock.png" id="1_42oyh"]
+[ext_resource type="PackedScene" uid="uid://cmivt1d6cukoj" path="res://Scenes/Bosses/Boss1/Boss1RockFragment.tscn" id="2_xojdg"]
+[ext_resource type="PackedScene" uid="uid://bpv4lcp4mb663" path="res://Scenes/Bosses/Boss1/Boss1RockFragmentEffectGenerator.tscn" id="3_qrr6w"]
+
+[node name="TutorialRock" type="StaticBody2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_1niu4")
+sprite = NodePath("Sprite2D")
+fragment_scene = ExtResource("2_xojdg")
+effect_scene = ExtResource("3_qrr6w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_42oyh")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -16, 12, -16, 16, 0, 16, 12, 12, 16, -16, 16, -16, 4, -8, -4)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(0, -16, 12, -16, 16, 0, 16, 12, 12, 16, -16, 16, -16, 4, -8, -4)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
