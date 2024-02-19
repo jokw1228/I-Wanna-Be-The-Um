@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cmxk8xw8pxb1t" path="res://Resources/Sounds/SFX/Mu/sfx_rock_fall.wav" id="6_yuow3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_abxe2"]
-radius = 16.0
+radius = 20.3961
 
 [node name="Boss1Rock" type="Area2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_bhp8r")
